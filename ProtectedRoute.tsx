@@ -60,7 +60,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole }) => {
   return user && user.uprawnienia === requiredRole ? (
     <Outlet /> // Pozwól na dalsze renderowanie komponentów wewnątrz ścieżki
   ) : (
-    <Navigate to="/unauthorized" /> // Brak dostępu
+    <Navigate to="/" /> // Brak dostępu
   );
 };
 
