@@ -10,9 +10,6 @@ import Login from '@/Login';
 import Wylogowany from '@/Wylogowany';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProtectedRoute from '@/ProtectedRoute';
-import EditableTable from '@/EditableTable';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -97,30 +94,18 @@ export default function RootLayout({
                         Treningi
                     </div>
                 </Link>
-
-
-                <Router>
-                <Routes>
-                <Route element={<ProtectedRoute requiredRole="wlasciciel_stajni" />}>
-                <Route path="/zarzadzanie" element={<EditableTable />} />
                 
-                </Route>
-                    
-                
-                </Routes>
-                </Router>
-                
-                    <Link href="/dashboard/harmonogram">
-                        <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">
-                            Zarządzanie pracownikami
-                        </div>
-                    </Link>
-                    <Link href="/zarzadzanie">
-                        <div className="hover:bg-gray-500  pl-2">
-                            Zarządzanie stajnią
-                        </div>
+                <Link href="/dashboard/harmonogram">
+                    <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">
+                        Zarządzanie pracownikami
+                    </div>
+                </Link>
+                <Link href="/zarzadzanie">
+                    <div className="hover:bg-gray-500  pl-2">
+                        Zarządzanie stajnią
+                    </div>
 
-                    </Link>
+                </Link>
 
                     
             
