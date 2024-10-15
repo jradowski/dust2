@@ -13,7 +13,7 @@ const UserNameLink = () => {
   
     return (
       <Link href="/workers">
-        Witaj: {user ? "Witaj: "+user.email : "Zaloguj się:"} {/* Wstawiamy imię użytkownika lub komunikat dla gościa */}
+        {user ? "Witaj: "+user.email : "Zaloguj się:"} {/* Wstawiamy imię użytkownika lub komunikat dla gościa */}
       </Link>
     );
   };
@@ -68,9 +68,6 @@ export default function RootLayout({
                             <Link href="/dashboard/notes">
                             <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
                         </Link>
-                        <Link href="/dashboard/zadania">
-                            <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Moje zadania</div>
-                        </Link>
                         </ProtectedSection>
                     
 
@@ -95,6 +92,26 @@ export default function RootLayout({
                         </Link>
                         <Link href="/dashboard/zadania">
                             <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Moje zadania</div>
+                        </Link>
+                        </ProtectedSection>
+
+                        {/* Sekcja dostępna dla właściciela koni */}
+                        <ProtectedSection requiredRole="wlasciciel_koni">
+                        {/* link do podstrony do widoku dla wlasciciela koni */}
+                        <Link href="/wlasciciel_konia">
+                            <div className="hover:bg-gray-500 pl-2">Home</div>
+                        </Link>
+                        <Link href="/wlasciciel_konia/moje_konie">
+                            <div className="hover:bg-gray-500 pl-2">Moje konie</div>
+                        </Link>
+                        <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel">
+                        <div className="hover:bg-gray-500 pl-2">Zarządzaj końmi</div>
+                        </Link>
+                        <Link href="/wlasciciel_konia/treningi">
+                            <div className="hover:bg-gray-500 pl-2">Treningi</div>
+                        </Link>
+                        <Link href="/dashboard/notes">
+                            <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
                         </Link>
                         </ProtectedSection>
                        

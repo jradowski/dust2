@@ -1,11 +1,16 @@
+'use client';
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection'; // Jeśli używasz tego komponentu
+import { useUser } from '@/UserContext';
 
 export default function page() {
     return (
         <main className=" items-center justify-between p-24">
-
+        <UserProvider>
+        <ProtectedSection requiredRole="wlasciciel_stajni"> 
             <div className="mb-32 flex flex-col gap-4 text-center lg:mb-0 lg:w-full  lg:grid-cols-3 lg:text-left">
 
 
@@ -67,7 +72,8 @@ export default function page() {
             </div>
 
 
-
+        </ProtectedSection>
+        </UserProvider>
         </main>
     )
 }

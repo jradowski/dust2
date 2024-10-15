@@ -70,7 +70,6 @@ const AddSchedule: React.FC = () => {
 
     return (
         <div>
-            <h2>Dodaj godziny do harmonogramu</h2>
             <label>
                 Wybierz pracowników:
                 <select
@@ -96,7 +95,7 @@ const AddSchedule: React.FC = () => {
             </label>
             <br />
             <label>
-                Czas rozpoczęcia:
+                Czas_rozpoczęcia:
                 <input
                     type="time"
                     value={startTime}
@@ -105,7 +104,7 @@ const AddSchedule: React.FC = () => {
             </label>
             <br />
             <label>
-                Czas zakończenia:
+                Czas_zakończenia:
                 <input
                     type="time"
                     value={endTime}

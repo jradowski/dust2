@@ -12,12 +12,12 @@ export default function page() {
                 className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left">
 
 
-                <Link href="/dashboard/boxes">
+                <Link href="/wlasciciel_konia/moje_konie">
                     <div
                         className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
-                            Boksy{" "}
+                            Moje konie{" "}
                             <span
                                 className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -26,12 +26,14 @@ export default function page() {
                     </div>
                 </Link>
 
-                <Link href="/dashboard/padoki">
+                
+
+                <Link href="/wlasciciel_konia/treningi">
                     <div
                         className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
-                            Padoki{" "}
+                            Trening moich koni{" "}
                             <span
                                 className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -39,13 +41,12 @@ export default function page() {
                         </h2>
                     </div>
                 </Link>
-
-                <Link href="/dashboard/trening">
+                <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel">
                     <div
                         className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
-                            Trening{" "}
+                            Zarządzaj końmi{" "}
                             <span
                                 className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
@@ -82,11 +83,17 @@ export default function page() {
                     </h1>
                     <Szczepienie/>
                 </div>
+                <div>
+                    <br></br><br></br>
+                    <h1 className="font-bold text-center text-2xl w-auto">
+                    Termin płatności: /tutaj data/
+                    </h1>
+                    
+                </div>
 
 
             </div>
-        
-
+    
         </main>
     )
 }
