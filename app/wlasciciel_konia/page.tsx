@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Kowal from "@/Kowal";
-import Szczepienie from "@/Szczepienie";
+import KowalWlasc from "@/KowalWlasc";
+import SzczepienieWlasc from "@/SzczepienieWlasc";
 
 export default function page() {
     return (
@@ -74,14 +74,14 @@ export default function page() {
                     <h1 className="font-bold text-center text-2xl w-auto">
 
                     </h1>
-                    <Kowal/>
+                    <KowalWlasc/>
                 </div>
                 <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-full my-16 "/>
                 <div>
                     <h1 className="font-bold text-center text-2xl w-auto">
 
                     </h1>
-                    <Szczepienie/>
+                    <SzczepienieWlasc/>
                 </div>
                 <div>
                     <br></br><br></br>

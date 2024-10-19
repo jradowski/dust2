@@ -1,14 +1,12 @@
 "use client";
-import Image from 'next/image'
-import Link from 'next/link'
-import 'reactjs-popup/dist/index.css'
-import supabase  from '@/supabaseClient.js'
-import React, { useState, useEffect, useCallback } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import supabase from '@/supabaseClient.js';
+import styles from './UserList.module.css'; // Importujemy CSS dla lepszej stylizacji
 
 const UserList: React.FC = () => {
     const [users, setUsers] = useState<any[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [isOpen, setIsOpen] = useState<boolean>(false); // Stan do kontroli rozwijania listy
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -28,16 +26,25 @@ const UserList: React.FC = () => {
         fetchUsers();
     }, []);
 
+    const toggleList = () => {
+        setIsOpen(!isOpen); // Przełączanie stanu rozwijania
+    };
+
     return (
-        <div>
+        <div className={styles.container}>
+            <h2 className={styles.title} onClick={toggleList}>
+                Użytkownicy {isOpen ? '▲' : '▼'}
+            </h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>
-                        {user.email} (ID: {user.id})
-                    </li>
-                ))}
-            </ul>
+            {isOpen && (
+                <ul className={styles.userList}>
+                    {users.map(user => (
+                        <li key={user.id} className={styles.userItem}>
+                            {user.email} <br></br> (ID:{user.id})
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
