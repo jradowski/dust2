@@ -24,7 +24,7 @@ const TreningTable: React.FC = () => {
             // Pobieranie danych z tabeli 'trening'
             let { data, error } = await supabase
                 .from('trening')
-                .select('*');
+                .select('imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak');
 
             if (error) {
                 console.error(error);

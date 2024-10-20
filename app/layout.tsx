@@ -5,7 +5,7 @@ import Link from "next/link";
 import { UserProvider } from '@/UserContext';
 import Login from '@/Login';
 import Wylogowany from '@/Wylogowany';
-import ProtectedSection from '@/ProtectedSection'; // Jeśli używasz tego komponentu
+import ProtectedSectionMenu from '@/ProtectedSectionMenu'; // Jeśli używasz tego komponentu
 import { useUser } from '@/UserContext';
 
 const UserNameLink = () => {
@@ -45,7 +45,7 @@ export default function RootLayout({
                         {/* Linki do różnych stron */}
                         
                         {/* Sekcja dostępna dla właściciela stajni */}
-                        <ProtectedSection requiredRole="wlasciciel_stajni">
+                        <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
                         <Link href="/dashboard">
                             <div className="hover:bg-gray-500 pl-2">Stajnia</div>
                         </Link>
@@ -68,12 +68,12 @@ export default function RootLayout({
                             <Link href="/dashboard/notes">
                             <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
                         </Link>
-                        </ProtectedSection>
+                        </ProtectedSectionMenu>
                     
 
 
 
-                        <ProtectedSection requiredRole="pracownik">
+                        <ProtectedSectionMenu requiredRole="pracownik">
                         <Link href="/dashboard">
                             <div className="hover:bg-gray-500 pl-2">Stajnia</div>
                         </Link>
@@ -93,10 +93,10 @@ export default function RootLayout({
                         <Link href="/dashboard/zadania">
                             <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Moje zadania</div>
                         </Link>
-                        </ProtectedSection>
+                        </ProtectedSectionMenu>
 
                         {/* Sekcja dostępna dla właściciela koni */}
-                        <ProtectedSection requiredRole="wlasciciel_koni">
+                        <ProtectedSectionMenu requiredRole="wlasciciel_koni">
                         {/* link do podstrony do widoku dla wlasciciela koni */}
                         <Link href="/wlasciciel_konia">
                             <div className="hover:bg-gray-500 pl-2">Home</div>
@@ -113,7 +113,7 @@ export default function RootLayout({
                         <Link href="/dashboard/notes">
                             <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
                         </Link>
-                        </ProtectedSection>
+                        </ProtectedSectionMenu>
                        
                         
                     </div>

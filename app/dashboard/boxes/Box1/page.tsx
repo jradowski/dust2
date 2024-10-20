@@ -12,7 +12,7 @@ import '@/boxtabela.css';
 const fetchData = async () => {
     const { data, error } = await supabase
         .from('horse')
-        .select('*, image_url,notatka')
+        .select('*, image_url,notatka, imie')
         .eq('nr_boksu', 1)
         .single()
 
@@ -92,7 +92,7 @@ const Home = async () => {
                     <h2 className="text-opacity-50 text-xl ">{data.kowal}</h2>
                 </div>
                 <div className="mt-2 pl-5 ">
-                    <h1 className="text-2xl">Ilość miarek: </h1>
+                    <h1 className="text-2xl">Liczba miarek: </h1>
                     <h2 className="text-opacity-50 text-xl ">
                         {data.wielkosc_posilku}x {data.posilek}
                     </h2>

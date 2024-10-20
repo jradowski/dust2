@@ -41,7 +41,7 @@ const TreningUser: React.FC = () => {
 
       let { data, error } = await supabase
           .from('trening')
-          .select('*')
+          .select('imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
           .eq('id_jezdzca', userId );
 
       if (error) {

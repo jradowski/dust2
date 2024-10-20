@@ -93,7 +93,7 @@ const Home = async () => {
                     <h2 className="text-opacity-50 text-xl">{data.kowal}</h2>
                 </div>
                 <div className="mt-2 pl-5">
-                    <h1 className="text-2xl">Ilość miarek: {data.wielkosc_posilku}</h1>
+                    <h1 className="text-2xl">Liczba miarek: {data.wielkosc_posilku}</h1>
                     <h2 className="text-opacity-50 text-xl">
                         {data.posilek}
                     </h2>

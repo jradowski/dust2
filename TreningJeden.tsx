@@ -27,7 +27,7 @@ const TreningJeden: React.FC<TreningJedenProps> = ({ horseIdT }) => {
             // Pobieranie danych z tabeli 'trening'
             let { data, error } = await supabase
                 .from('trening')
-                .select('*, imie')
+                .select('imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
                 .eq('nr_konia',  horseIdT);
 
 
