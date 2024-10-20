@@ -45,6 +45,7 @@ const App: React.FC = () => {
             }
 
             setUserData(null); // Wyczyść dane użytkownika po wylogowaniu
+            window.location.reload();
         } catch (error) {
             console.error('Error signing out:');
             // Obsługa błędów wylogowania

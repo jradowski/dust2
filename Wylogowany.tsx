@@ -19,6 +19,7 @@ const Wylogowany: React.FC<WylogowanyProps> = ({ onNavigate, userData }) => {
             <br></br>
             <button onClick={() => onNavigate('login')}>Logowanie</button>
         </div>
+        
     );
 };
 

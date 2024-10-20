@@ -22,6 +22,7 @@ const Login: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate })
         } else {
             console.log('User logged in:', data.user)
             onNavigate('home')
+            window.location.reload();
         }
     }
 
