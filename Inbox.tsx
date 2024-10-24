@@ -1,9 +1,10 @@
 "use client";
-import Image from 'next/image'
-import Link from 'next/link'
-import 'reactjs-popup/dist/index.css'
-import supabase  from '@/supabaseClient.js'
-import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import 'reactjs-popup/dist/index.css';
+import supabase from '@/supabaseClient.js';
+import React, { useState, useEffect } from 'react';
+import styles from './Inbox.module.css'; // Stwórz plik CSS dla stylizacji
 
 const Inbox: React.FC = () => {
     const [messages, setMessages] = useState<any[]>([]);
@@ -28,36 +29,80 @@ const Inbox: React.FC = () => {
         const fetchMessages = async () => {
             if (!userId) return;
 
-            const { data, error } = await supabase
+            // Pobierz wiadomości odbierane przez aktualnie zalogowanego użytkownika
+            const { data: messagesData, error: messagesError } = await supabase
                 .from('messages')
                 .select('*')
                 .eq('receiver_id', userId)
                 .order('created_at', { ascending: false });
 
-            if (error) {
-                console.error('Błąd podczas pobierania wiadomości:', error);
+            if (messagesError) {
+                console.error('Błąd podczas pobierania wiadomości:', messagesError);
                 setError('Błąd podczas pobierania wiadomości');
-            } else {
-                setMessages(data || []);
+                return;
             }
+
+            // Pobierz nadawców wiadomości z tabeli employees
+            const senderIds = messagesData.map((msg) => msg.sender_id);
+
+            const { data: employeesData, error: employeesError } = await supabase
+                .from('employees')
+                .select('id, first_name, last_name')
+                .in('id', senderIds);
+
+            if (employeesError) {
+                console.error('Błąd podczas pobierania nadawców:', employeesError);
+                setError('Błąd podczas pobierania nadawców');
+                return;
+            }
+
+            // Łączenie danych wiadomości z informacjami o nadawcach
+            const messagesWithSenderInfo = messagesData.map((message) => {
+                const sender = employeesData.find((emp) => emp.id === message.sender_id);
+                return {
+                    ...message,
+                    sender_name: sender ? `${sender.first_name} ${sender.last_name}` : 'Nieznany nadawca',
+                };
+            });
+
+            setMessages(messagesWithSenderInfo);
         };
 
         fetchMessages();
     }, [userId]);
 
     return (
-        <div>
-            <h2>Skrzynka odbiorcza</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
-                {messages.map((message) => (
-                    <li key={message.id}>
-                        <p><strong>Od (ID):</strong> {message.sender_id}</p>
-                        <p><strong>Treść:</strong> {message.content}</p>
-                        <p><strong>Data:</strong> {new Date(message.created_at).toLocaleString()}</p>
-                    </li>
-                ))}
-            </ul>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Skrzynka odbiorcza</h2>
+            {error && <p className={styles.error}>{error}</p>}
+            <div className={styles.messageList}>
+                {messages.length > 0 ? (
+                    messages.map((message) => (
+                        <div key={message.id} className={styles.messageCard}>
+                            <div className={styles.senderInfo}>
+                                <Image
+                                    src="/avatar.png" // Zamień na właściwą ścieżkę do avatara użytkownika, jeśli istnieje
+                                    alt="Avatar"
+                                    width={50}
+                                    height={50}
+                                    className={styles.avatar}
+                                />
+                                <div>
+                                    <p className={styles.senderName}>
+                                        <strong>Od:</strong> {message.sender_name}
+                                    </p>
+                                    <p className={styles.timestamp}>
+                                        {new Date(message.created_at).toLocaleString()}
+                                    </p>
+                                </div>
+                            </div>
+                            <p className={styles.messageContent}>{message.content}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p className={styles.noMessages}>Brak wiadomości</p>
+                )}
+            </div>
         </div>
     );
 };

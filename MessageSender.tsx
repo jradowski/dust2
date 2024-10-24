@@ -7,7 +7,7 @@ const MessageSender: React.FC = () => {
     const [messageContent, setMessageContent] = useState<string>('');
     const [userId, setUserId] = useState<string | null>(null);
     const [recipientId, setRecipientId] = useState<string>('');
-    const [users, setUsers] = useState<any[]>([]);
+    const [employees, setEmployees] = useState<any[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     // Fetch the current user
@@ -25,19 +25,23 @@ const MessageSender: React.FC = () => {
         getCurrentUser();
     }, []);
 
-    // Fetch the list of users from Supabase
+    // Fetch the list of employees from Supabase
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchEmployees = async () => {
             try {
-                const { data, error } = await supabase.auth.admin.listUsers();
+                const { data, error } = await supabase
+                    .from('employees')
+                    .select('id, first_name, last_name');
+                
                 if (error) throw error;
-                setUsers(data?.users || []);
+
+                setEmployees(data || []);
             } catch (error) {
-                setError('Błąd podczas pobierania użytkowników: ' + (error as Error).message);
+                setError('Błąd podczas pobierania pracowników: ' + (error as Error).message);
             }
         };
 
-        fetchUsers();
+        fetchEmployees();
     }, []);
 
     const sendMessage = async () => {
@@ -65,16 +69,16 @@ const MessageSender: React.FC = () => {
         <div>
             <h2>Wyślij wiadomość</h2>
 
-            {/* Dropdown with users */}
+            {/* Dropdown with employees' names */}
             <select
                 className="custom-select"
                 value={recipientId}
                 onChange={(e) => setRecipientId(e.target.value)}
             >
                 <option value="">Wybierz odbiorcę</option>
-                {users.map((user) => (
-                    <option key={user.id} value={user.id}>
-                        {user.email}
+                {employees.map((employee) => (
+                    <option key={employee.id} value={employee.id}>
+                        {employee.first_name} {employee.last_name}
                     </option>
                 ))}
             </select>

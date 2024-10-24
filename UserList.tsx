@@ -9,21 +9,48 @@ const UserList: React.FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false); // Stan do kontroli rozwijania listy
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUsersWithEmployeeData = async () => {
             try {
-                const { data, error } = await supabase.auth.admin.listUsers();
+                // Pobierz użytkowników
+                const { data: usersData, error: usersError } = await supabase.auth.admin.listUsers();
 
-                if (error) {
-                    throw error;
+                if (usersError) {
+                    throw usersError;
                 }
 
-                setUsers(data?.users || []);
+                const userIds = usersData?.users.map(user => user.id); // Pobierz wszystkie ID użytkowników
+
+                if (userIds && userIds.length > 0) {
+                    // Pobierz dane pracowników, których user_id pasuje do ID użytkowników
+                    const { data: employeesData, error: employeesError } = await supabase
+                        .from('employees')
+                        .select('id, first_name, last_name')
+                        .in('id', userIds); // Filtruj pracowników po user_id, które odpowiadają ID użytkowników
+
+                    if (employeesError) {
+                        throw employeesError;
+                    }
+
+                    // Mapuj dane użytkowników z danymi z tabeli employees
+                    const usersWithEmployeeData = usersData?.users.map(user => {
+                        const employee = employeesData?.find(emp => emp.id === user.id);
+                        return {
+                            ...user,
+                            first_name: employee?.first_name || 'Brak imienia',
+                            last_name: employee?.last_name || 'Brak nazwiska',
+                        };
+                    });
+
+                    setUsers(usersWithEmployeeData || []);
+                } else {
+                    setUsers(usersData?.users || []);
+                }
             } catch (error) {
                 setError('Błąd podczas pobierania użytkowników: ' + (error as Error).message);
             }
         };
 
-        fetchUsers();
+        fetchUsersWithEmployeeData();
     }, []);
 
     const toggleList = () => {
@@ -40,7 +67,7 @@ const UserList: React.FC = () => {
                 <ul className={styles.userList}>
                     {users.map(user => (
                         <li key={user.id} className={styles.userItem}>
-                            {user.email} <br></br> (ID:{user.id})
+                            {user.first_name} {user.last_name} <br /> (email: {user.email})
                         </li>
                     ))}
                 </ul>
