@@ -10,7 +10,7 @@ const UserNameLink = () => {
 
     return (
         <Link href="/workers">
-            {user ? user.email : "Logowanie"} {/* Wstawiamy imię użytkownika lub komunikat dla gościa */}
+            {user ? user.email : "Logowanie "} {/* Wstawiamy imię użytkownika lub komunikat dla gościa */}
         </Link>
     );
 };
