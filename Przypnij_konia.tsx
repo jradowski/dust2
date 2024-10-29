@@ -81,14 +81,14 @@ const AssignHorses: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Przypisanie Koni do Właścicieli</h2>
-      <div className="mb-4">
-        <label className="block text-lg font-semibold mb-2">Wybierz konia:</label>
+    <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600">
+      <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Przypisanie Koni do Właścicieli</h2>
+      <div className="mb-4 text-2xl">
+        <label className="block text-xl font-semibold mb-2">Wybierz konia:</label>
         <select
           value={selectedHorse || ''}
           onChange={(e) => setSelectedHorse(e.target.value)}
-          className="p-2 border rounded w-full"
+          className="admin_select"
         >
           <option value="">-- Wybierz konia --</option>
           {horses.map((horse) => (
@@ -99,12 +99,12 @@ const AssignHorses: React.FC = () => {
         </select>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-lg font-semibold mb-2">Wybierz właściciela konia:</label>
+      <div className="mb-4 text-2xl">
+        <label className="block text-xl font-semibold mb-2">Wybierz właściciela konia:</label>
         <select
           value={selectedOwner || ''}
           onChange={(e) => setSelectedOwner(e.target.value)}
-          className="p-2 border rounded w-full"
+          className="admin_select"
         >
           <option value="">-- Wybierz właściciela --</option>
           {owners.map((owner) => (
@@ -114,14 +114,14 @@ const AssignHorses: React.FC = () => {
           ))}
         </select>
       </div>
-
+<div className="text-2xl">
       <button
         onClick={handleAssignHorse}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        className="admin_button"
       >
         Przypisz konia
       </button>
-
+</div>
       {message && <div className="mt-4 text-lg text-center">{message}</div>}
     </div>
   );

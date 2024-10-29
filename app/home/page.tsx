@@ -73,7 +73,7 @@ export default function page() {
                     <h1>Galeria</h1>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 m-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 m-2 ">
                     <img src="/images/third.jpg" alt="Image 1"
                          className="w-64 h-auto aspect-square object-cover shadow-lg hover:scale-105 transition-transform duration-300"/>
                     <img src="/images/12.jpg" alt="Image 2"
@@ -101,21 +101,13 @@ export default function page() {
                     className="text-center border-zinc-200 border-b-2 dark:border-gray-600 font-sans text-2xl font-bold">
                     <h1>Zostaw komentarz</h1>
                 </div>
-                <div>
-                    <div
-                        className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                        <div>
-                            <div className="h-12 text-xl text-center font-extrabold ">
-                                Komentarze:
-                            </div>
-                        </div>
+                <div
+                    className="content-center ml-8 w-auto grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2  dark:border-gray-600   ">
+                    <div>
+                        <h1 className="font-bold text-center text-2xl w-auto">
 
-                        <div>
-                            <h1 className="font-bold text-center text-2xl w-auto">
-
-                            </h1>
-                            <Komentarze/>
-                        </div>
+                        </h1>
+                        <Komentarze/>
                     </div>
                 </div>
 

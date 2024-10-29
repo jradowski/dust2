@@ -47,12 +47,26 @@ body {
   min-height: 100px;
 }
 
+.comments-textarea {
+  color: #000001;
+  background-color: lightgray;
+  margin-bottom:2px;
+  width: 50%;
+  min-height: 100px;
+}
 
 
 .custom-select{
   color: #000001;
   background-color: lightgray;
   margin-bottom:6px;
+}
+
+.ocena-select{
+  color: #000001;
+  background-color: lightgray;
+  margin-bottom:6px;
+  width: 10%;
 }
 
 
@@ -68,6 +82,15 @@ body {
   background-color: lightgrey;
   padding:2px;
   margin:2px;
+}
+
+.log-button{
+  color:black;
+  background-color: lightgrey;
+  padding:2px;
+  margin:2px;
+  float: left;
+
 }
 
 .button-table{

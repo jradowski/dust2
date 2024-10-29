@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { supabase } from '@/supabaseClient2';
 import { useUser } from '@/UserContext';
+import '@/globals.css'
+import '@/admin_board.css'
+
 
 const AdminPanel: React.FC = () => {
   const { user } = useUser();
@@ -66,45 +69,46 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Stwórz nowego użytkownika</h2>
-      <form onSubmit={handleCreateUser} className="flex flex-col gap-4">
+    <div className=" text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
+      <h2 className="text-2xl font-bold mb-10">Stwórz nowego użytkownika</h2>
+
+      <form onSubmit={handleCreateUser} className="flex flex-col text-2xl gap-4">
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="p-2 border border-gray-300 rounded"
-          required
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            className="admin_input"
+            required
         />
         <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Hasło"
-          className="p-2 border border-gray-300 rounded"
-          required
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Hasło"
+            className="admin_input"
+            required
         />
         <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="Imię"
-          className="p-2 border border-gray-300 rounded"
-          required
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Imię"
+            className="admin_input"
+            required
         />
         <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Nazwisko"
-          className="p-2 border border-gray-300 rounded"
-          required
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Nazwisko"
+            className="admin_input"
+            required
         />
         <select
-          value={role}
-          onChange={(e) => handleRoleChange(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+            value={role}
+            onChange={(e) => handleRoleChange(e.target.value)}
+            className="admin_select"
         >
           <option value="pracownik">Pracownik</option>
           <option value="wlasciciel_koni">Właściciel koni</option>
@@ -113,25 +117,27 @@ const AdminPanel: React.FC = () => {
 
         {/* Wybór pozycji tylko dla roli "pracownik" */}
         {role === 'pracownik' && (
-          <select
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
-            className="p-2 border border-gray-300 rounded"
-            required
-          >
-            <option value="">Wybierz pozycję</option>
-            <option value="stajenny">Stajenny</option>
-            <option value="luzak">Luzak</option>
-            <option value="jezdziec">Jeździec</option>
-          </select>
+            <select
+                value={position}
+                onChange={(e) => setPosition(e.target.value)}
+                className="admin_select"
+                required
+            >
+              <option value="">Wybierz pozycję</option>
+              <option value="stajenny">Stajenny</option>
+              <option value="luzak">Luzak</option>
+              <option value="jezdziec">Jeździec</option>
+            </select>
         )}
-
+        <hr className="border-t-2 border-zinc-200 dark:border-gray-600 w-100%"/>
+        <div className="items-center">
         <button
-          type="submit"
-          className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            type="submit"
+            className="admin_button"
         >
           Stwórz użytkownika
         </button>
+    </div>
       </form>
       {message && <div className="mt-4 text-lg text-center">{message}</div>}
     </div>

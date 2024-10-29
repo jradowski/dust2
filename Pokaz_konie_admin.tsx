@@ -1,7 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/supabaseClient2';
-import { useUser } from './UserContext';
+import { useUser } from '@/UserContext';
+import '@/admin_board.css';
+import '@/globals.css';
 
 interface Horse {
   id: number;
@@ -63,8 +65,8 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Właściciele koni w stajni</h2>
+    <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
+      <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Właściciele koni w stajni</h2>
       <div className="space-y-4">
         {owners.map((owner) => (
           <div key={owner.id} className="border p-4 rounded-lg shadow">
@@ -74,7 +76,7 @@ const AdminPanel: React.FC = () => {
               </span>
               <button
                 onClick={() => toggleOwnerHorses(owner.id)}
-                className="px-2 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="admin_button"
               >
                 {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
               </button>

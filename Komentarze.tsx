@@ -35,27 +35,27 @@ const Komentarze: React.FC = () => {
 
     return (
         <div>
-            <h2>Zostaw komentarz:</h2>
+            <h2>Zostaw komentarz</h2>
             <input
                 className="custom-select"
                 type="text"
-                placeholder="Twój nick:"
+                placeholder="Twój nick"
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
             />
-            <h2>Twoja ocena:</h2>
+            <h2>Twoja ocena</h2>
             <input
-                className="custom-select"
+                className="ocena-select"
                 type="number"
                 min="0"
                 max="5"
-                placeholder="Ocena:"
+                placeholder="Ocena"
                 value={ocenaa}
                 onChange={(e) => setOcenaa(e.target.value)}
             />
             <br></br>
             <textarea
-                className="custom-textarea"
+                className="comments-textarea"
                 placeholder="Treść wiadomości"
                 value={messageContent}
                 onChange={(e) => setMessageContent(e.target.value)}

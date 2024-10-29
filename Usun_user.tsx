@@ -49,14 +49,14 @@ const DeleteUser: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Usuń użytkownika</h2>
-      <div className="mb-4">
+    <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600">
+      <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Usuń użytkownika</h2>
+      <div className="mb-4 text-2xl">
         <label className="block text-lg font-semibold mb-2">Wybierz użytkownika:</label>
         <select
           value={selectedUser || ''}
           onChange={(e) => setSelectedUser(e.target.value)}
-          className="p-2 border rounded w-full"
+          className="admin_select"
         >
           <option value="">-- Wybierz użytkownika --</option>
           {employees.map((employee) => (
@@ -67,12 +67,14 @@ const DeleteUser: React.FC = () => {
         </select>
       </div>
 
-    <button
-         onClick={handleDeleteUser}
-         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-         >
-        Usuń użytkownika
-    </button>
+      <div className="text-2xl">
+        <button
+            onClick={handleDeleteUser}
+            className="admin_button"
+        >
+          Usuń użytkownika
+        </button>
+      </div>
 
       {message && <div className="mt-4 text-lg text-center">{message}</div>}
     </div>

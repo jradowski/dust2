@@ -9,7 +9,6 @@ import Login from '@/Login';
 import Wylogowany from '@/Wylogowany';
 
 
-
 const App: React.FC = () => {
     const [page, setPage] = useState<string>('home');
     const [userData, setUserData] = useState<any>(null);

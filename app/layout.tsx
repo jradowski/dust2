@@ -7,6 +7,7 @@ import Login from '@/Login';
 import Wylogowany from '@/Wylogowany';
 import ProtectedSectionMenu from '@/ProtectedSectionMenu'; // Jeśli używasz tego komponentu
 import { useUser } from '@/UserContext';
+import { usePathname } from 'next/navigation';
 
 const UserNameLink = () => {
     const { user } = useUser(); // Używamy kontekstu użytkownika
@@ -23,6 +24,12 @@ export default function RootLayout({
   }: {
     children: React.ReactNode;
   }) {
+    const pathname = usePathname();
+
+    // Warunek sprawdzający, czy ścieżka jest "/workers", aby pominąć layout
+    if (pathname === '/workers') {
+        return <>{children}</>;
+    }
 
     return (
         
