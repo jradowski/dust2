@@ -68,6 +68,9 @@ export default function RootLayout({
                             <Link href="/dashboard/notes">
                             <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
                         </Link>
+                        <Link href="/zarzadzanie_kontami">
+                            <div className="hover:bg-gray-500 pl-2">Panel administracyjny</div>
+                        </Link>
                         </ProtectedSectionMenu>
                     
 
