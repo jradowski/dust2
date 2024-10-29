@@ -61,10 +61,18 @@ export default function page() {
 
                         <h2 className="mb-3 text-2xl font-semibold">
                             Zmiana treningu{" "}
-                            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                            <span
+                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
                         </h2>
+                        <Image
+                            className="drop-shadow-2xl object-fill rounded-tl-xl "
+                            src="/images/write.png"
+                            alt="zdjęcie"
+                            width={100}
+                            height={100}
+                        ></Image>
                     </div>
                 </Link>
 

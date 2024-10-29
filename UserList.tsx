@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import supabase from '@/supabaseClient.js';
-import styles from './UserList.module.css'; // Importujemy CSS dla lepszej stylizacji
+import styles from '@/UserList.module.css'; // Importujemy CSS dla lepszej stylizacji
 
 const UserList: React.FC = () => {
     const [users, setUsers] = useState<any[]>([]);

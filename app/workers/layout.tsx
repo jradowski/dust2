@@ -38,4 +38,8 @@ export default function WorkersLayout({
         </body>
         </html>
     );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c7fe553dbbf6ae65702a73e6a40e382ba15a66df
