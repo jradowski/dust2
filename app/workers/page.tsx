@@ -69,7 +69,7 @@ const App: React.FC = () => {
 
                             <h1>{userName !== null ? `Witaj: ${userName}` : ''}</h1>
                             {userData && (
-                                <button onClick={handleLogout}>Wyloguj</button>
+                                <button onClick={handleLogout} className="log-button">Wyloguj</button>
                             )}
                         </div>
                     </div>

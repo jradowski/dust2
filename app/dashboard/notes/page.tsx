@@ -29,30 +29,31 @@ const Home = async () => {
 
 
                 <div>
-                    <div className="h-12 text-xl text-center font-extrabold ">
+                    <div className="h-12 text-2xl text-center font-extrabold ">
                         HorseMessage
                     </div>
+                    <hr className="border-t-2 border-zinc-200 mt-1 mb-1 dark:border-gray-600 w-full"/>
                 </div>
 
                 <div>
                     <h1 className="font-bold text-center text-2xl w-auto">
 
                     </h1>
+
                     <MessageSender/>
+                    <hr className="border-t-2 border-zinc-200 mt-2 mb-2 dark:border-gray-600 w-full"/>
                     <Inbox/>
                 </div>
-                <h1 className="font-bold text-center text-2xl w-auto">
-                    Lista kontaktów
-                </h1>
-                <UserList/>
+
 
             </div>
             <div
                 className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
                 <div>
-                    <div className="h-12 text-xl text-center font-extrabold ">
+                    <div className="h-12 text-2xl text-center font-extrabold ">
                         Notatnik
                     </div>
+                    <hr className="border-t-2 border-zinc-200  dark:border-gray-600 w-full"/>
                 </div>
 
                 <div>

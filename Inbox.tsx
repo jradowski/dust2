@@ -87,7 +87,7 @@ const Inbox: React.FC = () => {
                                     height={50}
                                     className={styles.avatar}
                                 />
-                                <div>
+                                <div className="text-black">
                                     <p className={styles.senderName}>
                                         <strong>Od:</strong> {message.sender_name}
                                     </p>
@@ -96,7 +96,9 @@ const Inbox: React.FC = () => {
                                     </p>
                                 </div>
                             </div>
-                            <p className={styles.messageContent}>{message.content}</p>
+                            <div>
+                                <p className={styles.messageContent}>{message.content}</p>
+                            </div>
                         </div>
                     ))
                 ) : (

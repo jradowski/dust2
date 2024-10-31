@@ -67,22 +67,23 @@ const MessageSender: React.FC = () => {
 
     return (
         <div>
-            <h2>Wyślij wiadomość</h2>
 
             {/* Dropdown with employees' names */}
-            <select
-                className="custom-select"
-                value={recipientId}
-                onChange={(e) => setRecipientId(e.target.value)}
-            >
-                <option value="">Wybierz odbiorcę</option>
-                {employees.map((employee) => (
-                    <option key={employee.id} value={employee.id}>
-                        {employee.first_name} {employee.last_name}
-                    </option>
-                ))}
-            </select>
-            <br />
+            <div >
+                <select
+                    className="custom-select"
+                    value={recipientId}
+                    onChange={(e) => setRecipientId(e.target.value)}
+                >
+                    <option value="">Wybierz odbiorcę</option>
+                    {employees.map((employee) => (
+                        <option key={employee.id} value={employee.id}>
+                            {employee.first_name} {employee.last_name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <br/>
 
             {/* Message content input */}
             <textarea
@@ -90,7 +91,7 @@ const MessageSender: React.FC = () => {
                 placeholder="Treść wiadomości"
                 value={messageContent}
                 onChange={(e) => setMessageContent(e.target.value)}
-            /><br />
+            /><br/>
 
             {/* Send button */}
             <button className="custom-button" onClick={sendMessage}>

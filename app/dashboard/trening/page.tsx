@@ -18,7 +18,7 @@ export default function page() {
 
 
             <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="content-center ml-8 w-fit grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
 
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Tygodniowy plan treningowy</h1>
@@ -28,9 +28,10 @@ export default function page() {
 
             </div>
 
+            <hr className="border-t-2 border-zinc-200 mb-10 dark:border-gray-600 w-11/12"/>
 
             <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="content-center w-11/12 grid grid-cols-1 gap-10 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
                 <div>
@@ -53,7 +54,6 @@ export default function page() {
             </div>
 
         </div> */}
-
 
 
         </main>
