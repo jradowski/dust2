@@ -28,24 +28,28 @@ const ResetPasswordInterface: React.FC = () => {
 
   return (
     <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
-      <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Resetowanie hasła użytkownika</h2>
-        <div className="text-2xl">
-            <input
-                type="email"
-                value={selectedEmail}
-                onChange={(e) => setSelectedEmail(e.target.value)}
-                placeholder="Adres e-mail użytkownika"
-                className="admin_input2"
-            />
-            <button
-                onClick={handleResetPassword}
-                disabled={isResetting || !selectedEmail}
-                className="admin_button"
-            >
-                {isResetting ? 'Resetowanie...' : 'Wyślij link do resetu hasła'}
-            </button>
+      <h2 className="text-2xl font-bold mb-2 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Resetowanie hasła użytkownika</h2>
+      <div className="text-2xl">
+
+        <input
+            type="email"
+            value={selectedEmail}
+            onChange={(e) => setSelectedEmail(e.target.value)}
+            placeholder="Adres e-mail użytkownika"
+            className="admin_input2"
+        />
+
+        <div className="">
+          <button
+              onClick={handleResetPassword}
+              disabled={isResetting || !selectedEmail}
+              className="admin_button2"
+          >
+            {isResetting ? 'Resetowanie...' : 'Wyślij link do resetu hasła'}
+          </button>
         </div>
-        {message && <p>{message}</p>}
+      </div>
+      {message && <p>{message}</p>}
     </div>
   );
 };

@@ -129,7 +129,7 @@ const AdminPanel: React.FC = () => {
               <option value="jezdziec">Jeździec</option>
             </select>
         )}
-        <hr className="border-t-2 border-zinc-200 dark:border-gray-600 w-100%"/>
+
         <div className="items-center">
         <button
             type="submit"

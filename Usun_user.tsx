@@ -70,7 +70,7 @@ const DeleteUser: React.FC = () => {
       <div className="text-2xl">
         <button
             onClick={handleDeleteUser}
-            className="admin_button"
+            className="admin_button2"
         >
           Usuń użytkownika
         </button>

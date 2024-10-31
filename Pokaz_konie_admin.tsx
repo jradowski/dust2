@@ -69,32 +69,36 @@ const AdminPanel: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Właściciele koni w stajni</h2>
       <div className="space-y-4">
         {owners.map((owner) => (
-          <div key={owner.id} className="border p-4 rounded-lg shadow">
-            <div className="flex items-center justify-between">
+            <div key={owner.id} className="border p-4 rounded-lg shadow">
+              <div className="flex items-center justify-between">
               <span className="font-semibold text-lg">
                 {owner.first_name} {owner.last_name}
               </span>
-              <button
-                onClick={() => toggleOwnerHorses(owner.id)}
-                className="admin_button"
-              >
-                {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
-              </button>
+                <button
+                    onClick={() => toggleOwnerHorses(owner.id)}
+                    className="admin_button"
+                >
+                  {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
+                </button>
+
+              </div>
+              <hr className="border-t-2 border-zinc-200 dark:border-gray-600 w-100%"/>
+
+              {expandedOwners[owner.id] && (
+                  <ul className=" text-lg mt-2 pl-4 list-disc italic">
+                    {horsesByOwner[owner.id] && horsesByOwner[owner.id].length > 0 ? (
+                        horsesByOwner[owner.id].map((horse) => (
+
+                            <li key={horse.id} className="text-gray-700 ">
+                              {horse.imie}
+                            </li>
+                        ))
+                    ) : (
+                        <li className="text-gray-500">Brak przypisanych koni</li>
+                    )}
+                  </ul>
+              )}
             </div>
-            {expandedOwners[owner.id] && (
-              <ul className="mt-2 pl-4 list-disc">
-                {horsesByOwner[owner.id] && horsesByOwner[owner.id].length > 0 ? (
-                  horsesByOwner[owner.id].map((horse) => (
-                    <li key={horse.id} className="text-gray-700">
-                      {horse.imie}
-                    </li>
-                  ))
-                ) : (
-                  <li className="text-gray-500">Brak przypisanych koni</li>
-                )}
-              </ul>
-            )}
-          </div>
         ))}
       </div>
     </div>
