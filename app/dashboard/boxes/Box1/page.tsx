@@ -39,7 +39,7 @@ const Home = async () => {
             <div
                 className="grid grid-cols-2 gap-5 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
 
-                <div className="columns-1 flex flex-col gap-3 h-1/2 ">
+                <div className="columns-1 flex flex-col gap-5 h-1/2 ">
                     <div>
                         <Image
                             className="rounded-2xl aspect-square object-cover border-2 border-gray-900"
