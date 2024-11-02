@@ -69,7 +69,7 @@ const MessageSender: React.FC = () => {
         <div>
 
             {/* Dropdown with employees' names */}
-            <div >
+            <div>
                 <select
                     className="custom-select"
                     value={recipientId}
@@ -94,12 +94,25 @@ const MessageSender: React.FC = () => {
             /><br/>
 
             {/* Send button */}
-            <button className="custom-button" onClick={sendMessage}>
-                Wyślij
-            </button>
+            <div
+                className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
 
-            {/* Error message */}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+                <button className="custom-button" onClick={sendMessage}>
+                    Wyślij
+                </button>
+
+                <img src="/images/envelope.png" alt="Image 1"
+                     className="w-20 m-2 h-auto"/>
+
+
+            </div>
+
+
+            {/* Error message */
+            }
+            {
+                error && <p style={{color: 'red'}}>{error}</p>
+            }
         </div>
     );
 };
