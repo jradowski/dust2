@@ -79,6 +79,9 @@ export default function RootLayout({
                         <Link href="/zarzadzanie_kontami">
                             <div className="hover:bg-gray-500 pl-2">Panel administracyjny</div>
                         </Link>
+                        <Link href="/moj_profil">
+                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
+                        </Link>
                     </ProtectedSectionMenu>
 
 
@@ -104,6 +107,9 @@ export default function RootLayout({
                         <Link href="/dashboard/zadania">
                             <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Moje zadania</div>
                         </Link>
+                        <Link href="/moj_profil">
+                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
+                        </Link>
                     </ProtectedSectionMenu>
 
                     {/* Sekcja dostępna dla właściciela koni */}
@@ -123,6 +129,9 @@ export default function RootLayout({
                         </Link>
                         <Link href="/dashboard/notes">
                             <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
+                        </Link>
+                        <Link href="/moj_profil">
+                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
                         </Link>
                     </ProtectedSectionMenu>
 
