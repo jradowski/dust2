@@ -9,14 +9,52 @@ const MyProfile = () => {
     const [newPassword, setNewPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [profile, setProfile] = useState<any>({});
+    const [lastSignIn, setLastSignIn] = useState<string | null>(null);
 
     useEffect(() => {
-        // Sprawdzamy, czy użytkownik jest zalogowany
         if (!user) {
-            setError('');
+            setError('Nie jesteś zalogowany.');
+            return;
         }
-    }, [user]);
+        
+        const fetchProfile = async () => {
+            try {
+                // Pobierz dane użytkownika z tabeli employees
+                const { data: employeeData, error: employeeError } = await supabase
+                    .from('employees')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
 
+                if (employeeError) {
+                    console.error("Błąd przy pobieraniu danych użytkownika:", employeeError);
+                    setError("Wystąpił błąd przy pobieraniu danych użytkownika.");
+                } else {
+                    setProfile(employeeData);
+                }
+
+                // Pobierz ostatnie logowanie z tabeli auth.users
+                const { data: authData, error: authError } = await supabase
+                    .from('auth.users')
+                    .select('last_sign_in_at')
+                    .eq('id', user.id)
+                    .single();
+
+                if (authError) {
+                    console.error("Błąd przy pobieraniu ostatniego logowania:", authError);
+                    setError("Wystąpił błąd przy pobieraniu terminu ostatniego logowania.");
+                } else {
+                    setLastSignIn(authData?.last_sign_in_at || 'Brak informacji');
+                }
+            } catch (err) {
+                console.error("Błąd:", err);
+                setError("Wystąpił nieoczekiwany błąd.");
+            }
+        };
+
+        fetchProfile();
+    }, [user]);
     // Zmiana hasła
     const handlePasswordChange = async () => {
         if (!newPassword) {
@@ -64,7 +102,15 @@ const MyProfile = () => {
     return (
         <div className="my-profile-container p-4">
             <h1 className="text-2xl font-bold">Mój Profil</h1>
-            
+             {/* Podgląd danych użytkownika */}
+             <div className="my-4">
+                <h2 className="font-semibold">Twoje dane:</h2>
+                <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
+                <p>Stanowisko: {profile.position || 'Nie podano'}</p>
+                <p>Status konta: {profile.status || 'Aktywne'}</p>
+                <p>Ostatnie logowanie: {lastSignIn || 'Brak informacji'}</p>
+            </div>
+
             {/* Sekcja Zmiany Emaila */}
             <div className="my-4">
                 <label htmlFor="email" className="block font-semibold">Nowy email:</label>
