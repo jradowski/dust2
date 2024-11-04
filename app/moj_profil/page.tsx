@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import  supabase  from '@/supabaseClient'; // Import Supabase Client
 import { useUser } from '@/UserContext'; // Import kontekstu użytkownika
+import '@/admin_board.css';
 
 const MyProfile = () => {
     const { user } = useUser(); // Pobranie danych użytkownika z kontekstu
@@ -100,11 +101,11 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="my-profile-container p-4">
-            <h1 className="text-2xl font-bold">Mój Profil</h1>
+        <div className="my-profile-container p-4 text-center">
+            <h1 className="text-3xl font-bold mb-4">Mój Profil</h1>
              {/* Podgląd danych użytkownika */}
-             <div className="my-4">
-                <h2 className="font-semibold">Twoje dane:</h2>
+             <div className="  text-center text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+             <h2 className="font-semibold">Twoje dane</h2>
                 <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
                 <p>Stanowisko: {profile.position || 'Nie podano'}</p>
                 <p>Status konta: {profile.status || 'Aktywne'}</p>
@@ -119,11 +120,11 @@ const MyProfile = () => {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border px-2 py-1 rounded w-full"
+                    className="custom-input"
                 />
                 <button
                     onClick={handleEmailChange}
-                    className=""
+                    className="admin_button"
                 >
                     Zmień email
                 </button>
@@ -137,11 +138,11 @@ const MyProfile = () => {
                     id="newPassword"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="border px-2 py-1 rounded w-full"
+                    className="custom-input"
                 />
                 <button
                     onClick={handlePasswordChange}
-                    className=""
+                    className="admin_button"
                 >
                     Zmień hasło
                 </button>
@@ -151,7 +152,7 @@ const MyProfile = () => {
             <div className="my-4">
                 <button
                     onClick={handleDeleteAccount}
-                    className=""
+                    className="alert-button"
                 >
                     Usuń konto
                 </button>

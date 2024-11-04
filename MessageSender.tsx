@@ -102,7 +102,7 @@ const MessageSender: React.FC = () => {
                 </button>
 
                 <img src="/images/envelope.png" alt="Image 1"
-                     className="w-20 m-2 h-auto"/>
+                     className="w-20we m-2 h-auto"/>
 
 
             </div>
