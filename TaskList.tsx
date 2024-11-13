@@ -40,7 +40,6 @@ const TaskList: React.FC = () => {
             title,
             description,
             due_date,
-            status,
             employee: employees (first_name, last_name)
           `);
 
@@ -70,7 +69,6 @@ const TaskList: React.FC = () => {
             <th>Tytuł</th>
             <th>Treść</th>
             <th>Termin</th>
-            <th>Status</th>
             <th>Pracownik</th>
           </tr>
           </thead>
@@ -80,7 +78,6 @@ const TaskList: React.FC = () => {
                 <td>{task.title}</td>
                 <td>{task.description}</td>
                 <td>{task.due_date}</td>
-                <td>{task.status}</td>
                 <td>{`${task.employee.first_name} ${task.employee.last_name}`}</td>
               </tr>
           ))}

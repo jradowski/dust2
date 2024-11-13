@@ -99,7 +99,7 @@ export default function page() {
                 className="bg-white border-zinc-200 dark:bg-zinc-800 border-y-2 w-full dark:border-gray-600 p-2 ">
                 <div
                     className="text-center border-zinc-200 border-b-2 dark:border-gray-600 font-sans text-2xl font-bold">
-                    <h1>Zostaw komentarz</h1>
+                    <h1>Skontaktuj się z nami:</h1>
                 </div>
                 <div
                     className="content-center ml-8 w-auto grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2  dark:border-gray-600   ">

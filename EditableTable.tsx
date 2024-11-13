@@ -25,7 +25,7 @@ const EditableTable: React.FC = () => {
       try {
         let { data, error } = await supabase
             .from('trening')
-            .select('*')
+            .select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
             .limit(1);
 
         if (error) throw error;
@@ -47,7 +47,7 @@ const EditableTable: React.FC = () => {
     try {
       let { data, error } = await supabase
           .from('trening')
-          .select('*')
+          .select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
           .ilike('imie', `%${value}%`);
 
       if (error) throw error;

@@ -84,26 +84,40 @@ const WorkScheduleWeekly: React.FC = () => {
   const getRandomColor = (): string => {
     const letters = '0123456789ABCDEF';
     let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+    
+    // Upewnijmy się, że pierwszy znak nie będzie '0'
+    color += letters[Math.floor(Math.random() * 15) + 1]; // Pierwszy znak nie będzie "0"
+    
+    for (let i = 1; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)]; // Pozostałe znaki mogą być dowolne
     }
+  
     return color;
   };
 
-  const filteredEmployees = selectedPosition === 'wszystkie'
+  const filteredEmployees = selectedPosition === 'stajenny'
       ? employees
       : employees.filter(emp => emp.position === selectedPosition);
 
-  const getEmployeeInSlot = (day: string, time: string): Employee | null => {
-    const entry = schedule.find(
-        (item) => item.date === day && item.start_time <= time && item.end_time > time
-    );
-    if (entry) {
-      const employee = filteredEmployees.find((emp) => emp.id === entry.employee_id);
-      return employee ? employee : null;
-    }
-    return null;
-  };
+      const getEmployeeInSlot = (day: string, time: string): Employee | null => {
+        // Szukamy zapisanego wpisu w harmonogramie, gdzie data pasuje, a czas pasuje do zakresu
+        const entry = schedule.find(
+          (item) => item.date === day && item.start_time <= time && item.end_time > time
+        );
+      
+        // Jeżeli znaleziono pasujący wpis
+        if (entry) {
+          // Sprawdzamy, czy pracownik z danego wpisu jest w tabeli na tym dniu
+          const employee = filteredEmployees.find((emp) => emp.id === entry.employee_id);
+          
+          if (employee) {
+            return employee;
+          }
+        }
+      
+        // Jeżeli brak pracownika w tym czasie, zwracamy null
+        return null;
+      };
 
   const createTimeSlots = (startHour: number, endHour: number): string[] => {
     const slots: string[] = [];
@@ -154,7 +168,13 @@ const WorkScheduleWeekly: React.FC = () => {
                           key={dayIndex}
                           style={{ backgroundColor: employee ? colors[employee.id] : 'transparent' }}
                       >
-                        {employee ? `${employee.first_name} ${employee.last_name}` : '-'}
+                       {employee ? (
+                            <span style={{ fontSize: '11px' }}>
+                              {employee.first_name} {employee.last_name}
+                            </span>
+                          ) : (
+                            '-'
+                      )}
                       </td>
                   );
                 })}
