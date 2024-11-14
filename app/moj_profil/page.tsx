@@ -59,27 +59,27 @@ const MyProfile = () => {
     // Zmiana hasła
     const handlePasswordChange = async () => {
         if (!newPassword) {
-            setError('Wprowadź nowe hasło.');
+            setError('Wprowadź nowe hasło');
             return;
         }
         const { error } = await supabase.auth.updateUser({
             password: newPassword,
         });
         if (error) setError(error.message);
-        else setSuccess('Hasło zostało zmienione.');
+        else setSuccess('Hasło zostało zmienione');
     };
 
     // Zmiana emaila
     const handleEmailChange = async () => {
         if (!email) {
-            setError('Wprowadź nowy email.');
+            setError('Wprowadź nowy email');
             return;
         }
         const { error } = await supabase.auth.updateUser({
             email: email,
         });
         if (error) setError(error.message);
-        else setSuccess('Email został zmieniony.');
+        else setSuccess('Email został zmieniony');
     };
 
     // Usunięcie konta
@@ -89,11 +89,11 @@ const MyProfile = () => {
 
         const { error } = await supabase.from('employees').delete().eq('id', user?.id);
         if (error) {
-            setError("Wystąpił problem przy usuwaniu konta.");
+            setError("Wystąpił problem przy usuwaniu konta");
             return;
         }
         await supabase.auth.signOut(); // Wylogowanie użytkownika po usunięciu konta
-        setSuccess("Konto zostało usunięte. Zostałeś wylogowany.");
+        setSuccess("Konto zostało usunięte. Zostałeś wylogowany");
     };
 
     if (!user) {
