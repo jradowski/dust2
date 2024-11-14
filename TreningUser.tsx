@@ -68,6 +68,7 @@ const TreningUser: React.FC = () => {
   }
 
   return (
+    
       <table>
         <thead>
         <tr>
