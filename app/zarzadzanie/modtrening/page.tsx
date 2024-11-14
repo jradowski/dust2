@@ -19,7 +19,7 @@ export default function page() {
 
 
             <div
-                className=" rounded-tl-xl text-black mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:text-white dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                className=" rounded-tl-xl drop-shadow-md text-black mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:text-white dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
 
                 <p className="font-extrabold pb-2 text-2xl"> Modyfikuj plan treningowy dla konia:</p>
                 <div className="text-black">

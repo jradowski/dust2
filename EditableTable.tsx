@@ -5,7 +5,7 @@ import Link from 'next/link'
 import 'reactjs-popup/dist/index.css'
 import supabase from '@/supabaseClient.js'
 import { useEffect, useState } from 'react'
-import '@/tabela.css'; // Importowanie pliku CSS
+import '@/admin_board.css'; // Importowanie pliku CSS
 
 type TreningData = {
   nr_konia: number;
@@ -143,7 +143,7 @@ const EditableTable: React.FC = () => {
                 </tr>
                 </tbody>
               </table>
-              <button className="custom-button" onClick={handleSave}>Zapisz</button>
+              <button className="admin_button" onClick={handleSave}>Zapisz</button>
             </div>
         )}
       </div>

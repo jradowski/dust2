@@ -74,7 +74,7 @@ const UsunWiersz: React.FC = () => {
                     </select>
                 </div>
                 <br></br>
-                <button className="custom-button" type="submit">Usuń</button>
+                <button className="alert-button" type="submit">Usuń</button>
 
             </form>
             {message && <p>{message}</p>}

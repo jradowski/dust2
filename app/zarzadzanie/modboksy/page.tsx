@@ -13,7 +13,7 @@ const Home = async () => {
 
 
             <div
-                className=" rounded-tl-xl  text-2xl text-left mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                className=" rounded-tl-xl drop-shadow-md  text-2xl text-left mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
                 <div className="h-12 text-xl text-center font-extrabold ">
                     Modyfikuj konia w bazie:
                 </div>

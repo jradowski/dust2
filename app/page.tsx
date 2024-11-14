@@ -1,20 +1,16 @@
 "use client";
-import 'reactjs-popup/dist/index.css';
+import 'reactjs-popup/dist/index.css'
 import React, { useEffect, useState } from 'react';
 import supabase from '@/supabaseClient.js';
 import SignUp from '@/SingUp';
 import Login from '@/Login';
 import Wylogowany from '@/Wylogowany';
-import { useTheme } from '@/useTheme';  // Import the useTheme hook
-import '@/theme-toggle-button.css';
+
 
 const App: React.FC = () => {
     const [page, setPage] = useState<string>('home');
     const [userData, setUserData] = useState<any>(null);
     const [userName, setUserName] = useState<string | null>(null); // Ustawienie domyślne na null
-
-    // Use the theme hook
-    const [theme, toggleTheme] = useTheme();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -37,7 +33,6 @@ const App: React.FC = () => {
 
         fetchUser();
     }, []);
-
     const handleLogout = async () => {
         try {
             const { error } = await supabase.auth.signOut();
@@ -53,7 +48,6 @@ const App: React.FC = () => {
             // Obsługa błędów wylogowania
         }
     };
-
     const renderPage = () => {
         switch (page) {
             case 'signup':
@@ -65,27 +59,27 @@ const App: React.FC = () => {
             default:
                 return (
                     <div className="flex items-center justify-center mt-6">
-                        {userData == null && <Login onNavigate={setPage} />}
+
+                        {userData==null && (
+
+                            <Login onNavigate={setPage}/>
+                        )}
 
                         {userData && (
-                            <div className="font-sans text-center font-semibold justify-center w-72 p-2 text-xl border-b rounded-2xl border-gray-500 border-opacity-50 bg-gradient-to-b from-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b dark:border-gray-600 dark:border-opacity-50 dark:text-white">
+                            <div className=" font-sans text-center font-semibold justify-center w-72 p-2 text-xl border-b rounded-2xl border-gray-500 border-opacity-50 bg-gradient-to-b from-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b dark:border-gray-600 dark:border-opacity-50 dark:text-white">
                                 <h1>{userName !== null ? `Witaj: ${userName}` : ''}</h1>
                                 <button onClick={handleLogout} className="log-button">Wyloguj</button>
                             </div>
                         )}
                     </div>
+
                 );
+
         }
+
     };
 
-    return (
-        <div>
-            {/* <button onClick={toggleTheme} className="theme-toggle-button">
-                Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode
-            </button> */}
-            {renderPage()}
-        </div>
-    );
+    return <div>{renderPage()}</div>;
 };
 
 export default App;

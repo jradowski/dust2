@@ -102,16 +102,16 @@ const MyProfile = () => {
         <div className="my-profile-container p-4 text-center">
             <h1 className="text-3xl font-bold mb-4">Mój Profil</h1>
              {/* Podgląd danych użytkownika */}
-             <div className="  text-center text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-             <h2 className="font-semibold">Twoje dane</h2>
+             <div className=" text-center drop-shadow-md text-2xl leading-8 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 my-10">
+             <h2 className="font-semibold text-3xl">Twoje dane</h2>
                 <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
                 <p>Stanowisko: {profile.position || 'Nie podano'}</p>
                 <p>Status konta: {profile.status || 'Aktywne'}</p>
             </div>
 
             {/* Sekcja Zmiany Emaila */}
-            <div className="my-4">
-                <label htmlFor="email" className="block font-semibold">Nowy email:</label>
+            <div className=" text-center drop-shadow-md text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 " >
+                <label htmlFor="email" className="block text-3xl font-semibold">Nowy email:</label>
                 <input
                     type="email"
                     id="email"
@@ -128,8 +128,8 @@ const MyProfile = () => {
             </div>
 
             {/* Sekcja Zmiany Hasła */}
-            <div className="my-4">
-                <label htmlFor="newPassword" className="block font-semibold">Nowe hasło:</label>
+            <div className="text-center drop-shadow-md my-10 text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                <label htmlFor="newPassword" className="block text-3xl font-semibold">Nowe hasło:</label>
                 <input
                     type="password"
                     id="newPassword"
@@ -146,7 +146,10 @@ const MyProfile = () => {
             </div>
 
             {/* Sekcja Usunięcia Konta */}
-            <div className="my-4">
+            <div
+                className="text-center items-center drop-shadow-md my-10 text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                <img src="/images/userdelete.png" alt="usuń konto"
+                     className="w-16 m-2 h-auto"/>
                 <button
                     onClick={handleDeleteAccount}
                     className="alert-button"

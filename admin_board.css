@@ -26,10 +26,12 @@
 .admin_button{
     color:black;
     border-radius: 5px;
-    background-color: lightgrey;
+    background-color: #0dc615;
     padding:2px;
     margin-top:10px;
     width: fit-content;
+
+    box-shadow: 3px 3px 3px #3d6734;
 }
 
 .admin_button2{
@@ -39,5 +41,29 @@
     padding:2px;
     margin-top:20px;
     width: fit-content;
+}
+
+.alert-button{
+    color:black;
+    background-color: #a30303;
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: 3px 3px 3px #3d6734;
+}
+
+.alert-button:hover{
+    color:white;
+    background-color: #dd3333;
+    border-radius: 5px;
+
+    padding: 2px;
+}
+
+.admin_button:hover{
+    color:white;
+    background-color: #038f0a;
+    border-radius: 5px;
+
+    padding: 2px;
 }
 

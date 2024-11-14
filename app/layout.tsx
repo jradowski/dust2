@@ -42,10 +42,11 @@ export default function RootLayout({
         <UserProvider>
             <div
                 className="w-full h-fit p-4 columns-3 justify-between flex flex-row border-b-2 border-zinc-200 font-bold italic text-lg text-zinc-700 bg-gradient-to-t from-white  bg-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-gray-600  dark:text-white">
-                <div>
-                    <UserNameLink />
-                </div>
                 <div className="text-2xl"><Link href="/home">Stable Assistant ♘</Link></div>
+                <div>
+                    <UserNameLink/>
+                </div>
+
             </div>
             <div className="flex flex-row">
                 <div className="flex flex-col gap-2 min-h-screen w-fit float-top-left text-zinc-700 lg:text-xl sm:text-sm border-r-2 border-zinc-200 bg-gradient-to-t from-white bg-gray-400 font-bold italic dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-r-2 dark:border-gray-600 dark:text-white">

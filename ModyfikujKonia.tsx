@@ -284,7 +284,7 @@ const ModyfikujKonia: React.FC = () => {
             />
           </div>
           <br/>
-          <button type="submit" className="custom-button">Zapisz zmiany</button>
+          <button type="submit" className="admin_button">Zapisz zmiany</button>
         </form>
       );
     };

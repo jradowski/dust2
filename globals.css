@@ -111,22 +111,6 @@ body {
   border-radius: 5px;
 }
 
-.alert-button{
-  color:black;
-  background-color: lightgrey;
-  padding:2px;
-  margin:2px;
-  border-radius: 5px;
-}
-
-.alert-button:hover{
-  color:white;
-  background-color: #dd3333;
-  padding:2px;
-  margin:2px;
-  border-radius: 5px;
-}
-
 
 
 .log-button{

@@ -327,7 +327,7 @@ const UserForm: React.FC = () => {
                 />
               </div>
           )}
-          <button className="custom-button" type="submit">Wyślij</button>
+          <button className="admin_button" type="submit">Wyślij</button>
         </form>
       </div>
   );
