@@ -44,13 +44,11 @@ const MyProfile = () => {
 
                 if (authError) {
                     console.error("Błąd przy pobieraniu ostatniego logowania:", authError);
-                    setError("Wystąpił błąd przy pobieraniu terminu ostatniego logowania.");
                 } else {
                     setLastSignIn(authData?.last_sign_in_at || 'Brak informacji');
                 }
             } catch (err) {
                 console.error("Błąd:", err);
-                setError("Wystąpił nieoczekiwany błąd.");
             }
         };
 
@@ -109,7 +107,6 @@ const MyProfile = () => {
                 <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
                 <p>Stanowisko: {profile.position || 'Nie podano'}</p>
                 <p>Status konta: {profile.status || 'Aktywne'}</p>
-                <p>Ostatnie logowanie: {lastSignIn || 'Brak informacji'}</p>
             </div>
 
             {/* Sekcja Zmiany Emaila */}

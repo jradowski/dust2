@@ -12,9 +12,17 @@ type HorseData = {
 };
 
 type TreningData = {
-    id: number;        // ID treningu
     nr_konia: number;  // ID konia
-    data_treningu: string; // Data treningu
+    imie: string;      // Imię konia
+    poniedzialek: any;
+    wtorek: any;
+    sroda: any;
+    czwartek: any;
+    piatek: any;
+    sobota: any;
+    niedziela: any;
+    jezdziec: any;
+    luzak: any;
     [key: string]: any; // Inne pola
 };
 
@@ -25,7 +33,6 @@ const TreningTable: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            // Pobranie ID zalogowanego użytkownika
             const { data: { session } } = await supabase.auth.getSession();
             const userId = session?.user?.id;
 
@@ -35,7 +42,6 @@ const TreningTable: React.FC = () => {
                 return;
             }
 
-            // 1. Pobranie koni należących do zalogowanego użytkownika
             const { data: horses, error: horseError } = await supabase
                 .from('horse')
                 .select('*')
@@ -53,12 +59,11 @@ const TreningTable: React.FC = () => {
                 return;
             }
 
-            // 2. Pobranie treningów dla koni
-            const horseIds = horses.map(horse => horse.id); // Tablica ID koni
+            const horseIds = horses.map(horse => horse.id);
             const { data: treningi, error: treningError } = await supabase
                 .from('trening')
-                .select('*')
-                .in('nr_konia', horseIds); // Filtrujemy treningi po ID koni
+                .select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
+                .in('nr_konia', horseIds);
 
             if (treningError) {
                 console.error('Błąd przy pobieraniu treningów:', treningError);
@@ -67,7 +72,6 @@ const TreningTable: React.FC = () => {
             }
 
             if (treningi && treningi.length > 0) {
-                // Ustalamy kolumny na podstawie pierwszego wiersza
                 setColumns(Object.keys(treningi[0]));
                 setData(treningi);
             } else {
@@ -93,9 +97,7 @@ const TreningTable: React.FC = () => {
             <thead>
                 <tr>
                     {columns.map((column) => (
-                        <th key={column} className="table-header">
-                            {column}
-                        </th>
+                        <th key={column} className="table-header">{column}</th>
                     ))}
                 </tr>
             </thead>

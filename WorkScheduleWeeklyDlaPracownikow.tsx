@@ -102,11 +102,16 @@ const WorkScheduleWeekly: React.FC = () => {
     const getRandomColor = (): string => {
         const letters = '0123456789ABCDEF';
         let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+        
+        // Ensure the first character isn't '0'
+        color += letters[Math.floor(Math.random() * 15) + 1]; // First character can't be "0"
+        
+        for (let i = 1; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)]; // The other characters can be any
         }
+      
         return color;
-    };
+      };
 
     const filteredEmployees = selectedPosition === 'wszystkie'
         ? employees
@@ -140,17 +145,6 @@ const WorkScheduleWeekly: React.FC = () => {
 
     return (
         <div className="">
-            <label>
-                Wybierz stanowisko:
-                <select className="custom-select" value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
-
-                    <option value="stajenny">Stajenny</option>
-                    <option value="jezdziec">Jezdziec</option>
-                    <option value="luzak">Luzak</option>
-                </select>
-
-
-            </label>
             <table >
                 <thead>
                 <tr>
@@ -172,7 +166,13 @@ const WorkScheduleWeekly: React.FC = () => {
                                     key={dayIndex}
                                     style={{ backgroundColor: employee ? colors[employee.id] : 'transparent' }}
                                 >
-                                    {employee ? `${employee.first_name} ${employee.last_name}` : '-'}
+                                    {employee ? (
+                        <span style={{ fontSize: '12px' }}>
+                          {employee.first_name} {employee.last_name}
+                        </span>
+                      ) : (
+                        '-'
+                      )}
                                 </td>
                             );
                         })}

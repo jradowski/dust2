@@ -16,6 +16,7 @@ import WorkScheduleWeeklyDlaPracownikow from '@/WorkScheduleWeeklyDlaPracownikow
 import AddTask from '@/AddTask';
 import TaskList from '@/TaskList';
 import TaskListDlaPracownikow from '@/TaskListDlaPracownikow';
+import ProtectedSectionMenu from '@/ProtectedSectionMenu';
 
 const Home = async () => {
 

@@ -31,7 +31,8 @@ const EditableTable: React.FC = () => {
   useEffect(() => {
     const fetchColumns = async () => {
       try {
-        let { data, error } = await supabase.from('trening').select('*').limit(1);
+        let { data, error } = await supabase.from('trening').select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
+        .limit(1);
         if (error) throw error;
         if (data && data.length > 0) setColumns(Object.keys(data[0]));
         setLoading(false);
@@ -59,7 +60,7 @@ const EditableTable: React.FC = () => {
 
       let { data: treningi, error: treningiError } = await supabase
         .from('trening')
-        .select('*')
+        .select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
         .in('nr_konia', horseIds)
         .ilike('imie', `%${value}%`);
 

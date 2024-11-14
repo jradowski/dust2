@@ -19,7 +19,6 @@ interface Task {
   title: string;
   description: string;
   due_date: string;
-  status: string;
   employee: {
     first_name: string;
     last_name: string;
@@ -58,7 +57,6 @@ const TaskListDlaPracownikow: React.FC = () => {
             title,
             description,
             due_date,
-            status,
             employee: employees (first_name, last_name)
           `)
           .eq('employee_id', userId ); ;
@@ -90,7 +88,6 @@ const TaskListDlaPracownikow: React.FC = () => {
             <th>Title</th>
             <th>Description</th>
             <th>Due Date</th>
-            <th>Status</th>
             <th>Employee</th>
           </tr>
           </thead>
@@ -100,7 +97,6 @@ const TaskListDlaPracownikow: React.FC = () => {
                 <td>{task.title}</td>
                 <td>{task.description}</td>
                 <td>{task.due_date}</td>
-                <td>{task.status}</td>
                 <td>{`${task.employee.first_name} ${task.employee.last_name}`}</td>
               </tr>
           ))}
