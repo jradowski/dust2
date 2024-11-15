@@ -8,6 +8,7 @@ import Wylogowany from '@/Wylogowany';
 import ProtectedSectionMenu from '@/ProtectedSectionMenu'; // Jeśli używasz tego komponentu
 import { useUser } from '@/UserContext';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 const UserNameLink = () => {
     const { user } = useUser(); // Używamy kontekstu użytkownika
@@ -40,16 +41,19 @@ export default function RootLayout({
         </head>
         <body className={inter.className}>
         <UserProvider>
-            <div
-                className="w-full h-fit p-4 columns-3 justify-between flex flex-row border-b-2 border-zinc-200 font-bold italic text-lg text-zinc-700 bg-gradient-to-t from-white  bg-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-gray-600  dark:text-white">
+            <div className="w-full h-fit p-4 columns-2 justify-between drop-shadow-md flex flex-row font-bold text-lg text-zinc-700 bg-gray-400 dark:bg-zinc-800 dark:text-white">
                 <div className="text-2xl"><Link href="/home">Stable Assistant ♘</Link></div>
-                <div>
-                    <UserNameLink/>
-                </div>
+               <div className="flex flex-row gap-2 ">
+                   <ThemeToggle />
+                   <div>
+                       <Link href="/workers"><img src="/images/login.png" className="w-12 px-2 py-2 bg-zinc-200 hover:bg-zinc-300 drop-shadow-md dark:bg-gray-700 text-gray-800 dark:text-gray-200 dark dark:hover:bg-gray-600 rounded-full"/></Link>
+                       {/*<UserNameLink/>*/}
+                   </div>
+               </div>
 
             </div>
             <div className="flex flex-row">
-                <div className="flex flex-col gap-2 min-h-screen w-fit float-top-left text-zinc-700 lg:text-xl sm:text-sm border-r-2 border-zinc-200 bg-gradient-to-t from-white bg-gray-400 font-bold italic dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-r-2 dark:border-gray-600 dark:text-white">
+                <div className="flex flex-col gap-2 min-h-screen w-fit float-top-left text-zinc-700 lg:text-xl sm:text-sm bg-gray-400 font-bold italic dark:bg-zinc-800 dark:drop-shadow-md dark:text-white">
 
                     {/* Linki do różnych stron */}
 

@@ -32,7 +32,7 @@ export default function page() {
                 <Link href="/dashboard/padoki">
                     <div
                         className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-                        <img src="/images/padok2.png" alt="Image 1"
+                        <img src="@/images/padok2.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
                         <h2 className="text-2xl font-semibold">

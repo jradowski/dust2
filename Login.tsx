@@ -28,42 +28,49 @@ const Login: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate })
     };
 
     return (
-        <div className="flex items-center justify-center mt-6">
-            <div
-                className="font-sans text-center font-semibold justify-center w-fit p-2 px-4 text-xl border-b rounded-2xl border-gray-500 border-opacity-50 bg-gradient-to-b from-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-2 dark:border-gray-600  dark:text-white">
-                <h1 className="text-2xl">Logowanie</h1>
-                <hr className="border-t-2 border-zinc-200 mt-2  mb-2 dark:border-gray-600 w-full"/>
-                <form onSubmit={handleLogin}>
-                    <label>
-                        Email:
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="custom-input"
-                        />
-                    </label>
-                    <br/>
-                    <label>
-                        Hasło:
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="custom-input"
-                        />
-                    </label>
-                    <br/>
-                    <div className="mb-2"></div>
 
-                    <button type="submit" className="log-button">Zaloguj</button>
-                </form>
+            <div className="flex flex-row mt-6 font-sans text-center font-semibold justify-center w-fit p-2 px-4 text-2xl rounded-2xl bg-gray-400 drop-shadow-md text-black dark:bg-zinc-800 dark:drop-shadow-md  dark:text-white">
 
-                <hr className="border-t-2 border-zinc-200 mt-2  mb-2 dark:border-gray-600 w-full"/>
+                <div className="flex flex-col p-5  ">
 
-                <button onClick={() => onNavigate('signup')} className="log-button">Załóż konto</button>
+                    <div className="w-11/12">
+                        <h1 className="text-3xl font-bold leading-10">Logowanie do Stable Assistant</h1>
+                    </div>
+                    <div className="text-left leading-10">
+                        <form onSubmit={handleLogin}>
+                            <label >
+                                Email:
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="custom-input"
+                                />
+                            </label>
+                            <br/>
+                            <label>
+                                Hasło:
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="custom-input"
+                                />
+                            </label>
+                            <br/>
+                            <div className="flex flex-row gap-4 mt-6 mb-2">
+
+                                <button type="submit" className="custom-button dark:text-white dark:bg-gray-700">Zaloguj</button>
+                                <button onClick={() => onNavigate('signup')} className="custom-button dark:text-white dark:bg-gray-700">Załóż konto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
             </div>
-        </div>
+
     );
 };
 

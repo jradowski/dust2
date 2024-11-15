@@ -67,7 +67,7 @@ const App: React.FC = () => {
 
                             {userData && (
                                 <div className=" font-sans text-center font-semibold justify-center w-72 p-2 text-xl border-b rounded-2xl border-gray-500 border-opacity-50 bg-gradient-to-b from-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b dark:border-gray-600 dark:border-opacity-50 dark:text-white">
-                                    <h1>{userName !== null ? `Witaj: ${userName}` : ''}</h1>
+                                    <h1>{userName !== null ? ` ${userName}` : ''}</h1>
                                     <button onClick={handleLogout} className="log-button">Wyloguj</button>
                                 </div>
                             )}

@@ -56,7 +56,7 @@ const SignUp: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }
                         />
                     </label>
                     <br />
-                    <button type="submit">Załóż konto</button><br></br>
+                    <button type="submit" className="custom-button">Załóż konto</button><br></br>
                 </form>
 
             </div>

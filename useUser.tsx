@@ -6,9 +6,9 @@ const SomeComponent = () => {
     return (
         <div>
             {user ? (
-                <p>Witaj, {user.email}!</p>
+                <p>{user.email}!</p>
             ) : (
-                <p>Nie jesteś zalogowany.</p>
+                <p>Zaloguj</p>
             )}
         </div>
     );
