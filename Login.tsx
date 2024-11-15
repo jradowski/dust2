@@ -29,12 +29,12 @@ const Login: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate })
 
     return (
 
-            <div className="flex flex-row mt-6 font-sans text-center font-semibold justify-center w-fit p-2 px-4 text-2xl rounded-2xl bg-gray-400 drop-shadow-md text-black dark:bg-zinc-800 dark:drop-shadow-md  dark:text-white">
+            <div className="flex flex-row mt-6 font-sans text-center font-semibold justify-center w-fit p-2 px-4 text-2xl sm:text-xl rounded-2xl bg-gray-400 drop-shadow-md text-black dark:bg-zinc-800 dark:drop-shadow-md  dark:text-white">
 
                 <div className="flex flex-col p-5  ">
 
                     <div className="w-11/12">
-                        <h1 className="text-3xl font-bold leading-10">Logowanie do Stable Assistant</h1>
+                        <h1 className="lg:text-3xl sm:text-xl font-bold leading-10">Logowanie do Stable Assistant</h1>
                     </div>
                     <div className="text-left leading-10">
                         <form onSubmit={handleLogin}>

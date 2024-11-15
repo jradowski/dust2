@@ -33,31 +33,40 @@ const SignUp: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }
 
     return (
         <div className="flex items-center justify-center mt-6">
-            <div className="font-sans text-center font-semibold justify-center w-72 p-2 text-xl border-b rounded-2xl border-gray-500 border-opacity-50 bg-gradient-to-b from-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-2 dark:border-gray-600  dark:text-white">
-                <h1>Załóż konto</h1>
-                <form onSubmit={handleSignUp}>
-                    <label>
-                        Email:
-                        <input
-                            className="custom-input"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Hasło:
-                        <input
-                            className="custom-input"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </label>
-                    <br />
-                    <button type="submit" className="custom-button">Załóż konto</button><br></br>
-                </form>
+            <div className="flex flex-col mt-6 p-5 font-sans text-center font-semibold justify-center w-fit  text-2xl sm:text-xl rounded-2xl bg-gray-400 drop-shadow-md text-black dark:bg-zinc-800 dark:drop-shadow-md  dark:text-white">
+
+                <div className="w-11/12">
+                    <h1 className="lg:text-3xl sm:text-xl font-bold leading-10">Załóż konto w Stable Assistant</h1>
+                </div>
+                <div className="text-left leading-10">
+                    <form onSubmit={handleSignUp}>
+                        <label>
+                            Email:
+                            <input
+                                className="custom-input"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </label>
+                        <br/>
+                        <label>
+                            Hasło:
+                            <input
+                                className="custom-input"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </label>
+                        <br/>
+                        <div className="flex flex-row gap-4 mt-6 ">
+                            <button type="submit" className="custom-button dark:text-white dark:bg-gray-700">Załóż konto
+                            </button>
+                        </div>
+                        <br></br>
+                    </form>
+                </div>
 
             </div>
         </div>

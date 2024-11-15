@@ -1,157 +1,86 @@
-'use client'
+'use client';
 import { Inter } from "next/font/google";
 import "@/globals.css";
 import Link from "next/link";
-import { UserProvider } from '@/UserContext';
-import Login from '@/Login';
-import Wylogowany from '@/Wylogowany';
-import ProtectedSectionMenu from '@/ProtectedSectionMenu'; // Jeśli używasz tego komponentu
-import { useUser } from '@/UserContext';
-import { usePathname } from 'next/navigation';
+import { UserProvider } from "@/UserContext";
+import ProtectedSectionMenu from "@/ProtectedSectionMenu";
+import { useUser } from "@/UserContext";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "@/app/components/ThemeToggle";
 
-const UserNameLink = () => {
-    const { user } = useUser(); // Używamy kontekstu użytkownika
-
-    return (
-        <Link href="/workers">
-            {user ? "Witaj: "+user.email : "Zaloguj się:"} {/* Wstawiamy imię użytkownika lub komunikat dla gościa */}
-        </Link>
-    );
-};
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
-    // Warunek sprawdzający, czy ścieżka jest "/workers", aby pominąć layout
-    if (pathname === '/workers') {
+    // Ominięcie layoutu na ścieżce /workers
+    if (pathname === "/workers") {
         return <>{children}</>;
     }
 
     return (
-
-        <html lang="en">
+        <html lang="en" className="h-full">
         <head>
             <title>Stable Assistant</title>
         </head>
-        <body className={inter.className}>
+        <body className="h-full bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
         <UserProvider>
-            <div className="w-full h-fit p-4 columns-2 justify-between drop-shadow-md flex flex-row font-bold text-lg text-zinc-700 bg-gray-400 dark:bg-zinc-800 dark:text-white">
-                <div className="text-2xl"><Link href="/home">Stable Assistant ♘</Link></div>
-               <div className="flex flex-row gap-2 ">
-                   <ThemeToggle />
-                   <div>
-                       <Link href="/workers"><img src="/images/login.png" className="w-12 px-2 py-2 bg-zinc-200 hover:bg-zinc-300 drop-shadow-md dark:bg-gray-700 text-gray-800 dark:text-gray-200 dark dark:hover:bg-gray-600 rounded-full"/></Link>
-                       {/*<UserNameLink/>*/}
-                   </div>
-               </div>
-
-            </div>
-            <div className="flex flex-row">
-                <div className="flex flex-col gap-2 min-h-screen w-fit float-top-left text-zinc-700 lg:text-xl sm:text-sm bg-gray-400 font-bold italic dark:bg-zinc-800 dark:drop-shadow-md dark:text-white">
-
-                    {/* Linki do różnych stron */}
-
-                    {/* Sekcja dostępna dla właściciela stajni */}
-                    <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
-                        <Link href="/dashboard">
-                            <div className="hover:bg-gray-500 pl-2">Stajnia</div>
-                        </Link>
-                        <Link href="/dashboard/boxes">
-                            <div className="hover:bg-gray-500 pl-2">Boksy</div>
-                        </Link>
-                        <Link href="/dashboard/padoki">
-                            <div className="hover:bg-gray-500 pl-2">Padoki</div>
-                        </Link>
-                        <Link href="/dashboard/trening">
-                            <div className="hover:bg-gray-500 pl-2">Treningi</div>
-                        </Link>
-
-                        <Link href="/dashboard/harmonogram">
-                            <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Zarządzanie pracownikami</div>
-                        </Link>
-                        <Link href="/zarzadzanie">
-                            <div className="hover:bg-gray-500 pl-2">Zarządzanie stajnią</div>
-                        </Link>
-                        <Link href="/dashboard/notes">
-                            <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
-                        </Link>
-                        <Link href="/zarzadzanie_kontami">
-                            <div className="hover:bg-gray-500 pl-2">Panel administracyjny</div>
-                        </Link>
-                        <Link href="/moj_profil">
-                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
-                        </Link>
-                    </ProtectedSectionMenu>
-
-
-
-
-                    <ProtectedSectionMenu requiredRole="pracownik">
-                        <Link href="/dashboard">
-                            <div className="hover:bg-gray-500 pl-2">Stajnia</div>
-                        </Link>
-                        <Link href="/dashboard/boxes">
-                            <div className="hover:bg-gray-500 pl-2">Boksy</div>
-                        </Link>
-                        <Link href="/dashboard/padoki">
-                            <div className="hover:bg-gray-500 pl-2">Padoki</div>
-                        </Link>
-                        <Link href="/dashboard/trening">
-                            <div className="hover:bg-gray-500 pl-2">Treningi</div>
-                        </Link>
-
-                        <Link href="/dashboard/notes">
-                            <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
-                        </Link>
-                        <Link href="/dashboard/zadania">
-                            <div className="hover:bg-gray-500 whitespace-break-spaces pl-2">Moje zadania</div>
-                        </Link>
-                        <Link href="/moj_profil">
-                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
-                        </Link>
-                    </ProtectedSectionMenu>
-
-                    {/* Sekcja dostępna dla właściciela koni */}
-                    <ProtectedSectionMenu requiredRole="wlasciciel_koni">
-                        {/* link do podstrony do widoku dla wlasciciela koni */}
-                        <Link href="/wlasciciel_konia">
-                            <div className="hover:bg-gray-500 pl-2">Home</div>
-                        </Link>
-                        <Link href="/wlasciciel_konia/moje_konie">
-                            <div className="hover:bg-gray-500 pl-2">Moje konie</div>
-                        </Link>
-                        <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel">
-                            <div className="hover:bg-gray-500 pl-2">Zarządzaj końmi</div>
-                        </Link>
-                        <Link href="/wlasciciel_konia/treningi">
-                            <div className="hover:bg-gray-500 pl-2">Treningi</div>
-                        </Link>
-                        <Link href="/dashboard/notes">
-                            <div className="hover:bg-gray-500 pl-2">Wiadomości</div>
-                        </Link>
-                        <Link href="/moj_profil">
-                            <div className="hover:bg-gray-500 pl-2">Mój profil</div>
-                        </Link>
-                    </ProtectedSectionMenu>
-
-
+            {/* Nagłówek */}
+            <header className="w-full p-4 shadow-lg font-semibold text-lg bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 flex flex-row justify-between items-center">
+                <div className="text-2xl text-blue-700 dark:text-blue-400">
+                    <Link href="/home">Stable Assistant ♘</Link>
                 </div>
-
-                {/* Sekcja główna, która renderuje aktualną stronę */}
-                <div className="w-11/12 mt-10">
-                    {/* Tutaj umieść komponent, który będzie wyświetlany w zależności od URL */}
-                    {children}
+                <div className="flex flex-row items-center gap-4">
+                    <ThemeToggle />
+                    <Link href="/workers">
+                        <img
+                            src="/images/login.png"
+                            className="w-12 px-2 py-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                            alt="Login Icon"
+                        />
+                    </Link>
                 </div>
-            </div>
-            <div className="w-full h-fit p-4 text-center border-t-2 border-zinc-200 font-bold italic text-lg text-zinc-700 bg-gradient-to-t from-white bg-gray-400 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-t-2 dark:border-gray-600 dark:text-white">
+            </header>
+
+            {/* Menu poziome */}
+            <nav className="w-full bg-gray-300 text-gray-900 dark:bg-gray-800 dark:text-gray-200 shadow-md sticky top-0 z-50">
+                <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
+                    <div className="flex flex-row justify-center gap-4 py-2">
+                        <Link href="/dashboard" className="hover:underline">
+                            Stajnia
+                        </Link>
+                        <Link href="/dashboard/boxes" className="hover:underline">
+                            Boksy
+                        </Link>
+                        <Link href="/dashboard/padoki" className="hover:underline">
+                            Padoki
+                        </Link>
+                        <Link href="/dashboard/trening" className="hover:underline">
+                            Treningi
+                        </Link>
+                        <Link href="/dashboard/harmonogram" className="hover:underline">
+                            Zarządzanie pracownikami
+                        </Link>
+                        <Link href="/zarzadzanie" className="hover:underline">
+                            Zarządzanie stajnią
+                        </Link>
+                        <Link href="/dashboard/notes" className="hover:underline">
+                            Wiadomości
+                        </Link>
+                        <Link href="/moj_profil" className="hover:underline">
+                            Mój profil
+                        </Link>
+                    </div>
+                </ProtectedSectionMenu>
+            </nav>
+
+            {/* Sekcja główna */}
+            <main className="flex-grow mt-10 p-6 bg-gray-200 dark:bg-gray-900">{children}</main>
+
+            {/* Stopka */}
+            <footer className="w-full h-fit p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
                 <div>© All rights reserved</div>
-            </div>
+            </footer>
         </UserProvider>
         </body>
         </html>
