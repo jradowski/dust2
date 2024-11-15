@@ -4,6 +4,7 @@ import  supabase  from '@/supabaseClient'; // Import Supabase Client
 import { useUser } from '@/UserContext'; // Import kontekstu użytkownika
 import '@/admin_board.css';
 
+
 const MyProfile = () => {
     const { user } = useUser(); // Pobranie danych użytkownika z kontekstu
     const [email, setEmail] = useState(user?.email || '');
@@ -18,7 +19,7 @@ const MyProfile = () => {
             setError('Nie jesteś zalogowany.');
             return;
         }
-        
+
         const fetchProfile = async () => {
             try {
                 // Pobierz dane użytkownika z tabeli employees
