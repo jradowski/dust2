@@ -29,12 +29,9 @@ export default function AutoScrollingGallery() {
                 />
                 <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                     <h1>
-                        Zarządzanie stajnią jeszcze nigdy nie było łatwiejsze dzięki Stable Assistant! Nasza
-                        aplikacja zapewnia kompleksowe narzędzia do efektywnego zarządzania każdym aspektem
-                        stajni. Śledź harmonogramy karmienia, terminy weterynaryjne i szczepień, zarządzaj
-                        zadaniami dla personelu oraz kontroluj zapasy - wszystko w jednym miejscu.
+                    Stable Assistant to aplikacja, która rewolucjonizuje zarządzanie stajnią, sprawiając, że staje się ono prostsze i bardziej efektywne niż kiedykolwiek wcześniej. Dzięki niej możesz śledzić harmonogramy karmienia, terminy weterynaryjne i szczepień, zarządzać zadaniami dla personelu oraz kontrolować zapasy - wszystko w jednym miejscu. Wyobraź sobie, że masz pełną kontrolę nad każdym aspektem swojej stajni, bez konieczności przeskakiwania między różnymi narzędziami i notatkami. Stable Assistant to kompleksowe rozwiązanie, które pozwala zaoszczędzić czas i skupić się na tym, co naprawdę ważne - opiece nad końmi.
                     </h1>
-                </div>
+                    </div>
             </div>
 
             <hr className="border-t-2 border-zinc-300 dark:border-gray-700 w-11/12" />
@@ -50,10 +47,9 @@ export default function AutoScrollingGallery() {
                 />
                 <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                     <h1>
-                        Zarządzanie stajnią jeszcze nigdy nie było łatwiejsze dzięki Stable Assistant! Nasza
-                        aplikacja zapewnia kompleksowe narzędzia do efektywnego zarządzania każdym aspektem
-                        stajni. Śledź harmonogramy karmienia, terminy weterynaryjne i szczepień, zarządzaj
-                        zadaniami dla personelu oraz kontroluj zapasy - wszystko w jednym miejscu.
+                    Dzięki intuicyjnemu interfejsowi i zaawansowanym funkcjom, Stable Assistant jest idealnym narzędziem zarówno dla małych, jak i dużych stajni. Możesz łatwo planować i monitorować codzienne zadania, a także długoterminowe projekty, zapewniając, że wszystko przebiega zgodnie z planem. Rozwijaj siebie i swoje konie, stając się lepszym dzięki nam, przy czym zaoszczędzisz czas i energię.
+
+                    Nie czekaj, dołącz do grona zadowolonych użytkowników i przekonaj się, jak łatwe może być zarządzanie stajnią z Stable Assistant! 
                     </h1>
                 </div>
             </div>

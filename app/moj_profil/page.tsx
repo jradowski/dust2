@@ -149,8 +149,7 @@ const MyProfile = () => {
             {/* Sekcja Usunięcia Konta */}
             <div
                 className="text-center items-center drop-shadow-md my-10 text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-                <img src="/images/userdelete.png" alt="usuń konto"
-                     className="w-16 m-2 h-auto"/>
+              
                 <button
                     onClick={handleDeleteAccount}
                     className="alert-button"

@@ -1,162 +1,81 @@
-"use client"
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import 'reactjs-popup/dist/index.css'
+"use client";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import 'reactjs-popup/dist/index.css';
 import supabase from '@/supabaseClient.js';
+import Image from 'next/image';
 
+// Typy danych dla koni (Horse)
+interface Horse {
+    imie: string;
+    image_url: string;
+}
 
-
-let fetchData = async () => {
-    let { data, error } = await supabase
+const fetchDataForBox = async (boxNumber: number): Promise<Horse> => {
+    const { data, error } = await supabase
         .from('horse')
         .select('*')
-        .eq('nr_boksu', 1)
-        .single()
+        .eq('nr_boksu', boxNumber)
+        .single();
 
-    return data
-};
-let fetchData2 = async () => {
-    let { data, error } = await supabase
-        .from('horse')
-        .select('*')
-        .eq('nr_boksu', 2)
-        .single()
-
-    return data
-};
-let fetchData3 = async () => {
-    let { data, error } = await supabase
-        .from('horse')
-        .select('*')
-        .eq('nr_boksu', 3)
-        .single()
-
-    return data
-};
-let fetchData4 = async () => {
-    let { data, error } = await supabase
-        .from('horse')
-        .select('*')
-        .eq('nr_boksu', 4)
-        .single()
-
-    return data
-};
-let fetchData5 = async () => {
-    let { data, error } = await supabase
-        .from('horse')
-        .select('*')
-        .eq('nr_boksu', 5)
-        .single()
-
-    return data
+    // Zwracamy "wolny" jeśli brak konia w boksie lub wystąpił błąd
+    return error || !data ? { imie: 'wolny', image_url: '' } : data;
 };
 
-export default async function page() {
-    const data = await fetchData()
-    const data2 = await fetchData2()
-    const data3 = await fetchData3()
-    const data4 = await fetchData4()
-    const data5 = await fetchData5()
+const Page: React.FC = () => {
+    const [horses, setHorses] = useState<Horse[]>([]); // Przechowujemy dane koni
+    const boxNumbers: number[] = [1, 2, 3, 4, 5]; // Numery boksów
+
+    // Pobieranie danych w momencie załadowania komponentu
+    useEffect(() => {
+        const fetchHorses = async () => {
+            try {
+                // Uruchamiamy zapytania równolegle
+                const horsesData = await Promise.all(boxNumbers.map((boxNumber) => fetchDataForBox(boxNumber)));
+                setHorses(horsesData); // Zapisujemy dane do stanu
+            } catch (error) {
+                console.error("Error fetching horses:", error);
+            }
+        };
+
+        fetchHorses();
+    }, []);
+
     return (
-        <main className=" min-h-full p-24">
-
-
-            <div className=" flex flex-col gap-4 text-center  lg:mb-0 lg:w-full   lg:text-left">
-
-
-                <Link href="/dashboard/boxes/Box1">
-                    <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
-                    >
-                        <h2 className="mb-3 text-2xl font-semibold">
-                            1{" "}
-
-                            <span
-                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-
-            </span>
-                        </h2>
-                        <p className="m-0 max-w-[30ch] text-base opacity-50">
-                            {data.imie}
-                        </p>
-                    </div>
-                </Link>
-
-                <Link href="/dashboard/boxes/Box2">
-                    <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
-                    >
-                        <h2 className="mb-3 text-2xl font-semibold">
-                            2{" "}
-                            <span
-                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-                        </h2>
-                        <p className="m-0 max-w-[30ch] text-base opacity-50">
-                            {data2.imie}
-                        </p>
-                    </div>
-                </Link>
-
-
-                <Link href="/dashboard/boxes/Box3">
-                    <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
-                    >
-                        <h2 className="mb-3 text-2xl font-semibold">
-                            3{" "}
-                            <span
-                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-                        </h2>
-                        <p className="m-0 max-w-[30ch] text-base opacity-50">
-                            {data3.imie}
-                        </p>
-                    </div>
-                </Link>
-
-                <Link href="/dashboard/boxes/Box4">
-                    <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
-                    >
-                        <h2 className="mb-3 text-2xl font-semibold">
-                            4{" "}
-                            <span
-                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-                        </h2>
-                        <p className="m-0 max-w-[30ch] text-base opacity-50">
-                            {data4.imie}
-                        </p>
-                    </div>
-                </Link>
-
-                <Link href="/dashboard/boxes/Box5">
-
-                    <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
-                    >
-                        <h2 className="mb-3 text-2xl font-semibold">
-                            5{" "}
-                            <span
-                                className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-                        </h2>
-                        <p className="m-0 max-w-[30ch] text-base opacity-50">
-                            {data5.imie}
-                        </p>
-                    </div>
-                </Link>
-
+        <main className="min-h-full p-24">
+            {/* Kontener z siatką, 2 kolumny w jednym rzędzie */}
+            <div className="grid grid-cols-2 gap-4 text-center lg:mb-0 lg:w-full lg:text-left">
+                {horses.map((horse, index) => (
+                    <Link href={`/dashboard/boxes/Box${index + 1}`} key={index}>
+                        <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
+                            <div className="flex-shrink-0 w-16 h-16 mr-4">
+                                {horse.image_url ? (
+                                    <Image
+                                        src={horse.image_url}
+                                        alt={`Zdjęcie konia ${horse.imie}`}
+                                        width={200}
+                                        height={200}
+                                        className="rounded-lg object-cover" // Zmienione na 'rounded-lg'
+                                    />
+                                ) : (
+                                    <div className="w-full h-full bg-gray-300 rounded-lg" /> // Zmienione na 'rounded-lg'
+                                )}
+                            </div>
+                            <div>
+                                <h2 className="mb-3 text-2xl font-semibold">
+                                    {index + 1}{" "}
+                                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
+                                </h2>
+                                <p className="m-0 max-w-[30ch] text-base opacity-50">
+                                    {horse.imie}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
             </div>
         </main>
-
     );
 };
+
+export default Page;

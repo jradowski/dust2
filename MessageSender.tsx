@@ -101,9 +101,7 @@ const MessageSender: React.FC = () => {
                     Wyślij
                 </button>
 
-                <img src="/images/envelope.png" alt="Image 1"
-                     className="w-20we m-2 h-auto"/>
-
+               
 
             </div>
 

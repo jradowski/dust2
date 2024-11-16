@@ -64,6 +64,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <Link href="/zarzadzanie" className="hover:underline">
                             Zarządzanie stajnią
                         </Link>
+                        <Link href="/kowal" className="hover:underline">
+                            Wizyta kowala
+                        </Link>
+                        <Link href="/zarzadzanie_kontami" className="hover:underline">
+                            Panel administracyjny
+                        </Link>
                         <Link href="/dashboard/notes" className="hover:underline">
                             Wiadomości
                         </Link>
@@ -72,6 +78,64 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         </Link>
                     </div>
                 </ProtectedSectionMenu>
+
+                <ProtectedSectionMenu requiredRole="pracownik">
+                    <div className="flex flex-row justify-center gap-4 py-2">
+                        <Link href="/dashboard" className="hover:underline">
+                            Stajnia
+                        </Link>
+                        <Link href="/dashboard/boxes" className="hover:underline">
+                            Boksy
+                        </Link>
+                        <Link href="/dashboard/padoki" className="hover:underline">
+                            Padoki
+                        </Link>
+                        <Link href="/dashboard/trening" className="hover:underline">
+                            Treningi
+                        </Link>
+                        <Link href="/dashboard/zadania" className="hover:underline">
+                            Moje zadania
+                        </Link>
+                        <Link href="/dashboard/notes" className="hover:underline">
+                            Wiadomości
+                        </Link>
+                        <Link href="/moj_profil" className="hover:underline">
+                            Mój profil
+                        </Link>
+                    </div>
+                </ProtectedSectionMenu>
+
+
+
+
+
+                <ProtectedSectionMenu requiredRole="wlasciciel_koni">
+                    <div className="flex flex-row justify-center gap-4 py-2">
+                        
+                        <Link href="/wlasciciel_konia" className="hover:underline">
+                            Home
+                        </Link>
+                        <Link href="/wlasciciel_konia/moje_konie" className="hover:underline">
+                            Moje konie
+                        </Link>
+                        <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel" className="hover:underline">
+                            Zarządzaj końmi
+                        </Link>
+                        <Link href="/wlasciciel_konia/treningi" className="hover:underline">
+                            Treningi
+                        </Link>
+                        <Link href="/dashboard/notes" className="hover:underline">
+                            Wiadomości
+                        </Link>
+                        <Link href="/moj_profil" className="hover:underline">
+                            Mój profil
+                        </Link>
+                    </div>
+                </ProtectedSectionMenu>
+
+
+
+
             </nav>
 
             {/* Sekcja główna */}
