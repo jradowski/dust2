@@ -14,7 +14,7 @@ export default function page() {
 
                 <Link href="/dashboard/boxes">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                         <img src="/images/box.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
@@ -31,8 +31,8 @@ export default function page() {
 
                 <Link href="/dashboard/padoki">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-                        <img src="@/images/padok2.png" alt="Image 1"
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
+                        <img src="/images/padok2.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
                         <h2 className="text-2xl font-semibold">
@@ -48,7 +48,7 @@ export default function page() {
 
                 <Link href="/dashboard/trening">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                         <img src="/images/train.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
@@ -66,14 +66,14 @@ export default function page() {
 
             </div>
 
-            <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-full my-16 "/>
 
-            <div className="w-11/12  border-t-1 border-gray-600"></div>
+
+
             <div
-                className="group rounded-tl-xl  text-2xl text-justify bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                className="mt-20 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
             >
                 <div
-                    className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-center t mx-2 bg-white p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 ">
+                    className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-center t mx-2 bg-transparent p-5  ">
 
                     <h2 className="text-2xl font-semibold">
                         Przypominajka

@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <UserProvider>
             {/* Nagłówek */}
             <header className="w-full p-4 shadow-lg font-semibold text-lg bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 flex flex-row justify-between items-center">
-                <div className="text-2xl text-blue-700 dark:text-blue-400">
+                <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">
                     <Link href="/home">Stable Assistant ♘</Link>
                 </div>
                 <div className="flex flex-row items-center gap-4">

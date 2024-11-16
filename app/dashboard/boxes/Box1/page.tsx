@@ -37,32 +37,19 @@ const Home = async () => {
 
 
             <div
-                className="grid grid-cols-2 gap-5 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
+                className="grid grid-cols-2 gap-5 rounded-tl-xl mb-10 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
 
                 <div className="columns-1 flex flex-col gap-5 h-1/2 ">
                     <div>
                         <Image
-                            className="rounded-2xl aspect-square object-cover border-2 border-gray-900"
+                            className="rounded-2xl aspect-square object-cover shadow-2xl"
                             src={zdj}
                             alt="Kolorado KG"
                             width={400}
                             height={200}
                         />
                     </div>
-                    <div>
-                        <div className=" w-fill grid grid-cols-2 gap-15  ">
 
-                            <div>
-                                <h1 className="font-semibold text-2xl ">Ojciec:</h1>
-                                <h2 className="text-xl ">{data.v}</h2>
-                            </div>
-                            <div>
-                                <h1 className="font-semibold text-2xl">Matka(& oj.Matki):</h1>
-                                <h2 className="text-xl ">{data.m}/ {data.mv}</h2>
-                            </div>
-
-                        </div>
-                    </div>
 
                 </div>
 
@@ -80,13 +67,18 @@ const Home = async () => {
                         <li className="text-xl pb-3">Polski Koń Sportowy</li>
                         <h2 className="font-semibold text-2xl">Właścicel:</h2>
                         <li className="text-xl pb-3">{data.wlasciciel}</li>
+                        <h2 className="font-semibold text-2xl ">Ojciec:</h2>
+                        <li className="text-xl ">{data.v}</li>
+                        <h2 className="font-semibold text-2xl">Matka(& oj.Matki):</h2>
+                        <li className="text-xl ">{data.m}/ {data.mv}</li>
                     </ul>
+
                 </div>
 
 
             </div>
             <div
-                className="w-auto grid grid-cols-2 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="w-auto grid grid-cols-2 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                 <div className="mt-2 border-r-2 border-gray-600 pr-5">
                     <h1 className="text-2xl">Wizyta kowala:</h1>
                     <h2 className="text-opacity-50 text-xl ">{data.kowal}</h2>
@@ -100,7 +92,7 @@ const Home = async () => {
             </div>
             <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-11/12 my-16  "/>
             <div
-                className="content-center ml-8 grid grid-cols-1 gap-20 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="content-center ml-8 grid grid-cols-1 gap-20 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                 <div className="mt-2">
                     <h1 className="text-xl font-bold">Plan treningowy: </h1>
                     <h2 className="text-lg">

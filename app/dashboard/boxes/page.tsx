@@ -68,7 +68,7 @@ export default async function page() {
 
                 <Link href="/dashboard/boxes/Box1">
                     <div
-                        className="group rounded-tl-xl  text-3xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
                             1{" "}
@@ -87,7 +87,7 @@ export default async function page() {
 
                 <Link href="/dashboard/boxes/Box2">
                     <div
-                        className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
                             2{" "}
@@ -105,7 +105,7 @@ export default async function page() {
 
                 <Link href="/dashboard/boxes/Box3">
                     <div
-                        className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
                             3{" "}
@@ -122,7 +122,7 @@ export default async function page() {
 
                 <Link href="/dashboard/boxes/Box4">
                     <div
-                        className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
                             4{" "}
@@ -140,7 +140,7 @@ export default async function page() {
                 <Link href="/dashboard/boxes/Box5">
 
                     <div
-                        className="group rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  "
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
                             5{" "}
