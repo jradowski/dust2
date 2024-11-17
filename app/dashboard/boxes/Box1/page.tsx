@@ -49,7 +49,15 @@ const Home = async () => {
                             height={200}
                         />
                     </div>
-
+                    <div className="mt-2 pl-5 ">
+                    <h1 className="text-2xl">Dieta: </h1>
+                    <h2 className="text-opacity-50 text-xl ">
+                        Ilość: {data.wielkosc_posilku} miarki
+                    </h2>
+                    <h2 className="text-opacity-50 text-xl ">
+                        Skład: {data.posilek}
+                    </h2>
+                </div>
 
                 </div>
 
@@ -80,14 +88,12 @@ const Home = async () => {
             <div
                 className="w-auto grid grid-cols-2 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                 <div className="mt-2 border-r-2 border-gray-600 pr-5">
-                    <h1 className="text-2xl">Wizyta kowala:</h1>
+                    <h1 className="text-2xl">Ostatnia wizyta kowala:</h1>
                     <h2 className="text-opacity-50 text-xl ">{data.kowal}</h2>
                 </div>
                 <div className="mt-2 pl-5 ">
-                    <h1 className="text-2xl">Liczba miarek: </h1>
-                    <h2 className="text-opacity-50 text-xl ">
-                        {data.wielkosc_posilku}x {data.posilek}
-                    </h2>
+                    <h1 className="text-2xl">Ostatnie szczepienie:</h1>
+                    <h2 className="text-opacity-50 text-xl ">{data.szczepienie}</h2>
                 </div>
             </div>
             <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-11/12 my-16  "/>

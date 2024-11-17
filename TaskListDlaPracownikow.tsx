@@ -81,14 +81,13 @@ const TaskListDlaPracownikow: React.FC = () => {
 
   return (
       <div>
-        <h2>Task List</h2>
         <table>
           <thead>
           <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Employee</th>
+            <th>Tytuł</th>
+            <th>Opis</th>
+            <th>Termin</th>
+            <th>Pracownik</th>
           </tr>
           </thead>
           <tbody>
