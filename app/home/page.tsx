@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Komentarze from "@/Komentarze";
 
@@ -110,11 +110,13 @@ export default function AutoScrollingGallery() {
 
             {/* Sekcja kontaktowa */}
             <div className="w-10/12">
-                <div className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
-                    <h1>Skontaktuj się z nami:</h1>
+                <div
+                    className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Skontaktuj się z nami</h1>
                 </div>
-                <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
-                    <Komentarze />
+                <div
+                    className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <Komentarze/>
                 </div>
             </div>
         </main>

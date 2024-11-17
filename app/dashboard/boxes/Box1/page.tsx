@@ -57,7 +57,7 @@ const Home = async () => {
                     <h2 className="text-opacity-50 text-xl ">
                         Skład: {data.posilek}
                     </h2>
-                </div>
+                    </div>
 
                 </div>
 
@@ -76,9 +76,9 @@ const Home = async () => {
                         <h2 className="font-semibold text-2xl">Właścicel:</h2>
                         <li className="text-xl pb-3">{data.wlasciciel}</li>
                         <h2 className="font-semibold text-2xl ">Ojciec:</h2>
-                        <li className="text-xl ">{data.v}</li>
+                        <li className="text-xl pb-3">{data.v}</li>
                         <h2 className="font-semibold text-2xl">Matka(& oj.Matki):</h2>
-                        <li className="text-xl ">{data.m}/ {data.mv}</li>
+                        <li className="text-xl pb-3">{data.m}/ {data.mv}</li>
                     </ul>
 
                 </div>

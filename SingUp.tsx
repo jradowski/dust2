@@ -33,39 +33,43 @@ const SignUp: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate }
 
     return (
         <div className="flex items-center justify-center mt-6">
-            <div className="flex flex-col mt-6 p-5 font-sans text-center font-semibold justify-center w-fit  text-2xl sm:text-xl rounded-2xl bg-gray-400 drop-shadow-md text-black dark:bg-zinc-800 dark:drop-shadow-md  dark:text-white">
-
-                <div className="w-11/12">
-                    <h1 className="lg:text-3xl sm:text-xl font-bold leading-10">Załóż konto w Stable Assistant</h1>
+            <div
+                className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Załóż konto w Stable Assistant</h1>
                 </div>
-                <div className="text-left leading-10">
-                    <form onSubmit={handleSignUp}>
-                        <label>
-                            Email:
-                            <input
-                                className="custom-input"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </label>
-                        <br/>
-                        <label>
-                            Hasło:
-                            <input
-                                className="custom-input"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </label>
-                        <br/>
-                        <div className="flex flex-row gap-4 mt-6 ">
-                            <button type="submit" className="custom-button dark:text-white dark:bg-gray-700">Załóż konto
-                            </button>
-                        </div>
-                        <br></br>
-                    </form>
+                <div className="flex flex-col text-xl mt-6 p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div className="text-left leading-10">
+                        <form onSubmit={handleSignUp}>
+                            <label>
+                                Email:
+                                <input
+                                    className="custom-input"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </label>
+                            <br/>
+                            <label>
+                                Hasło:
+                                <input
+                                    className="custom-input"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </label>
+                            <br/>
+                            <div className="flex flex-row gap-4 mt-6 ">
+                                <button type="submit" className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white">
+                                    Załóż konto
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
 
             </div>

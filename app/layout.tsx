@@ -13,10 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
 
-    // Ominięcie layoutu na ścieżce /workers
-    if (pathname === "/workers") {
-        return <>{children}</>;
-    }
+
 
     return (
         <html lang="en" className="h-full">
@@ -32,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div className="flex flex-row items-center gap-4">
                     <ThemeToggle />
-                    <Link href="/workers">
+                    <Link href="/">
                         <img
                             src="/images/login.png"
                             className="w-12 px-2 py-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
@@ -139,10 +136,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
 
             {/* Sekcja główna */}
-            <main className="flex-grow mt-10 p-6 bg-gray-200 dark:bg-gray-900">{children}</main>
+            <main className="flex-grow min-h-screen mt-10 p-6 bg-gray-200 dark:bg-gray-900">{children}</main>
 
             {/* Stopka */}
-            <footer className="w-full h-fit p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
+            <footer className="w-full p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
                 <div>© All rights reserved</div>
             </footer>
         </UserProvider>

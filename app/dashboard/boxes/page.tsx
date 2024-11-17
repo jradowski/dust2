@@ -44,31 +44,35 @@ const Page: React.FC = () => {
     return (
         <main className="min-h-full p-24">
             {/* Kontener z siatką, 2 kolumny w jednym rzędzie */}
-            <div className="grid grid-cols-2 gap-4 text-center lg:mb-0 lg:w-full lg:text-left">
+            <div className="grid grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
                 {horses.map((horse, index) => (
                     <Link href={`/dashboard/boxes/Box${index + 1}`} key={index}>
                         <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
-                            <div className="flex-shrink-0 w-16 h-16 mr-4">
+
+                            <h2 className="mb-3 pr-10 text-6xl font-bold">
+                                {index + 1}{" "}
+                            </h2>
+
+                            <div className="flex-shrink-0 w-36 h-36 mr-4">
                                 {horse.image_url ? (
                                     <Image
                                         src={horse.image_url}
                                         alt={`Zdjęcie konia ${horse.imie}`}
                                         width={200}
                                         height={200}
-                                        className="rounded-lg object-cover" // Zmienione na 'rounded-lg'
+                                        className="rounded-lg object-cover aspect-square drop-shadow-lg dark:drop-shadow-lg" // Zmienione na 'rounded-lg'
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-gray-300 rounded-lg" /> // Zmienione na 'rounded-lg'
+                                    <div className="w-full h-full bg-gray-300 rounded-lg"/> // Zmienione na 'rounded-lg'
                                 )}
                             </div>
-                            <div>
-                                <h2 className="mb-3 text-2xl font-semibold">
-                                    {index + 1}{" "}
-                                    <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">→</span>
-                                </h2>
-                                <p className="m-0 max-w-[30ch] text-base opacity-50">
-                                    {horse.imie}
-                                </p>
+                            <div className="flex flex-row ">
+
+                                <div>
+                                    <p className="mb-3 px-2 text-4xl font-semibold ">
+                                        {horse.imie}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </Link>
