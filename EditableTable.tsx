@@ -108,7 +108,7 @@ const EditableTable: React.FC = () => {
             type="text"
             value={value}
             onChange={handleChange}
-            placeholder="Type 'imie'"
+            placeholder="Imię konia"
         />
         {suggestions.length > 0 && (
             <ul className="suggestions">
@@ -143,7 +143,7 @@ const EditableTable: React.FC = () => {
                 </tr>
                 </tbody>
               </table>
-              <button className="admin_button" onClick={handleSave}>Zapisz</button>
+              <button className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2" onClick={handleSave}>Zapisz</button>
             </div>
         )}
       </div>

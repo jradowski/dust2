@@ -17,98 +17,103 @@ import { useUser } from '@/UserContext';
 export default function page() {
 
     return (
-        <main className="flex min-h-fit flex-col items-center justify-between p-24">
+        <main className="flex min-h-fit flex-col gap-16 text-xl items-center justify-between p-24">
         
         <UserProvider>
-        <ProtectedSection requiredRole="wlasciciel_stajni">
+            <ProtectedSection requiredRole="wlasciciel_stajni">
 
-            <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                <div>
-                    <div className=" text-2xl text-center font-extrabold ">
-                        Harmonogram pracy
+                <div
+                    className="w-11/12 bg-gradient-to-b grid grid-cols-1 gap-4 from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl  bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Harmonogram pracy
+                        </div>
+
+
+                    <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                            <h1 className="font-bold text-center text-2xl w-auto">
+
+                            </h1>
+                            <WorkSchedule/>
                     </div>
-                    <hr className="border-t-2 border-zinc-200 mt-2 dark:border-gray-600 w-full"/>
+
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-                    <WorkSchedule/>
-                </div>
-            </div>
 
 
-            <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                <div>
-                    <div className=" text-2xl text-center font-extrabold ">
-                        Dodaj godziny pracy dla harmonogramu:
+                <div
+                    className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <div>
+                        <div
+                            className=" text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Dodaj godziny pracy dla harmonogramu
+                        </div>
                     </div>
-                    <hr className="border-t-2 border-zinc-200 mt-2 dark:border-gray-600 w-full"/>
+
+                        <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                            <h1 className="font-bold text-center text-2xl w-auto">
+
+                            </h1>
+                            <AddSchedule/>
+                        </div>
+
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-                    <AddSchedule/>
-                </div>
-            </div>
 
 
-            <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                <div>
-                    <div className="text-2xl text-center font-extrabold ">
-                        Harmonogram tygodniowy
+                <div
+                    className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <div>
+                        <div
+                            className=" text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Harmonogram tygodniowy
+                        </div>
                     </div>
-                    <hr className="border-t-2 border-zinc-200 mt-2 dark:border-gray-600 w-full"/>
+
+                        <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                            <h1 className="font-bold text-center text-2xl w-auto">
+
+                            </h1>
+                            <WorkScheduleWeekly/>
+                        </div>
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-                    <WorkScheduleWeekly/>
-                </div>
-            </div>
-
-            <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-left mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                <div>
-                    <div className=" text-2xl text-center font-extrabold mb-2 ">
-                        Przypisz zadanie dla pracownika
+                <div
+                    className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <div>
+                        <div
+                            className=" text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Przypisz zadanie dla pracownika
+                        </div>
                     </div>
-                    <hr className="border-t-2 border-zinc-200 mt-2 dark:border-gray-600 w-full"/>
+
+                        <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                            <h1 className="font-bold text-center text-2xl w-auto">
+
+                            </h1>
+                            <AddTask/>
+                        </div>
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-                    <   AddTask/>
-                </div>
-            </div>
-            <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-                <div>
-                    <div className="text-2xl text-center font-extrabold ">
-                        Lista zadań dla uzytkownikow
+                <div
+                    className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <div>
+                        <div
+                            className=" text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Lista zadań dla uzytkownikow
+                        </div>
                     </div>
-                    <hr className="border-t-2 border-zinc-200 mt-2 dark:border-gray-600 w-full"/>
+
+                        <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                            <h1 className="font-bold text-center text-2xl w-auto">
+
+                            </h1>
+                            <TaskList/>
+                        </div>
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
 
-                    </h1>
-                    <TaskList/>
-                </div>
-            </div>
-
-        </ProtectedSection>
+            </ProtectedSection>
         </UserProvider>
         </main>
 

@@ -69,78 +69,78 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className=" text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
-      <h2 className="text-2xl font-bold mb-10">Stwórz nowego użytkownika</h2>
+      <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
-      <form onSubmit={handleCreateUser} className="flex flex-col text-2xl gap-4">
-        <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className="admin_input"
-            required
-        />
-        <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Hasło"
-            className="admin_input"
-            required
-        />
-        <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Imię"
-            className="admin_input"
-            required
-        />
-        <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Nazwisko"
-            className="admin_input"
-            required
-        />
-        <select
-            value={role}
-            onChange={(e) => handleRoleChange(e.target.value)}
-            className="admin_select"
-        >
-          <option value="pracownik">Pracownik</option>
-          <option value="wlasciciel_koni">Właściciel koni</option>
-          <option value="wlasciciel_stajni">Właściciel stajni</option>
-        </select>
 
-        {/* Wybór pozycji tylko dla roli "pracownik" */}
-        {role === 'pracownik' && (
-            <select
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
-                className="admin_select"
-                required
+        <form onSubmit={handleCreateUser} className="flex flex-col text-2xl gap-4">
+          <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              className="admin_input"
+              required
+          />
+          <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Hasło"
+              className="admin_input"
+              required
+          />
+          <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="Imię"
+              className="admin_input"
+              required
+          />
+          <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Nazwisko"
+              className="admin_input"
+              required
+          />
+          <select
+              value={role}
+              onChange={(e) => handleRoleChange(e.target.value)}
+              className="admin_select"
+          >
+            <option value="pracownik">Pracownik</option>
+            <option value="wlasciciel_koni">Właściciel koni</option>
+            <option value="wlasciciel_stajni">Właściciel stajni</option>
+          </select>
+
+          {/* Wybór pozycji tylko dla roli "pracownik" */}
+          {role === 'pracownik' && (
+              <select
+                  value={position}
+                  onChange={(e) => setPosition(e.target.value)}
+                  className="admin_select"
+                  required
+              >
+                <option value="">Wybierz pozycję</option>
+                <option value="stajenny">Stajenny</option>
+                <option value="luzak">Luzak</option>
+                <option value="jezdziec">Jeździec</option>
+              </select>
+          )}
+
+          <div className="items-center">
+            <button
+                type="submit"
+                className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
             >
-              <option value="">Wybierz pozycję</option>
-              <option value="stajenny">Stajenny</option>
-              <option value="luzak">Luzak</option>
-              <option value="jezdziec">Jeździec</option>
-            </select>
-        )}
-
-        <div className="items-center">
-        <button
-            type="submit"
-            className="admin_button"
-        >
-          Stwórz użytkownika
-        </button>
-    </div>
-      </form>
-      {message && <div className="mt-4 text-lg text-center">{message}</div>}
-    </div>
+              Stwórz użytkownika
+            </button>
+          </div>
+        </form>
+        {message && <div className="mt-4 text-lg text-center">{message}</div>}
+      </div>
   );
 };
 

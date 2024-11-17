@@ -21,18 +21,16 @@ const Home = async () => {
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
             <div
-                className=" rounded-tl-xl  text-2xl text-justify mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-                <div>
-                    <div className="h-12 text-xl text-center font-extrabold ">
-                        Usuń konia z bazy:
-                    </div>
+                className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Usuń konia z bazy</h1>
                 </div>
 
-                <div >
-                    <h1 className="font-bold text-center  text-2xl w-auto">
-
+                <div className="flex flex-col text-xl mt-6 p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <h1 className="font-bold text-black text-center text-2xl w-auto">
                     </h1>
-                    <UsunWiersz />
+                    <UsunWiersz/>
                 </div>
 
             </div>

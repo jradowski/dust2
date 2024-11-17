@@ -13,35 +13,65 @@ import '@/globals.css'
 
 export default function page() {
     return (
-        <main className=" items-center justify-between p-24">
+        <main className="grid grid-cols-1 gap-10 items-center justify-between p-24">
 
-            <div
-                className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left mb-10">
-                    <Nowy_uz />
+                <div
+                    className=" w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                                <h1>Stwórz nowego użytkownika</h1>
+                        </div>
 
-            </div>
-            <div
-                className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left mb-10">
-                    <Pokaz />
+                        <Nowy_uz/>
 
-            </div>
-            <div
-                className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left mb-10">
-                    <Przypnij />
+                </div>
+                <div
+                    className=" w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                                <h1>Właściciele koni w stajni</h1>
+                        </div>
 
-            </div>
-            <div
-                className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left mb-10">
-                    <Usun />
+                        <Pokaz/>
 
-            </div>
-            <div
-                className=" flex flex-col gap-4  text-center lg:w-full  lg:grid-cols-3 lg:text-left mb-10">
-                    <Reset />
+                </div>
 
-            </div>
 
-            
+                <div
+                    className=" w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                                <h1>Przypisz konia do właściciela</h1>
+                        </div>
+
+                        <Przypnij/>
+
+                </div>
+
+                <div
+                    className=" w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                                <h1>Usuń użytkownika</h1>
+                        </div>
+
+                        <Usun/>
+
+                </div>
+
+                <div
+                    className=" w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                        <div
+                            className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                                <h1>Resetowanie hasła</h1>
+                        </div>
+
+                        <Reset/>
+
+                </div>
+
+
+
         </main>
     )
 }

@@ -106,7 +106,7 @@ export default function AutoScrollingGallery() {
                 </button>
             </div>
 
-            <hr className="border-t-2 border-zinc-300 dark:border-gray-700 w-11/12" />
+
 
             {/* Sekcja kontaktowa */}
             <div className="w-10/12">
@@ -114,8 +114,7 @@ export default function AutoScrollingGallery() {
                     className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                     <h1>Skontaktuj się z nami</h1>
                 </div>
-                <div
-                    className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                     <Komentarze/>
                 </div>
             </div>

@@ -27,30 +27,30 @@ const ResetPasswordInterface: React.FC = () => {
   };
 
   return (
-    <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
-      <h2 className="text-2xl font-bold mb-2 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Resetowanie hasła użytkownika</h2>
-      <div className="text-2xl">
+      <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
-        <input
-            type="email"
-            value={selectedEmail}
-            onChange={(e) => setSelectedEmail(e.target.value)}
-            placeholder="Adres e-mail użytkownika"
-            className="admin_input2"
-        />
+        <div className="text-2xl">
 
-        <div className="">
-          <button
-              onClick={handleResetPassword}
-              disabled={isResetting || !selectedEmail}
-              className="admin_button2"
-          >
-            {isResetting ? 'Resetowanie...' : 'Wyślij link do resetu hasła'}
-          </button>
+          <input
+              type="email"
+              value={selectedEmail}
+              onChange={(e) => setSelectedEmail(e.target.value)}
+              placeholder="Adres e-mail użytkownika"
+              className="admin_input2"
+          />
+
+          <div className="">
+            <button
+                onClick={handleResetPassword}
+                disabled={isResetting || !selectedEmail}
+                className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2"
+            >
+              {isResetting ? 'Resetowanie...' : 'Wyślij link do resetu hasła'}
+            </button>
+          </div>
         </div>
+        {message && <p>{message}</p>}
       </div>
-      {message && <p>{message}</p>}
-    </div>
   );
 };
 

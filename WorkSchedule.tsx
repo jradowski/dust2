@@ -141,56 +141,63 @@ const WorkSchedule: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col columns-1">
       <div className="filter-section">
-        <h3>Filtrowanie</h3>
+        <h3 className="text-2xl mb-4">Filtrowanie</h3>
+        <h1>Dokładna data:</h1>
         <input
-          className="custom-input"
-          type="date"
-          name="date"
-          value={filters.date}
-          onChange={handleFilterChange}
-          placeholder="Data"
+            className="custom-input"
+            type="date"
+            name="date"
+            value={filters.date}
+            onChange={handleFilterChange}
+            placeholder="Data"
         />
+        <h1>Miesiąc::</h1>
+        <input
+            className="custom-input"
+            type="month"
+            name="month"
+            value={filters.month}
+            onChange={handleFilterChange}
+            placeholder="Miesiąc"
+        />
+        <h1>Pracownik:</h1>
         <select
-          className="custom-select"
-          name="employeeId"
-          value={filters.employeeId}
-          onChange={handleFilterChange}
+            className="custom-select"
+            name="employeeId"
+            value={filters.employeeId}
+            onChange={handleFilterChange}
         >
           <option value="">Wybierz pracownika</option>
           {employees.map((employee) => (
-            <option key={employee.id} value={employee.id}>
-              {`${employee.first_name} ${employee.last_name}`}
-            </option>
+              <option key={employee.id} value={employee.id}>
+                {`${employee.first_name} ${employee.last_name}`}
+              </option>
           ))}
         </select>
-        <br></br>
+        <h1>Stanowisko:</h1>
         <select
-          className="custom-select"
-          name="position"
-          value={filters.position}
-          onChange={handleFilterChange}
+            className="custom-select"
+            name="position"
+            value={filters.position}
+            onChange={handleFilterChange}
         >
           <option value="">Wybierz stanowisko</option>
           <option value="jezdziec">Jeździec</option>
           <option value="stajenny">Stajenny</option>
           <option value="luzak">Luzak</option>
         </select>
-        <input
-          className="custom-input"
-          type="month"
-          name="month"
-          value={filters.month}
-          onChange={handleFilterChange}
-          placeholder="Miesiąc"
-        />
-        <button className="custom-button" onClick={handleSearch}>Szukaj</button> {/* Przycisk do wyszukiwania */}
+
+        <div>
+          <button className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2" onClick={handleSearch}>Szukaj</button>
+          {/* Przycisk do wyszukiwania */}
+        </div>
       </div>
 
       {showSchedule && ( // Tabela wyświetlana po kliknięciu przycisku "Szukaj"
-        <table>
-          <thead>
+          <table>
+            <thead>
             <tr>
               <th>Data</th>
               <th>Godzina rozpoczęcia</th>
@@ -255,7 +262,7 @@ const WorkSchedule: React.FC = () => {
             ))}
           </select>
           <br></br>
-          <button className="custom-button" onClick={() => updateScheduleEntry(editEntry)}>Zapisz zmiany</button>
+          <button className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white" onClick={() => updateScheduleEntry(editEntry)}>Zapisz zmiany</button>
           <button className="custom-button" onClick={() => setEditEntry(null)}>Anuluj</button>
         </div>
       )}

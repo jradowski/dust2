@@ -141,7 +141,7 @@ const WorkScheduleWeekly: React.FC = () => {
       </label>
     <br></br>
       {/* Button to toggle the visibility of the schedule table */}
-      <button onClick={() => setShowTable(true)} className="custom-button">Pokaż</button>
+      <button onClick={() => setShowTable(true)} className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2">Pokaż</button>
 
       {/* Conditionally render the table based on the state */}
       {showTable && (

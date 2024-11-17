@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </header>
 
             {/* Menu poziome */}
-            <nav className="w-full bg-gray-300 text-gray-900 dark:bg-gray-800 dark:text-gray-200 shadow-md sticky top-0 z-50">
+            <nav className="w-full  bg-gray-300 text-gray-900 dark:bg-gray-800 dark:text-gray-200 shadow-md sticky top-0 z-50">
                 <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
                     <div className="flex flex-row justify-center gap-4 py-2">
                         <Link href="/dashboard" className="hover:underline">

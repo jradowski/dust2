@@ -9,26 +9,30 @@ import { useEffect, useState } from 'react';
 import TreningTabela from '@/TreningTabela';
 import EditableTable from '@/EditableTable';
 import '@/tabela.css'
+import ModyfikujKonia from "@/ModyfikujKonia";
 
 
 
 export default function page() {
 
     return (
-        <main className="flex  flex-col items-center text-black  dark:text-zinc-500  justify-between ">
+        <main className="flex  flex-col items-center  dark:text-zinc-500  justify-between ">
 
 
             <div
-                className=" rounded-tl-xl drop-shadow-md text-black mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:text-white dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Modyfikuj plan treningowy dla konia</h1>
+                </div>
 
-                <p className="font-extrabold pb-2 text-2xl"> Modyfikuj plan treningowy dla konia:</p>
-                <div className="text-black">
+                <div className="flex flex-col text-xl mt-6 p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <h1 className="font-bold text-black text-center text-2xl w-auto">
+                    </h1>
                     <EditableTable/>
-
                 </div>
 
             </div>
-
             {/* Uzupełnij kalendarz na kolejne 2 tygodnie:
         <div className="columns-2 font-mono border-b border-gray-300 bg-gradient-to-b from-zinc-200 px-5 py-4 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-3xl content-center m-20">
             <div>
@@ -42,7 +46,6 @@ export default function page() {
             </div>
 
         </div> */}
-
 
 
         </main>

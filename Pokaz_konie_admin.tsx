@@ -65,43 +65,42 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
-    <div className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600  ">
-      <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Właściciele koni w stajni</h2>
-      <div className="space-y-4">
-        {owners.map((owner) => (
-            <div key={owner.id} className="border p-4 rounded-lg shadow">
-              <div className="flex items-center justify-between">
-              <span className="font-semibold text-lg">
+      <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div className="space-y-4">
+          {owners.map((owner) => (
+              <div key={owner.id} className="border p-4 rounded-lg shadow">
+                <div className="flex items-center justify-between ">
+              <span className="font-semibold text-xl">
                 {owner.first_name} {owner.last_name}
               </span>
-                <button
-                    onClick={() => toggleOwnerHorses(owner.id)}
-                    className="admin_button"
-                >
-                  {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
-                </button>
+                  <button
+                      onClick={() => toggleOwnerHorses(owner.id)}
+                      className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+                  >
+                    {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
+                  </button>
 
+                </div>
+
+
+                {expandedOwners[owner.id] && (
+                    <ul className=" text-lg mt-2 pl-4 list-disc italic">
+                      {horsesByOwner[owner.id] && horsesByOwner[owner.id].length > 0 ? (
+                          horsesByOwner[owner.id].map((horse) => (
+
+                              <li key={horse.id} className="text-zinc-700 dark:text-white ">
+                                {horse.imie}
+                              </li>
+                          ))
+                      ) : (
+                          <li className="text-zinc-700 dark:text-white">Brak przypisanych koni</li>
+                      )}
+                    </ul>
+                )}
               </div>
-              <hr className="border-t-2 border-zinc-200 dark:border-gray-600 w-100%"/>
-
-              {expandedOwners[owner.id] && (
-                  <ul className=" text-lg mt-2 pl-4 list-disc italic">
-                    {horsesByOwner[owner.id] && horsesByOwner[owner.id].length > 0 ? (
-                        horsesByOwner[owner.id].map((horse) => (
-
-                            <li key={horse.id} className="text-gray-700 ">
-                              {horse.imie}
-                            </li>
-                        ))
-                    ) : (
-                        <li className="text-gray-500">Brak przypisanych koni</li>
-                    )}
-                  </ul>
-              )}
-            </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
   );
 };
 

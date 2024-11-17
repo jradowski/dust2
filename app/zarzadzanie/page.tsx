@@ -18,7 +18,7 @@ export default function page() {
 
                 <Link href="/zarzadzanie/modboksy">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
 
                         <img src="/images/mod.png" alt="Image 1"
                              className="w-14 m-2 h-auto"/>
@@ -35,7 +35,7 @@ export default function page() {
 
                 <Link href="/zarzadzanie/modkonie">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
 
                         <img src="/images/plus.png" alt="Image 1"
                              className="w-14 m-2 h-auto"/>
@@ -53,7 +53,7 @@ export default function page() {
 
                 <Link href="/zarzadzanie/zapasowy">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
 
                         <img src="/images/minus.png" alt="Image 1"
                              className="w-14 m-2 h-auto"/>
@@ -69,7 +69,7 @@ export default function page() {
                 </Link>
                 <Link href="/zarzadzanie/modtrening">
                     <div
-                        className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
+                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
                         <img src="/images/train.png" alt="Image 1"
                              className="w-14 m-2 h-auto"/>
 

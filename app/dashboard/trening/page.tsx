@@ -14,27 +14,26 @@ import '@/boxtabela.css';
 export default function page() {
 
     return (
-        <main className="flex flex-col items-center text-black  dark:text-zinc-500  justify-between ">
+        <main className="flex flex-col gap-8 items-center text-black  dark:text-zinc-500  justify-between ">
 
 
             <div
-                className="content-center ml-8 w-fit grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="content-center  w-11/12 grid grid-cols-1 gap-10 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
 
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Tygodniowy plan treningowy</h1>
-                <div>
+                <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
                     <TreningTabela/>
                 </div>
 
             </div>
 
-            <hr className="border-t-2 border-zinc-200 mb-10 dark:border-gray-600 w-11/12"/>
-
             <div
-                className="content-center w-11/12 grid grid-cols-1 gap-10 rounded-tl-xl  text-2xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className="content-center w-11/12 grid grid-cols-1 gap-10 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
-                <div>
+                <div
+                    className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
                     <EditableTable/>
 
                 </div>

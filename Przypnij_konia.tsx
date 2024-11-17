@@ -81,10 +81,7 @@ const AssignHorses: React.FC = () => {
   };
 
   return (
-      <div
-          className="text-center bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600">
-        <h2 className="text-2xl font-bold mb-4 p-4 border-b-2 border-zinc-200 dark:border-b-2 dark:border-gray-600 ">Przypisanie
-          Koni do Właścicieli</h2>
+      <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="mb-4 text-2xl">
           <label className="block text-xl font-semibold mb-2">Wybierz konia:</label>
           <select
@@ -92,7 +89,7 @@ const AssignHorses: React.FC = () => {
               onChange={(e) => setSelectedHorse(e.target.value)}
               className="admin_select"
           >
-            <option value="">-- Wybierz konia --</option>
+            <option value="">Wybierz konia</option>
             {horses.map((horse) => (
                 <option key={horse.id} value={horse.id}>
                   {horse.imie}
@@ -108,7 +105,7 @@ const AssignHorses: React.FC = () => {
               onChange={(e) => setSelectedOwner(e.target.value)}
               className="admin_select"
           >
-            <option value="">-- Wybierz właściciela --</option>
+            <option value="">Wybierz właściciela</option>
             {owners.map((owner) => (
                 <option key={owner.id} value={owner.id}>
                   {owner.first_name} {owner.last_name}
@@ -120,7 +117,7 @@ const AssignHorses: React.FC = () => {
         <div className="text-2xl">
           <button
               onClick={handleAssignHorse}
-              className="admin_button2"
+              className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
           >
             Przypisz konia
           </button>

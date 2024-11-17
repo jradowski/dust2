@@ -128,104 +128,122 @@ export default function KowalVisits() {
     }
 
     return (
-        <div className="flex flex-col items-center p-4">
-            <h1 className="text-2xl mb-4">Wizyta Kowala</h1>
+        <div className="flex flex-col gap-10 items-center p-4">
 
-            {/* Formularz z wyborem koni */}
-            <div className="mb-4">
-                <h2>Wybierz konie, które zostały zrobione:</h2>
-                <div className="grid grid-cols-2 gap-4">
-                    {konie.map((koń) => (
-                        <label key={koń.id} className="flex items-center">
-                            <input
-                                type="checkbox"
-                                checked={selectedKonie.includes(koń.id)}
-                                onChange={() => toggleKonie(koń.id)}
-                            />
-                            <span className="ml-2">{koń.imie}</span>
-                        </label>
-                    ))}
+            <div className=" w-1/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Wizyta kowala</h1>
+                </div>
+
+                <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    {/* Formularz z wyborem koni */}
+                    <div className="mb-4">
+                        <h2>Wybierz konie, które zostały podkute</h2>
+                        <div className="grid grid-cols-1 gap-4">
+                            {konie.map((koń) => (
+                                <label key={koń.id} className="">
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedKonie.includes(koń.id)}
+                                        onChange={() => toggleKonie(koń.id)}
+                                    />
+                                    <span className="ml-2">{koń.imie}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Imię i nazwisko kowala */}
+                    <div className="mb-4">
+                        <label className="block">Imię i nazwisko kowala:</label>
+                        <input
+                            type="text"
+                            value={kowalImie}
+                            onChange={(e) => setKowalImie(e.target.value)}
+                            className="custom-input"
+                            placeholder="Wpisz imię i nazwisko kowala"
+                        />
+                    </div>
+
+                    {/* Data wizyty kowala */}
+                    <div className="mb-4">
+                        <label className="block">Data wizyty kowala:</label>
+                        <input
+                            type="date"
+                            onChange={(e) => setKowalData(new Date(e.target.value))}
+                            value={kowalData ? format(kowalData, 'yyyy-MM-dd') : ''}
+                            className="custom-input"
+                        />
+                    </div>
+
+                    {/* Data następnej wizyty kowala */}
+                    <div className="mb-4">
+                        <label className="block">Data następnej wizyty kowala:</label>
+                        <input
+                            type="date"
+                            onChange={(e) => setNastepnaWizyta(new Date(e.target.value))}
+                            value={nastepnaWizyta ? format(nastepnaWizyta, 'yyyy-MM-dd') : ''}
+                            min={format(new Date(), 'yyyy-MM-dd')}
+                            className="custom-input"
+                        />
+                    </div>
+
+                    {/* Notatka z wizyty */}
+                    <div className="mb-4">
+                        <label className="block">Notatki z wizyty:</label>
+                        <textarea
+                            value={notatka}
+                            onChange={(e) => setNotatka(e.target.value)}
+                            className="custom-textarea"
+                            placeholder="Wpisz notatki dotyczące wizyty kowala"
+                        />
+                    </div>
+
+                    {/* Przycisk zapisu wizyty kowala */}
+                    <button
+                        onClick={handleKowalVisit}
+                        className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+                    >
+                        Zapisz wizytę kowala
+                    </button>
                 </div>
             </div>
 
-            {/* Imię i nazwisko kowala */}
-            <div className="mb-4">
-                <label className="block">Imię i nazwisko kowala:</label>
-                <input
-                    type="text"
-                    value={kowalImie}
-                    onChange={(e) => setKowalImie(e.target.value)}
-                    className="border border-gray-300 p-2 w-full"
-                    placeholder="Wpisz imię i nazwisko kowala"
-                />
-            </div>
-
-            {/* Data wizyty kowala */}
-            <div className="mb-4">
-                <label className="block">Data wizyty kowala:</label>
-                <input
-                    type="date"
-                    onChange={(e) => setKowalData(new Date(e.target.value))}
-                    value={kowalData ? format(kowalData, 'yyyy-MM-dd') : ''}
-                    className="border border-gray-300 p-2 w-full"
-                />
-            </div>
-
-            {/* Data następnej wizyty kowala */}
-            <div className="mb-4">
-                <label className="block">Data następnej wizyty kowala:</label>
-                <input
-                    type="date"
-                    onChange={(e) => setNastepnaWizyta(new Date(e.target.value))}
-                    value={nastepnaWizyta ? format(nastepnaWizyta, 'yyyy-MM-dd') : ''}
-                    min={format(new Date(), 'yyyy-MM-dd')}
-                    className="border border-gray-300 p-2 w-full"
-                />
-            </div>
-
-            {/* Notatka z wizyty */}
-            <div className="mb-4">
-                <label className="block">Notatki z wizyty:</label>
-                <textarea
-                    value={notatka}
-                    onChange={(e) => setNotatka(e.target.value)}
-                    className="border border-gray-300 p-2 w-full"
-                    placeholder="Wpisz notatki dotyczące wizyty kowala"
-                />
-            </div>
-
-            {/* Przycisk zapisu wizyty kowala */}
-            <button
-                onClick={handleKowalVisit}
-                className="bg-blue-500 text-white py-2 px-4 rounded"
-            >
-                Zapisz wizytę kowala
-            </button>
-
             {/* Kartoteka wizyt kowala */}
-            <div className="mt-8 w-full">
-                <h2 className="text-xl mb-4">Kartoteka Wizyt Kowala</h2>
-                <div className="space-y-4">
-                    {kartotekaWizyt.map((wizyt, index) => (
-                        <div key={index} className="border p-4 rounded-md">
-                            <div
-                                className="flex justify-between cursor-pointer"
-                                onClick={() => toggleDetails(wizyt.id)}
-                            >
-                                <div>
-                                    <strong>{format(new Date(wizyt.data_wizyty), 'yyyy-MM-dd')}</strong> - {wizyt.kowal}
+            <div className=" w-1/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+
+                <div className="mt-8 w-full">
+                    <div
+                        className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                        <h1>Historia wizyt</h1>
+                    </div>
+                    <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div className="space-y-4">
+                            {kartotekaWizyt.map((wizyt, index) => (
+                                <div key={index} className="border p-4 rounded-md">
+                                    <div
+                                        className="flex justify-between cursor-pointer"
+                                        onClick={() => toggleDetails(wizyt.id)}
+                                    >
+                                        <div>
+                                            <strong>{format(new Date(wizyt.data_wizyty), 'yyyy-MM-dd')}</strong> - {wizyt.kowal}
+                                        </div>
+                                        <div>{expandedVisitId === wizyt.id ? '▼' : '►'}</div>
+                                    </div>
+                                    {expandedVisitId === wizyt.id && (
+                                        <div className="mt-2">
+                                            <p><strong>Konie:</strong> {getImionaKoni(wizyt.konie)}</p>
+                                            <p><strong>Notatka:</strong> {wizyt.notatka}</p>
+                                            <p><strong>Następna
+                                                wizyta:</strong> {format(new Date(wizyt.nastepna_wizyta), 'yyyy-MM-dd')}
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
-                                <div>{expandedVisitId === wizyt.id ? '▼' : '►'}</div>
-                            </div>
-                            {expandedVisitId === wizyt.id && (
-                                <div className="mt-2">
-                                    <p><strong>Konie:</strong> {getImionaKoni(wizyt.konie)}</p>
-                                    <p><strong>Notatka:</strong> {wizyt.notatka}</p>
-                                    <p><strong>Następna wizyta:</strong> {format(new Date(wizyt.nastepna_wizyta), 'yyyy-MM-dd')}</p>
-                                </div>
-                            )}
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@ const Page: React.FC = () => {
     }, []);
 
     return (
-        <main className="min-h-full p-24">
+        <main className=" flex flex-col min-h-screen p-24 justify-between">
             {/* Kontener z siatką, 2 kolumny w jednym rzędzie */}
             <div className="grid grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
                 {horses.map((horse, index) => (

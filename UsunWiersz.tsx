@@ -56,7 +56,7 @@ const UsunWiersz: React.FC = () => {
         <div>
             <form onSubmit={(e) => { e.preventDefault(); handleDelete(); }}>
                 <div >
-                    <label htmlFor="horse">Wybierz konia do usunięcia:<br></br></label>
+                    <label htmlFor="horse">Wybierz konia do usunięcia<br></br></label>
                     <select
                         className="custom-select"
                         id="horse"
@@ -74,7 +74,7 @@ const UsunWiersz: React.FC = () => {
                     </select>
                 </div>
                 <br></br>
-                <button className="alert-button" type="submit">Usuń</button>
+                <button className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white" type="submit">Usuń</button>
 
             </form>
             {message && <p>{message}</p>}
