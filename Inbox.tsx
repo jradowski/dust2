@@ -72,41 +72,44 @@ const Inbox: React.FC = () => {
     }, [userId]);
 
     return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>Skrzynka odbiorcza</h2>
-            {error && <p className={styles.error}>{error}</p>}
-            <div className={styles.messageList}>
-                {messages.length > 0 ? (
-                    messages.map((message) => (
-                        <div key={message.id} className={styles.messageCard}>
-                            <div className={styles.senderInfo}>
-                                <Image
-                                    src="/avatar.png" // Zamień na właściwą ścieżkę do avatara użytkownika, jeśli istnieje
-                                    alt="Avatar"
-                                    width={50}
-                                    height={50}
-                                    className={styles.avatar}
-                                />
-                                <div className="text-black">
-                                    <p className={styles.senderName}>
-                                        <strong>Od:</strong> {message.sender_name}
-                                    </p>
-                                    <p className={styles.timestamp}>
-                                        {new Date(message.created_at).toLocaleString()}
-                                    </p>
+        <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <div className={styles.container}>
+                {error && <p className={styles.error}>{error}</p>}
+                <div className={styles.messageList}>
+                    {messages.length > 0 ? (
+                        messages.map((message) => (
+
+                                <div key={message.id} className={styles.messageCard}>
+                                    <div className={styles.senderInfo}>
+                                        <Image
+                                            src="/avatar.png" // Zamień na właściwą ścieżkę do avatara użytkownika, jeśli istnieje
+                                            alt="Avatar"
+                                            width={50}
+                                            height={50}
+                                            className={styles.avatar}
+                                        />
+                                        <div className="text-black">
+                                            <p className={styles.senderName}>
+                                                <strong>Od:</strong> {message.sender_name}
+                                            </p>
+                                            <p className={styles.timestamp}>
+                                                {new Date(message.created_at).toLocaleString()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className={styles.messageContent}>{message.content}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <p className={styles.messageContent}>{message.content}</p>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p className={styles.noMessages}>Brak wiadomości</p>
-                )}
+
+                        ))
+                    ) : (
+                        <p className={styles.noMessages}>Brak wiadomości</p>
+                    )}
+                </div>
             </div>
         </div>
-    );
-};
+            );
+            };
 
-export default Inbox;
+            export default Inbox;

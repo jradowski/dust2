@@ -100,60 +100,82 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="my-profile-container p-4 text-center">
-            <h1 className="text-3xl font-bold mb-4">Mój Profil</h1>
-             {/* Podgląd danych użytkownika */}
-             <div className=" text-center drop-shadow-md text-2xl leading-8 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 my-10">
-             <h2 className="font-semibold text-3xl">Twoje dane</h2>
+        <div className="grid grid-cols-1 place-items-center gap-10 p-4 text-center">
+            <div className="text-center font-bold text-4xl p-2">
+                <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    Mój profil
+                </h1>
+            </div>
+            {/* Podgląd danych użytkownika */}
+            <div
+                className=" w-10/12 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-center text-xl font-medium">
+                <h2 className="font-semibold text-3xl">Twoje dane</h2>
                 <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
                 <p>Stanowisko: {profile.position || 'Nie podano'}</p>
                 <p>Status konta: {profile.status || 'Aktywne'}</p>
             </div>
 
             {/* Sekcja Zmiany Emaila */}
-            <div className=" text-center drop-shadow-md text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 " >
-                <label htmlFor="email" className="block text-3xl font-semibold">Nowy email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="custom-input"
-                />
-                <button
-                    onClick={handleEmailChange}
-                    className="admin_button"
-                >
-                    Zmień email
-                </button>
+            <div
+                className="w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+
+                <div className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div className="mt-2 mb-2">
+                        <label htmlFor="email"
+                               className="text-transparent font-bold text-3xl p-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Nowy email</label>
+                    </div>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="custom-input"
+                    />
+                    <button
+                        onClick={handleEmailChange}
+                        className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
+                        Zmień email
+                    </button>
+                </div>
             </div>
 
             {/* Sekcja Zmiany Hasła */}
-            <div className="text-center drop-shadow-md my-10 text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-                <label htmlFor="newPassword" className="block text-3xl font-semibold">Nowe hasło:</label>
-                <input
-                    type="password"
-                    id="newPassword"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    className="custom-input"
-                />
-                <button
-                    onClick={handlePasswordChange}
-                    className="admin_button"
-                >
-                    Zmień hasło
-                </button>
+            <div
+                className="w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div className="mt-2 mb-2">
+                        <label htmlFor="newPassword"
+                               className="text-transparent font-bold text-3xl p-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                            Nowe hasło</label>
+                    </div>
+                    <input
+                        type="password"
+                        id="newPassword"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        className="custom-input"
+                    />
+                    <button
+                        onClick={handlePasswordChange}
+                        className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
+                        Zmień hasło
+                    </button>
+                </div>
             </div>
 
             {/* Sekcja Usunięcia Konta */}
             <div
-                className="text-center items-center drop-shadow-md my-10 text-2xl bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-              
+                className="w-1/6 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+
+                <div className="text-center font-bold text-2xl mb-6">
+                    <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                        Usuwanie konta
+                    </h1>
+                </div>
                 <button
                     onClick={handleDeleteAccount}
-                    className="alert-button"
-                >
+                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-red-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2 ">
                     Usuń konto
                 </button>
             </div>

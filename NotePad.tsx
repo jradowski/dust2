@@ -119,14 +119,15 @@ const Notepad: React.FC = () => {
 
     // Wyświetlanie notatnika po zakończeniu ładowania
     return (
-        <div className="notepad-container">
+        <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <textarea
                 className="custom-textarea"
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Wpisz swoją notatkę tutaj..."
             /><br></br>
-            <button onClick={saveNote} className="custom-button">Zapisz</button>
+            <button onClick={saveNote}
+                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"            >Zapisz</button>
         </div>
     );
 };

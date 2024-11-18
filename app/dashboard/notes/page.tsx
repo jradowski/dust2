@@ -17,53 +17,60 @@ import AddTask from '@/AddTask';
 import TaskList from '@/TaskList';
 import TaskListDlaPracownikow from '@/TaskListDlaPracownikow';
 import '@/globals.css';
+import Notepad from "@/NotePad";
 
 const Home = async () => {
 
     return (
-        <main className="flex min-h-fit flex-col items-center justify-between p-24">
+        <main className="grid grid-cols-1 gap-10 min-h-fit flex-col place-items-center justify-between p-24">
 
 
             <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
-
-
-                <div>
-                    <div className="h-12 text-2xl text-center font-extrabold ">
-                        HorseMessage
-                    </div>
-                    <hr className="border-t-2 border-zinc-200 mt-1 mb-1 dark:border-gray-600 w-full"/>
+                className=" w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                    <h1>Horse message</h1>
                 </div>
 
                 <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-
                     <MessageSender/>
-                    <hr className="border-t-2 border-zinc-200 mt-2 mb-2 dark:border-gray-600 w-full"/>
-                    <Inbox/>
                 </div>
-
-
             </div>
+
             <div
-                className="content-center ml-8 w-full grid grid-cols-1 gap-10 rounded-tl-xl  text-xl text-justify mb-10 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600   ">
+                className=" w-2/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+
+
                 <div>
-                    <div className="h-12 text-2xl text-center font-extrabold ">
-                        Notatnik
+                    <div
+                        className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                        <h1>Skrzynka odbiorcza</h1>
                     </div>
-                    <hr className="border-t-2 border-zinc-200  dark:border-gray-600 w-full"/>
+
+                    <div className="">
+                        <Inbox/>
+                    </div>
+
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-2xl w-auto">
-
-                    </h1>
-                    <NotePad/>
-                </div>
             </div>
 
+
+            <div
+                className=" w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div>
+                    <div
+                        className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+                        <h1>Notes</h1>
+                    </div>
+
+                    <div className="">
+                        <Notepad/>
+                    </div>
+
+                </div>
+
+            </div>
 
 
         </main>

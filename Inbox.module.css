@@ -19,7 +19,7 @@
 .messageList {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .messageCard {
@@ -54,7 +54,7 @@
 }
 
 .messageContent {
-    font-size: 16px;
+    font-size: 22px;
 }
 
 .noMessages {

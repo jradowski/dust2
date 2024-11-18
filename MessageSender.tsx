@@ -66,7 +66,7 @@ const MessageSender: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
             {/* Dropdown with employees' names */}
             <div>
@@ -91,19 +91,15 @@ const MessageSender: React.FC = () => {
                 placeholder="Treść wiadomości"
                 value={messageContent}
                 onChange={(e) => setMessageContent(e.target.value)}
-            /><br/>
-
-            {/* Send button */}
-            <div
-                className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-left t mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 dark:bg-gradient-to-b dark:from-zinc-800 dark:bg-zinc-800 dark:border-b-2 dark:border-r-2 dark:border-gray-600 ">
-
-                <button className="custom-button" onClick={sendMessage}>
+            />
+                <button
+                    className="px-6 py-2 mt-2 mb-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"                    onClick={sendMessage}>
                     Wyślij
                 </button>
 
                
 
-            </div>
+
 
 
             {/* Error message */

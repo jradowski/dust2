@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Link href="/">
                         <img
                             src="/images/login.png"
-                            className="w-12 px-2 py-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                            className="w-12 p-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                             alt="Login Icon"
                         />
                     </Link>

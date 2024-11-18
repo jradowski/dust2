@@ -140,15 +140,17 @@ export default function KowalVisits() {
                     {/* Formularz z wyborem koni */}
                     <div className="mb-4">
                         <h2>Wybierz konie, które zostały podkute</h2>
-                        <div className="grid grid-cols-1 gap-4">
+                        <div className="grid grid-cols-1 gap-4 p-2 ">
                             {konie.map((koń) => (
-                                <label key={koń.id} className="">
+
+                                <label key={koń.id} className="grid grid-cols-2 border p-2 rounded-md">
+                                    <span className="ml-2">{koń.imie}</span>
                                     <input
                                         type="checkbox"
                                         checked={selectedKonie.includes(koń.id)}
                                         onChange={() => toggleKonie(koń.id)}
                                     />
-                                    <span className="ml-2">{koń.imie}</span>
+
                                 </label>
                             ))}
                         </div>
