@@ -153,14 +153,14 @@ const WorkSchedule: React.FC = () => {
             onChange={handleFilterChange}
             placeholder="Data"
         />
-        <h1>Miesiąc::</h1>
+        <h1>Miesiąc</h1>
         <input
             className="custom-input"
             type="month"
             name="month"
             value={filters.month}
             onChange={handleFilterChange}
-            placeholder="Miesiąc"
+            placeholder="rrrr-mm"
         />
         <h1>Pracownik:</h1>
         <select
