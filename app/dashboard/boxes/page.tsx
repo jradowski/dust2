@@ -49,7 +49,7 @@ const Page: React.FC = () => {
                     <Link href={`/dashboard/boxes/Box${index + 1}`} key={index}>
                         <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
 
-                            <h2 className="mb-3 pr-10 text-6xl font-bold">
+                            <h2 className="mb-3 pr-10 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold">
                                 {index + 1}{" "}
                             </h2>
 
@@ -69,7 +69,7 @@ const Page: React.FC = () => {
                             <div className="flex flex-row ">
 
                                 <div>
-                                    <p className="mb-3 px-2 text-4xl font-semibold ">
+                                    <p className="mb-3 px-2 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-semibold ">
                                         {horse.imie}
                                     </p>
                                 </div>

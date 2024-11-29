@@ -18,53 +18,48 @@ export default function AutoScrollingGallery() {
 
     return (
         <main className="grid place-items-center gap-12 font-sans mt-16 text-zinc-700 dark:text-white pb-6 pt-8">
-            {/* Sekcja z tekstem i obrazem */}
-            <div className="flex flex-col lg:flex-row w-10/12 gap-8 items-center">
-                <Image
-                    className="rounded-xl shadow-lg object-cover"
-                    src="/images/2.jpg"
-                    alt="Zdjęcie"
-                    width={600}
-                    height={400}
-                />
-                <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
-                    <h1>
-                    Stable Assistant to aplikacja, która rewolucjonizuje zarządzanie stajnią, sprawiając, że staje się ono prostsze i bardziej efektywne niż kiedykolwiek wcześniej. Dzięki niej możesz śledzić harmonogramy karmienia, terminy weterynaryjne i szczepień, zarządzać zadaniami dla personelu oraz kontrolować zapasy - wszystko w jednym miejscu. Wyobraź sobie, że masz pełną kontrolę nad każdym aspektem swojej stajni, bez konieczności przeskakiwania między różnymi narzędziami i notatkami. Stable Assistant to kompleksowe rozwiązanie, które pozwala zaoszczędzić czas i skupić się na tym, co naprawdę ważne - opiece nad końmi.
-                    </h1>
+            {/* Hero section */}
+            <div className="text-center py-12 bg-gradient-to-r text-black from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
+                <h1 className="text-4xl font-bold mb-4">
+                    Stable Assistant – Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
+                </h1>
+                <p className="text-lg mb-6">
+                    Dołącz do użytkowników, którzy uprościli swoje codzienne zadania dzięki naszej aplikacji.
+                </p>
+                <button
+                    className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold">
+                    Wypróbuj za darmo
+                </button>
+            </div>
+
+            {/* Benefits section */}
+            <div className="w-10/12 grid gap-8 lg:grid-cols-3">
+                {[
+                    {icon: "/images/schedule.png", title: "Planowanie", text: "Twórz harmonogramy opieki nad końmi."},
+                    {icon: "/images/tasks.png", title: "Zarządzanie", text: "Przydzielaj zadania personelowi."},
+                    {icon: "/images/analytics.png", title: "Kontrola", text: "Monitoruj terminy weterynaryjne."},
+                ].map(({icon, title, text}, idx) => (
+                    <div
+                        key={idx}
+                        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center text-center"
+                    >
+                        <Image src={icon} alt={title} width={80} height={80}/>
+                        <h2 className="text-xl font-bold mt-4">{title}</h2>
+                        <p className="text-sm mt-2">{text}</p>
                     </div>
+                ))}
             </div>
 
-            <hr className="border-t-2 border-zinc-300 dark:border-gray-700 w-11/12" />
 
-            {/* Kolejna sekcja z tekstem i obrazem */}
-            <div className="flex flex-col lg:flex-row-reverse w-10/12 gap-8 items-center">
-                <Image
-                    className="rounded-xl shadow-lg object-cover"
-                    src="/images/1.jpg"
-                    alt="Zdjęcie"
-                    width={600}
-                    height={400}
-                />
-                <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
-                    <h1>
-                    Dzięki intuicyjnemu interfejsowi i zaawansowanym funkcjom, Stable Assistant jest idealnym narzędziem zarówno dla małych, jak i dużych stajni. Możesz łatwo planować i monitorować codzienne zadania, a także długoterminowe projekty, zapewniając, że wszystko przebiega zgodnie z planem. Rozwijaj siebie i swoje konie, stając się lepszym dzięki nam, przy czym zaoszczędzisz czas i energię.
-
-                    Nie czekaj, dołącz do grona zadowolonych użytkowników i przekonaj się, jak łatwe może być zarządzanie stajnią z Stable Assistant! 
-                    </h1>
-                </div>
-            </div>
-
-            <hr className="border-t-2 border-zinc-300 dark:border-gray-700 w-11/12" />
-
-            {/* Sekcja galerii */}
-            <div className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 py-8 px-6 rounded-xl shadow-lg relative">
+            {/* Gallery */}
+            <div
+                className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 py-8 px-6 rounded-xl shadow-lg relative">
                 <div className="text-center font-bold text-2xl mb-6">
                     <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
-                        Galeria
+                        Zobacz w akcji
                     </h1>
                 </div>
 
-                {/* Strzałka w lewo */}
                 <button
                     onClick={() => scroll("left")}
                     className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg p-2 mx-10"
@@ -75,9 +70,9 @@ export default function AutoScrollingGallery() {
                 <div
                     ref={galleryRef}
                     className="flex gap-6 overflow-x-hidden scroll-snap-x snap-mandatory"
-                    style={{ scrollBehavior: "smooth" }}
+                    style={{scrollBehavior: "smooth"}}
                 >
-                    {["third", "12", "3", "fifth", "fourth", "second", "stable", "6", "2"].map(
+                    {["third", "zdj2", "3", "fifth", "zdj1", "second", "stable", "6", "2"].map(
                         (img, index) => (
                             <div
                                 key={index}
@@ -97,7 +92,6 @@ export default function AutoScrollingGallery() {
                     )}
                 </div>
 
-                {/* Strzałka w prawo */}
                 <button
                     onClick={() => scroll("right")}
                     className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg p-2 mx-10"
@@ -107,19 +101,19 @@ export default function AutoScrollingGallery() {
             </div>
 
 
-
-            {/* Sekcja kontaktowa */}
-            <div className="w-10/12">
-
-                <div
-                    className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
-                    <div
-                        className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
-                        <h1>Skontaktuj się z nami</h1>
-                    </div>
-                    <Komentarze/>
-                </div>
+            <div className="w-10/12 py-12 text-center">
+                <h2 className="text-2xl font-bold mb-6">Opinie naszych użytkowników</h2>
+                <Komentarze/>
             </div>
+
+            {/*
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white w-full py-8 text-center">
+                <h2 className="text-3xl font-bold mb-4">Gotowy na lepsze zarządzanie?</h2>
+                <button className="px-8 py-4 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-gray-100">
+                    Zacznij za darmo już teraz
+                </button>
+            </div>
+            */}
         </main>
     );
 }

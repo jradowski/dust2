@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </header>
 
             {/* Menu poziome */}
-            <nav className="w-full  bg-gray-300 text-gray-900 dark:bg-gray-800 dark:text-gray-200 shadow-md sticky top-0 z-50">
+            <nav className="w-full  bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
                 <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
                     <div className="flex flex-row justify-center gap-4 py-2">
                         <Link href="/dashboard" className="hover:underline">
@@ -139,8 +139,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-grow min-h-screen mt-10 p-6 bg-gray-200 dark:bg-gray-900">{children}</main>
 
             {/* Stopka */}
-            <footer className="w-full p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
+            <footer className=" w-full p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
                 <div>© All rights reserved</div>
+
+
             </footer>
         </UserProvider>
         </body>

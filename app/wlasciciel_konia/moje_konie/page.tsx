@@ -49,22 +49,24 @@ export default function Page() {
 
   return (
     <main className="min-h-full p-24">
-      <div className="flex flex-col gap-4 text-center lg:w-full lg:text-left">
+      <div className="grid grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
         {boxes.map((box) => (
           <Link key={box.nr_boksu} href={`/dashboard/boxes/Box${box.nr_boksu}`}>
             <div
-              className="group rounded-tl-xl text-2xl mx-2 bg-white border-r-2 border-b-2 border-zinc-200 p-5 
-                dark:bg-gradient-to-b dark:from-zinc-800 dark:border-gray-600"
+              className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center"
             >
-              <h2 className="mb-3 text-2xl font-semibold">
+              <h2 className="mb-3 pr-10 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold">
                 {box.nr_boksu}{" "}
-                <span className="inline-block transition-transform group-hover:translate-x-1">
-                  -&gt;
-                </span>
+
               </h2>
-              <p className="m-0 max-w-[30ch] text-base opacity-50">
-                {box.imie}
-              </p>
+              <div className="flex flex-row ">
+
+                <div>
+                  <p className="mb-3 px-2 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-semibold ">
+                    {box.imie}
+                  </p>
+                </div>
+              </div>
             </div>
           </Link>
         ))}

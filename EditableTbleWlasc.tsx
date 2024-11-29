@@ -113,7 +113,9 @@ const EditableTable: React.FC = () => {
   }
 
   return (
-    <div>
+    <div
+        className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
       <input
         className="custom-select"
         type="text"
@@ -154,7 +156,9 @@ const EditableTable: React.FC = () => {
               </tr>
             </tbody>
           </table>
-          <button className="custom-button" onClick={handleSave}>
+          <button
+              className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
+              onClick={handleSave}>
             Zapisz
           </button>
         </div>

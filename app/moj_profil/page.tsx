@@ -108,18 +108,24 @@ const MyProfile = () => {
             </div>
             {/* Podgląd danych użytkownika */}
             <div
-                className=" w-10/12 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-center text-xl font-medium">
-                <h2 className="font-semibold text-3xl">Twoje dane</h2>
-                <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
-                <p>Stanowisko: {profile.position || 'Nie podano'}</p>
-                <p>Status konta: {profile.status || 'Aktywne'}</p>
+                className="w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                <div
+                    className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <h2 className="font-semibold text-3xl">Twoje dane</h2>
+                    <div className="text-xl p-2">
+                        <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
+                        <p>Stanowisko: {profile.position || 'Nie podano'}</p>
+                        {/*<p>Status konta: {profile.status || 'Aktywne'}</p>*/}
+                    </div>
+                </div>
             </div>
 
             {/* Sekcja Zmiany Emaila */}
             <div
                 className="w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
-                <div className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div
+                    className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
                     <div className="mt-2 mb-2">
                         <label htmlFor="email"
                                className="text-transparent font-bold text-3xl p-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
@@ -143,7 +149,8 @@ const MyProfile = () => {
             {/* Sekcja Zmiany Hasła */}
             <div
                 className="w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
-                <div className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div
+                    className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
                     <div className="mt-2 mb-2">
                         <label htmlFor="newPassword"
                                className="text-transparent font-bold text-3xl p-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
