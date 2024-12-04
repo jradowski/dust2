@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </ProtectedSectionMenu>
 
                     <ProtectedSectionMenu requiredRole="pracownik">
-                        <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
                             <Link href="/dashboard" className="hover:underline">
                                 Stajnia
                             </Link>
