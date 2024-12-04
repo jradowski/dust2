@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </header>
 
             {/* Menu poziome */}
-            <nav className="bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
+            <nav className="relative text-center bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
                 {/* Przycisk mobilny */}
                 <div className="flex justify-between items-center p-4 md:hidden">
                     <div className="text-lg font-bold">Menu</div>
@@ -55,12 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Sekcja menu */}
                 <div
-                    className={`${
+                    className={`absolute w-full bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-lg transform transition-transform duration-300 ${
                         isMenuOpen ? "block" : "hidden"
-                    } md:flex flex-col md:flex-row md:justify-center gap-4 py-2`}
+                    } md:relative md:block`}
                 >
                     <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
-                        <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex flex-col md:flex-row gap-4 p-2">
                             <Link href="/dashboard" className="hover:underline">
                                 Stajnia
                             </Link>
@@ -110,29 +110,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             </Link>
                             <Link href="/dashboard/zadania" className="hover:underline">
                                 Moje zadania
-                            </Link>
-                            <Link href="/dashboard/notes" className="hover:underline">
-                                Wiadomości
-                            </Link>
-                            <Link href="/moj_profil" className="hover:underline">
-                                Mój profil
-                            </Link>
-                        </div>
-                    </ProtectedSectionMenu>
-
-                    <ProtectedSectionMenu requiredRole="wlasciciel_koni">
-                        <div className="flex flex-col md:flex-row gap-4">
-                            <Link href="/wlasciciel_konia" className="hover:underline">
-                                Home
-                            </Link>
-                            <Link href="/wlasciciel_konia/moje_konie" className="hover:underline">
-                                Moje konie
-                            </Link>
-                            <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel" className="hover:underline">
-                                Zarządzaj końmi
-                            </Link>
-                            <Link href="/wlasciciel_konia/treningi" className="hover:underline">
-                                Treningi
                             </Link>
                             <Link href="/dashboard/notes" className="hover:underline">
                                 Wiadomości
