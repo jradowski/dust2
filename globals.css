@@ -7,7 +7,9 @@
     text-wrap: balance;
   }
 }
-
+html {
+  transition: background-color 300ms ease, color 300ms ease;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

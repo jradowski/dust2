@@ -14,7 +14,7 @@ export default function page() {
 
                 <Link href="/dashboard/boxes">
                     <div
-                        className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
+                        className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                         <img src="/images/box.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
@@ -31,7 +31,7 @@ export default function page() {
 
                 <Link href="/dashboard/padoki">
                     <div
-                        className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
+                        className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                         <img src="/images/padok2.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
@@ -48,7 +48,7 @@ export default function page() {
 
                 <Link href="/dashboard/trening">
                     <div
-                        className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
+                        className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
                         <img src="/images/train.png" alt="Image 1"
                              className="w-16 m-2 h-auto"/>
 
@@ -70,7 +70,7 @@ export default function page() {
 
 
             <div
-                className="mt-20 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
+                className="mt-20 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium"
             >
                 <div
                     className=" flex flex-row rounded-tl-xl  text-2xl items-center justify-center t mx-2 bg-transparent p-5  ">

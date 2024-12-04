@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Sekcja menu */}
                 <div
-                    className={`absolute w-full bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-lg transform transition-transform duration-300 ${
+                    className={`absolute w-full bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 shadow-lg transform transition-transform duration-300 ${
                         isMenuOpen ? "block" : "hidden"
                     } md:relative md:block`}
                 >
@@ -128,7 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
 
             {/* Stopka */}
-            <footer className="w-full p-4 text-center bg-gradient-to-t from-gray-300 via-gray-200 to-gray-100 text-gray-700 dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
+            <footer className="w-full p-4 text-center  text-gray-700 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-gray-400">
                 <div>© All rights reserved</div>
             </footer>
         </UserProvider>
