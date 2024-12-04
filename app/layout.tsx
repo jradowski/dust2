@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Menu poziome */}
             <nav className="relative text-center bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
                 {/* Przycisk mobilny */}
-                <div className="flex justify-between items-center p-4 md:hidden">
+                <div className="flex justify-between text-center items-center p-4 md:hidden">
                     <div className="text-lg font-bold">Menu</div>
                     <button
                         onClick={toggleMenu}
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     } md:relative md:block`}
                 >
                     <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
-                        <div className="flex flex-col md:flex-row gap-4 p-2">
+                        <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
                             <Link href="/dashboard" className="hover:underline">
                                 Stajnia
                             </Link>
