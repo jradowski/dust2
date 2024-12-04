@@ -43,8 +43,8 @@ export default function AutoScrollingGallery() {
                         key={idx}
                         className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center text-center"
                     >
-                        <Image src={icon} alt={title} width={80} height={80}/>
-                        <h2 className="text-xl font-bold mt-4">{title}</h2>
+                        <Image src={icon} alt={title} width={80} height={80} className="dark:invert"/>
+                        <h2 className="text-xl font-bold mt-4 ">{title}</h2>
                         <p className="text-sm mt-2">{text}</p>
                     </div>
                 ))}
@@ -101,10 +101,15 @@ export default function AutoScrollingGallery() {
             </div>
 
 
-            <div className="w-10/12 py-12 text-center">
-                <h2 className="text-2xl font-bold mb-6">Opinie naszych użytkowników</h2>
-                <Komentarze/>
+            <div
+                className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 py-8 px-6 rounded-xl shadow-lg relative">
+                <div className=" text-center font-bold text-2xl mb-6">
+                    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">Opinie
+                        naszych użytkowników</h2>
+                    <Komentarze/>
+                </div>
             </div>
+
 
             {/*
             <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white w-full py-8 text-center">
