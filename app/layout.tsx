@@ -123,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
 
             {/* Sekcja główna */}
-            <main className="flex-grow min-h-screen mt-10 p-6 bg-gray-200 dark:bg-gray-900">
+            <main className="flex-grow min-h-screen mt-10 bg-gray-200 dark:bg-gray-900">
                 {children}
             </main>
 
