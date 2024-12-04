@@ -19,7 +19,7 @@ export default function AutoScrollingGallery() {
     return (
         <main className="grid place-items-center gap-12 font-sans mt-16 text-zinc-700 dark:text-white pb-6 pt-8">
             {/* Hero section */}
-            <div className="text-center py-12 bg-gradient-to-r text-black from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
+            <div className="text-center py-12 bg-gradient-to-r text-black from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 dark:text-white">
                 <h1 className="text-4xl font-bold mb-4">
                     Stable Assistant – Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
                 </h1>
