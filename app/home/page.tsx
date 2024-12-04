@@ -17,13 +17,13 @@ export default function AutoScrollingGallery() {
     };
 
     return (
-        <main className="grid place-items-center gap-12 font-sans mt-16 text-zinc-700 dark:text-white pb-6 pt-8">
+        <main className="grid place-items-center gap-12 text-zinc-700 dark:text-white pb-6 pt-8">
             {/* Hero section */}
             <div className="text-center py-12 bg-gradient-to-r text-black from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
-                <h1 className="text-4xl font-bold mb-4">
+                <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4">
                     Stable Assistant – Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
                 </h1>
-                <p className="text-lg mb-6">
+                <p className="lg:text-lg sm:text-sm mb-6">
                     Dołącz do użytkowników, którzy uprościli swoje codzienne zadania dzięki naszej aplikacji.
                 </p>
                 <button
