@@ -31,7 +31,7 @@ export default function Page() {
 
                 <Link href="/dashboard/trening">
                     <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium">
-                        <Image src="/images/train.png" alt="Train image" width={64} height={64} className="m-2 h-auto" />
+                        <Image src="/images/train.png" alt="Train image" width={72} height={64} className="m-2 h-auto" />
                         <h2 className="text-xl sm:text-2xl font-semibold">
                             Trening
                             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none"> -&gt; </span>
