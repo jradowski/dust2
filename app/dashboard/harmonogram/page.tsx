@@ -18,7 +18,7 @@ export default function page() {
                 <ProtectedSection requiredRole="wlasciciel_stajni">
 
                     {/* Harmonogram pracy */}
-                    <section className="w-full max-w-4xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <section className="w-full max-w-7xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                         <h2 className="text-transparent text-center font-bold text-xl md:text-3xl bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                             Harmonogram pracy
                         </h2>
@@ -28,7 +28,7 @@ export default function page() {
                     </section>
 
                     {/* Dodaj godziny pracy */}
-                    <section className="w-full max-w-4xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <section className="w-full max-w-7xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                         <h2 className="text-transparent text-center font-bold text-xl md:text-3xl mb-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                             Dodaj godziny pracy dla harmonogramu
                         </h2>
@@ -38,7 +38,7 @@ export default function page() {
                     </section>
 
                     {/* Harmonogram tygodniowy */}
-                    <section className="w-full max-w-4xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <section className="w-full max-w-7xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                         <h2 className="text-transparent text-center font-bold text-xl md:text-3xl mb-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                             Harmonogram tygodniowy
                         </h2>
@@ -48,7 +48,7 @@ export default function page() {
                     </section>
 
                     {/* Przypisz zadanie */}
-                    <section className="w-full max-w-4xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <section className="w-full max-w-7xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                         <h2 className="text-transparent text-center font-bold text-xl md:text-3xl mb-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                             Przypisz zadanie dla pracownika
                         </h2>
@@ -58,7 +58,7 @@ export default function page() {
                     </section>
 
                     {/* Lista zadań */}
-                    <section className="w-full max-w-4xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                    <section className="w-full max-w-7xl bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                         <h2 className="text-transparent text-center font-bold text-xl md:text-3xl mb-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                             Lista zadań dla użytkowników
                         </h2>
