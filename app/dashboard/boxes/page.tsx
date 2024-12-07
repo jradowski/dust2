@@ -42,43 +42,42 @@ const Page: React.FC = () => {
     }, []);
 
     return (
-        <main className=" flex flex-col min-h-screen p-24 justify-between">
-            {/* Kontener z siatką, 2 kolumny w jednym rzędzie */}
-            <div className="grid grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
+        <main className="flex flex-col min-h-screen p-4 sm:p-6 md:p-8 lg:p-24 justify-between">
+            {/* Kontener z siatką */}
+            <div
+                className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
                 {horses.map((horse, index) => (
                     <Link href={`/dashboard/boxes/Box${index + 1}`} key={index}>
-                        <div className="bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
-
-                            <h2 className="mb-3 pr-10 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold">
-                                {index + 1}{" "}
+                        <div
+                            className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex flex-col items-center md:flex-row">
+                            <h2 className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                                {index + 1}
                             </h2>
 
-                            <div className="flex-shrink-0 w-36 h-36 mr-4">
+                            <div className="flex-shrink-0 w-36 h-36 my-3 ml-2 md:my-0 md:mr-4">
                                 {horse.image_url ? (
                                     <Image
                                         src={horse.image_url}
                                         alt={`Zdjęcie konia ${horse.imie}`}
                                         width={200}
                                         height={200}
-                                        className="rounded-lg object-cover aspect-square drop-shadow-lg dark:drop-shadow-lg" // Zmienione na 'rounded-lg'
+                                        className="rounded-lg object-cover aspect-square drop-shadow-lg dark:drop-shadow-lg"
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-gray-300 rounded-lg"/> // Zmienione na 'rounded-lg'
+                                    <div className="w-full h-full bg-gray-300 rounded-lg"/>
                                 )}
                             </div>
-                            <div className="flex flex-row ">
-
-                                <div>
-                                    <p className="mb-3 px-2 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-semibold ">
-                                        {horse.imie}
-                                    </p>
-                                </div>
+                            <div className="text-center md:text-left">
+                                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">
+                                    {horse.imie}
+                                </p>
                             </div>
                         </div>
                     </Link>
                 ))}
             </div>
         </main>
+
     );
 };
 

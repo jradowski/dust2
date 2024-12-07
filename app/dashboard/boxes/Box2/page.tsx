@@ -38,7 +38,7 @@ const Home = async () => {
 
 
             <div
-                className="grid grid-cols-2 gap-5 rounded-tl-xl mb-10 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium  ">
+                className="grid grid-cols-2 gap-5 rounded-tl-xl mb-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium  ">
 
                 <div className="columns-1 flex flex-col gap-5 h-1/2 ">
                     <div>
@@ -89,7 +89,7 @@ const Home = async () => {
 
             </div>
             <div
-                className="w-auto grid grid-cols-2 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
+                className="w-auto grid grid-cols-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                 <div className="mt-2 border-r-2 border-gray-600 pr-5">
                     <h1 className="text-2xl">Ostatnia wizyta kowala:</h1>
                     <h2 className="text-opacity-50 text-xl ">{data.kowal}</h2>
@@ -101,7 +101,7 @@ const Home = async () => {
             </div>
             <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-11/12 my-16  "/>
             <div
-                className="content-center ml-8 grid grid-cols-1 gap-20 bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
+                className="content-center m-8 grid grid-cols-1 gap-20 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                 <div className="mt-2">
                     <h1 className="text-xl font-bold">Plan treningowy: </h1>
                     <h2 className="text-lg">

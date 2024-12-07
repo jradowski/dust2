@@ -62,7 +62,7 @@ export default function Page() {
         <main className="flex min-h-screen font-sans flex-col items-center justify-between p-24">
             {/* Sekcja wyświetlająca grupy */}
             <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
-                <Link href="/dashboard/boxes/Grupa1">
+                <Link href="/dashboard/padoki">
                     <div className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                     <h2 className="mb-3 text-3xl font-semibold">
                             Grupa pierwsza
@@ -84,7 +84,7 @@ export default function Page() {
 
             {/* Sekcja wyświetlająca drugą grupę */}
             <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
-                <Link href="/dashboard/boxes/Grupa2">
+                <Link href="/dashboard/padoki">
                     <div className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                         <h2 className="mb-3 text-3xl font-semibold">
                             Grupa druga (ogiery)

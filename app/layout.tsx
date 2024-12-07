@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </header>
 
             {/* Menu poziome */}
-            <nav className="relative text-center bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
+            <nav className="relative text-center font-bold bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
                 {/* Przycisk mobilny */}
                 <div className="flex justify-between text-center items-center p-4 md:hidden">
                     <div className="text-lg font-bold">Menu</div>
