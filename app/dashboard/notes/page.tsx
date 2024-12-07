@@ -14,7 +14,7 @@ import TreningUser from '@/TreningUser';
 import TreningUserLuzak from '@/TreningUserLuzak';
 import WorkScheduleWeeklyDlaPracownikow from '@/WorkScheduleWeeklyDlaPracownikow';
 import AddTask from '@/AddTask';
-import TaskList from '@/TaskList';
+import TaskList from '@/app/dashboard/harmonogram/TaskList';
 import TaskListDlaPracownikow from '@/TaskListDlaPracownikow';
 import '@/globals.css';
 import Notepad from "@/NotePad";

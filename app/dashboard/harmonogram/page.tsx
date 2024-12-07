@@ -6,7 +6,7 @@ import AddSchedule from '@/AddSchedule';
 import WorkScheduleWeekly from '@/WorkScheduleWeekly';
 import '@/Schedule.css';
 import AddTask from '@/AddTask';
-import TaskList from '@/TaskList';
+import TaskList from '@/app/dashboard/harmonogram/TaskList';
 import { UserProvider } from '@/UserContext';
 import ProtectedSection from '@/ProtectedSection';
 import { useUser } from '@/UserContext';

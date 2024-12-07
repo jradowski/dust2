@@ -58,7 +58,7 @@ const TaskList: React.FC = () => {
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700">
           {/* Nagłówek */}
-          <thead className="bg-blue-200 dark:bg-blue-800">
+          <thead className="bg-blue-300 dark:bg-blue-800">
           <tr>
             <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Tytuł</th>
             <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Treść</th>
@@ -68,8 +68,8 @@ const TaskList: React.FC = () => {
           </thead>
           {/* Treść */}
           <tbody>
-          {tasks.map((task, index) => (
-              <tr key={task.id} className={`hover:bg-gray-100 dark:hover:bg-gray-700 ${index % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-900'}`}>
+          {tasks.map((task) => (
+              <tr key={task.id} className="bg-white dark:bg-gray-800">
                 <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{task.title}</td>
                 <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-sm">{task.description}</td>
                 <td className="px-4 py-2 text-gray-800 dark:text-gray-200">{task.due_date}</td>
