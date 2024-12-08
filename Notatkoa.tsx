@@ -91,7 +91,7 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
                 // Przycisk "Zapisz" do zapisania notatki
                 <button
                     onClick={handleSave}
-                    className="custom-button"
+                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
                 >
                     Zapisz
                 </button>
@@ -99,7 +99,7 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
                 // Przycisk "Edytuj" do rozpoczęcia edycji
                 <button
                     onClick={handleEdit}
-                    className="custom-button"
+                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
                 >
                     Edytuj
                 </button>

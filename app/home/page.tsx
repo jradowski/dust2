@@ -60,17 +60,9 @@ export default function AutoScrollingGallery() {
                     </h1>
                 </div>
 
-                <button
-                    onClick={() => scroll("left")}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg p-2 mx-10"
-                >
-                    &lt;
-                </button>
-
                 <div
                     ref={galleryRef}
-                    className="flex gap-6 overflow-x-hidden scroll-snap-x snap-mandatory"
-                    style={{scrollBehavior: "smooth"}}
+                    className="flex gap-6 overflow-x-auto scroll-snap-x  "
                 >
                     {["third", "zdj2", "3", "fifth", "zdj1", "second", "stable", "6", "2"].map(
                         (img, index) => (
@@ -91,13 +83,6 @@ export default function AutoScrollingGallery() {
                         )
                     )}
                 </div>
-
-                <button
-                    onClick={() => scroll("right")}
-                    className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg p-2 mx-10"
-                >
-                    &gt;
-                </button>
             </div>
 
 

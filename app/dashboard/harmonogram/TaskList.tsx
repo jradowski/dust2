@@ -56,9 +56,9 @@ const TaskList: React.FC = () => {
 
   return (
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700">
+        <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
           {/* Nagłówek */}
-          <thead className="bg-blue-300 dark:bg-blue-800">
+          <thead className="bg-blue-600">
           <tr>
             <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Tytuł</th>
             <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Treść</th>
