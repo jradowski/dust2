@@ -63,7 +63,7 @@ export default function Page() {
             {/* Sekcja wyświetlająca grupy */}
             <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
                 <Link href="/dashboard/padoki">
-                    <div className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
+                    <div className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                     <h2 className="mb-3 text-3xl font-semibold">
                             Grupa pierwsza
                         </h2>
@@ -75,7 +75,7 @@ export default function Page() {
             {/* Sekcja wyświetlająca padoki */}
             <div className="mb-32 gap-2 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
                 {padokData.slice(0, 3).map((data, index) => (
-                    <div key={index} className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
+                    <div key={index} className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                         <h2 className="mb-3 text-2xl font-semibold">Padok nr {index + 1}</h2>
                         <p className="m-0 max-w-[30ch] text-sm opacity-50">{data}</p>
                     </div>
@@ -85,7 +85,7 @@ export default function Page() {
             {/* Sekcja wyświetlająca drugą grupę */}
             <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
                 <Link href="/dashboard/padoki">
-                    <div className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
+                    <div className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                         <h2 className="mb-3 text-3xl font-semibold">
                             Grupa druga (ogiery)
                         </h2>
@@ -97,7 +97,7 @@ export default function Page() {
             {/* Wyświetlanie kolejnych padoków */}
             <div className="mb-32 grid text-center gap-2 lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-3 lg:text-left">
                 {padokData.slice(3).map((data, index) => (
-                    <div key={index} className=" bg-gradient-to-r from-blue-300 via-blue-200 to-blue-300 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
+                    <div key={index} className=" bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg justify-center text-lg font-medium grid-cols-1 gap-2 ">
                         <h2 className="mb-3 text-2xl font-semibold">Padok nr {index + 4}</h2>
                         <p className="m-0 max-w-[30ch] text-sm opacity-50">{data}</p>
                     </div>

@@ -17,10 +17,10 @@ export default function AutoScrollingGallery() {
     };
 
     return (
-        <main className="grid place-items-center gap-12 text-zinc-700 dark:text-white pb-6 pt-8">
+        <main className="grid place-items-center gap-12 text-zinc-700 dark:text-white pt-8">
             {/* Hero section */}
             <div className="text-center text-black py-12 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
-                <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4">
+                <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
                     Stable Assistant – Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
                 </h1>
                 <p className="lg:text-lg sm:text-sm mb-6">
@@ -96,14 +96,20 @@ export default function AutoScrollingGallery() {
             </div>
 
 
-            {/*
-            <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white w-full py-8 text-center">
-                <h2 className="text-3xl font-bold mb-4">Gotowy na lepsze zarządzanie?</h2>
-                <button className="px-8 py-4 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-gray-100">
-                    Zacznij za darmo już teraz
-                </button>
+            <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full py-8 text-center">
+                <h1 className="lg:text-4xl sm:text-3xl font-bold  p-2">
+                   Sprawdź też wersję mboilną!
+                </h1>
+                <p className="lg:text-lg sm:text-sm mb-6">
+                    Dla twojej wygody zarządzaj stajnią z swojego telefonu już teraz z dowolnego miejsca.
+                </p>
+
+                <div className="grid place-items-center w-full">
+                    <Image src="/images/kodqr.png" alt={"kodqr"} width={150} height={150} className="rounded-xl shadow-lg"/>
+                </div>
+
             </div>
-            */}
+
         </main>
     );
 }
