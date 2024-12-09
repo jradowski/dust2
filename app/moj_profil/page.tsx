@@ -173,7 +173,7 @@ const MyProfile = () => {
 
             {/* Sekcja Usunięcia Konta */}
             <div
-                className="w-1/6 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                className="w-fit bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
                 <div className="text-center font-bold text-2xl mb-6">
                     <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">

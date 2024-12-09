@@ -23,13 +23,13 @@ export default function AutoScrollingGallery() {
                 <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
                     Stable Assistant – Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
                 </h1>
-                <p className="lg:text-lg sm:text-sm mb-6">
+                <p className="lg:text-lg sm:text-sm my-6">
                     Dołącz do użytkowników, którzy uprościli swoje codzienne zadania dzięki naszej aplikacji.
                 </p>
-                <button
+                {/* <button
                     className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold">
-                    Wypróbuj za darmo
-                </button>
+                     Wypróbuj za darmo
+                </button>*/}
             </div>
 
             {/* Benefits section */}

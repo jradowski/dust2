@@ -8,17 +8,16 @@ import supabase from '@/supabaseClient.js';
 import { useEffect, useState } from 'react';
 import TreningTabela from '@/TreningTabela';
 import EditableTable from '@/EditableTable';
-import '@/boxtabela.css';
 
 
 export default function page() {
 
     return (
-        <main className="flex flex-col gap-8 items-center text-black  dark:text-zinc-500  justify-between ">
+        <main className="flex p-4 flex-col gap-8 items-center text-black  dark:text-zinc-500  justify-between ">
 
 
             <div
-                className="content-center  w-11/12 grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+                className="content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
 
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Tygodniowy plan treningowy</h1>
@@ -29,7 +28,7 @@ export default function page() {
             </div>
 
             <div
-                className="content-center w-11/12 grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
+                className="content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
                 <div

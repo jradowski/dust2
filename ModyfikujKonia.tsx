@@ -297,7 +297,7 @@ const ModyfikujKonia: React.FC = () => {
       <div>
           <label htmlFor="horse">Wybierz konia do modyfikacji:</label>
           <select
-              className="custom-select"
+              className="w-full px-4 py-2 border border-gray-300 text-black rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
             id="horse"
             name="horse"
             value={selectedHorseId || ''}

@@ -22,11 +22,11 @@ import Notepad from "@/NotePad";
 const Home = async () => {
 
     return (
-        <main className="grid grid-cols-1 gap-10 min-h-fit flex-col place-items-center justify-between p-24">
+        <main className="grid grid-cols-1 gap-10 min-h-fit flex-col place-items-center justify-between p-4">
 
 
             <div
-                className=" w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                className=" w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                 <div
                     className="text-transparent text-center font-bold text-3xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                     <h1>Horse message</h1>
@@ -38,7 +38,7 @@ const Home = async () => {
             </div>
 
             <div
-                className=" w-2/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                className=" w-fit bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
 
                 <div>

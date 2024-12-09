@@ -9,7 +9,7 @@ import write from '@/write.png';
 
 export default function page() {
     return (
-        <main className=" items-center justify-between p-24">
+        <main className=" items-center justify-between p-4">
         <UserProvider>
         <ProtectedSection requiredRole="wlasciciel_stajni"> 
             <div className="mb-32 flex flex-col gap-4 text-center lg:mb-0 lg:w-full  lg:grid-cols-3 lg:text-left">

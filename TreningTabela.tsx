@@ -49,24 +49,27 @@ const TreningTable: React.FC = () => {
     }
 
     return (
-        <table>
-            <thead>
-            <tr>
-                {columns.map((column) => (
-                    <th key={column} className="table-header">{column}</th>
-                ))}
-            </tr>
-            </thead>
-            <tbody>
-            {data.map((row, rowIndex) => (
-                <tr key={rowIndex}>
+        <div className="overflow-x-auto">
+            <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+                <thead className="bg-blue-600">
+                <tr >
                     {columns.map((column) => (
-                        <td key={column} className="table-cell">{row[column]}</td>
+                        <th key={column} className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">{column}</th>
                     ))}
                 </tr>
-            ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {data.map((row, rowIndex) => (
+                    <tr key={rowIndex} className="bg-white dark:bg-gray-800">
+                        {columns.map((column) => (
+                            <td key={column} className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{row[column]}</td>
+                        ))}
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+
+        </div>
     );
 };
 

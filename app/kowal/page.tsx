@@ -130,7 +130,7 @@ export default function KowalVisits() {
     return (
         <div className="flex flex-col gap-10 items-center p-4">
 
-            <div className=" w-1/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+            <div className="  bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
                 <div
                     className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
                     <h1>Wizyta kowala</h1>
@@ -213,7 +213,7 @@ export default function KowalVisits() {
             </div>
 
             {/* Kartoteka wizyt kowala */}
-            <div className=" w-1/3 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+            <div className=" bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
                 <div className="mt-8 w-full">
                     <div
