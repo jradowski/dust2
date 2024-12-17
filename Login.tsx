@@ -63,12 +63,12 @@ const Login: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavigate })
                         <div className="flex flex-row gap-4 mt-6 mb-2">
 
                             <button type="submit"
-                                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white">Zaloguj
+                                    className="px-6 py-2 w-full text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white">Zaloguj
                             </button>
-                            <button onClick={() => onNavigate('signup')}
+                            {/* <button onClick={() => onNavigate('signup')}
                                     className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white">Załóż
                                 konto
-                            </button>
+                            </button>*/}
                         </div>
                     </form>
                 </div>

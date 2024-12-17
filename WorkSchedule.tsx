@@ -196,69 +196,72 @@ const WorkSchedule: React.FC = () => {
       </div>
 
       {showSchedule && ( // Tabela wyświetlana po kliknięciu przycisku "Szukaj"
-          <table>
-            <thead>
-            <tr>
-              <th>Data</th>
-              <th>Godzina rozpoczęcia</th>
-              <th>Godzina zakończenia</th>
-              <th>Pracownik</th>
-              <th>Stanowisko</th>
-              <th>Akcje</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredSchedule.map((entry) => (
-              <tr key={entry.id}>
-                <td>{entry.date}</td>
-                <td>{entry.start_time.slice(0, 5)}</td>
-                <td>{entry.end_time.slice(0, 5)}</td>
-                <td>{`${entry.employee.first_name} ${entry.employee.last_name}`}</td>
-                <td>{entry.employee.position}</td>
-                <td>
-                  <button className="button-table" onClick={() => handleEdit(entry)}>Edytuj</button>
-                  <button className="button-table" onClick={() => deleteScheduleEntry(entry.id)}>Usuń</button>
-                </td>
+          <div className="overflow-x-auto">
+            <table
+                className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+              <thead className="bg-blue-600">
+              <tr>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Data</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Godzina rozpoczęcia</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Godzina zakończenia</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Pracownik</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Stanowisko</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Akcje</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+              {filteredSchedule.map((entry) => (
+                  <tr key={entry.id} className="bg-white dark:bg-gray-800">
+                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{entry.date}</td>
+                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{entry.start_time.slice(0, 5)}</td>
+                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{entry.end_time.slice(0, 5)}</td>
+                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{`${entry.employee.first_name} ${entry.employee.last_name}`}</td>
+                    <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{entry.employee.position}</td>
+                    <td className="">
+                      <button className="px-2 py-2 m-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2" onClick={() => handleEdit(entry)}>Edytuj</button>
+                      <button className="px-2 py-2 m-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2" onClick={() => deleteScheduleEntry(entry.id)}>Usuń</button>
+                    </td>
+                  </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
       )}
 
       {editEntry && (
-        <div>
-          <h3>Edytuj wpis</h3>
-          <input
-            className="custom-input"
-            type="date"
-            name="date"
-            value={editEntry.date}
-            onChange={handleChange}
-          />
-          <input
-            className="custom-input"
-            type="time"
-            name="start_time"
-            value={editEntry.start_time}
-            onChange={handleChange}
-          />
-          <input
-            className="custom-input"
-            type="time"
-            name="end_time"
-            value={editEntry.end_time}
-            onChange={handleChange}
-          />
-          <select
-            className="custom-select"
-            name="employee_id"
-            value={editEntry.employee_id}
-            onChange={handleChange}
-          >
-            {employees.map((employee) => (
-              <option key={employee.id} value={employee.id}>
-                {`${employee.first_name} ${employee.last_name}`}
-              </option>
+          <div>
+            <h3>Edytuj wpis</h3>
+            <input
+                className="custom-input"
+                type="date"
+                name="date"
+                value={editEntry.date}
+                onChange={handleChange}
+            />
+            <input
+                className="custom-input"
+                type="time"
+                name="start_time"
+                value={editEntry.start_time}
+                onChange={handleChange}
+            />
+            <input
+                className="custom-input"
+                type="time"
+                name="end_time"
+                value={editEntry.end_time}
+                onChange={handleChange}
+            />
+            <select
+                className="custom-select"
+                name="employee_id"
+                value={editEntry.employee_id}
+                onChange={handleChange}
+            >
+              {employees.map((employee) => (
+                  <option key={employee.id} value={employee.id}>
+                    {`${employee.first_name} ${employee.last_name}`}
+                  </option>
             ))}
           </select>
           <br></br>

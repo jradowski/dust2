@@ -26,14 +26,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Nagłówek */}
             <header className="w-full p-4 shadow-lg font-semibold text-lg bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 flex flex-row justify-between items-center">
                 <div className="text-3xl font-bold text-blue-700 dark:text-blue-400">
-                    <Link href="/home">Stable Assistant ♘</Link>
+                    <Link href="/">Stable Assistant ♘</Link>
                 </div>
                 <div className="flex flex-row items-center gap-4">
                     <ThemeToggle />
-                    <Link href="/">
+                    <Link href="/home">
                         <img
                             src="/images/login.png"
-                            className="w-12 p-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                            className="w-12 p-2 bg-gray-200 rounded-full hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 "
                             alt="Login Icon"
                         />
                     </Link>
