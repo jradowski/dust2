@@ -21,8 +21,8 @@ export default function AutoScrollingGallery() {
             {/* Hero section */}
             <div className="text-center text-black py-12 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
                 <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
-                    Stable Assistant 
-                    Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!
+                    Stable Assistant <br></br>
+                    Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!<br></br>
                     Wszystko to możliwe bez wychodzenia z domu!
                 </h1>
                 <p className="lg:text-lg sm:text-sm my-6">
