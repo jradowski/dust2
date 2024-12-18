@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Komentarze from "@/Komentarze";
-import { Link } from 'react-router-dom';
+import Link from "next/link";
 export default function AutoScrollingGallery() {
     const galleryRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,7 +28,7 @@ export default function AutoScrollingGallery() {
                 <p className="lg:text-lg sm:text-sm my-6">
                     Dołącz do użytkowników, którzy uprościli swoje codzienne zadania dzięki naszej aplikacji!
                 </p>
-                <Link to="/home">
+                <Link href="/home">
                 <button
                     className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold">
                     Jesteś użytkownikiem? 
