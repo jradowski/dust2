@@ -83,6 +83,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             <Link href="/moj_profil" className="hover:underline">Mój profil</Link>
                         </div>
                     </ProtectedSectionMenu>
+
+                    <ProtectedSectionMenu requiredRole="wlasciciel_koni">
+                    <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
+
+                        <Link href="/wlasciciel_konia" className="hover:underline">
+                            Home
+                        </Link>
+                        <Link href="/wlasciciel_konia/moje_konie" className="hover:underline">
+                            Moje konie
+                        </Link>
+                        <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel" className="hover:underline">
+                            Zarządzaj końmi
+                        </Link>
+                        <Link href="/wlasciciel_konia/treningi" className="hover:underline">
+                            Treningi
+                        </Link>
+                        <Link href="/dashboard/notes" className="hover:underline">
+                            Wiadomości
+                        </Link>
+                        <Link href="/moj_profil" className="hover:underline">
+                            Mój profil
+                        </Link>
+                    </div>
+                </ProtectedSectionMenu>
                 </div>
             </nav>
 
