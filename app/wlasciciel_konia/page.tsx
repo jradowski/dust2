@@ -99,9 +99,10 @@ export default function page() {
                 </div>
                 <hr className="border-t-2 border-zinc-200 dark:border-gray-600 lg:w-full my-16 "/>
                 <div>
-                    <h1 className="font-bold text-left text-2xl w-auto">
-                        Termin płatności: /tutaj data/
+                    <h1 className="font-bold text-center text-2xl w-auto">
+
                     </h1>
+                    Termin płatnośći
                 </div>
 
 

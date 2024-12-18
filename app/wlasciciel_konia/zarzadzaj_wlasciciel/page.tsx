@@ -9,10 +9,7 @@ import ModyfikujKonia from "@/ModyfikujKonia";
 const Home = async () => {
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-
-
-            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <main className="flex min-h-screen flex-col items-center justify-between p-4">
 
 
                 <div
@@ -33,7 +30,6 @@ const Home = async () => {
 
             </main>
 
-        </main>
 
 
     )

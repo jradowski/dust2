@@ -133,19 +133,19 @@ const EditableTable: React.FC = () => {
         </ul>
       )}
       {selectedRecord && (
-        <div>
-          <table>
-            <thead>
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+            <thead className="bg-blue-600">
               <tr>
                 {columns.map((column) => (
-                  <th key={column}>{column}</th>
+                  <th key={column}  className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">{column}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className="bg-white dark:bg-gray-800">
                 {columns.map((column) => (
-                  <td key={column}>
+                  <td key={column}  className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
                     <input
                       type="text"
                       value={selectedRecord[column]}
