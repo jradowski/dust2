@@ -22,7 +22,7 @@ export default function AutoScrollingGallery() {
             <div className="text-center text-black py-12 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
                 <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
                     Stable Assistant  </h1>
-                    <h2 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
+                    <h2 className="lg:text-2xl sm:text-2xl font-bold mb-4 p-2">
                     Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!<br></br>
                     Wszystko to możliwe bez wychodzenia z domu!
                     </h2>
