@@ -70,8 +70,9 @@ export default function Page() {
                             className="rounded-lg object-cover aspect-square drop-shadow-lg dark:drop-shadow-lg"
                         />
                     ) : (
-                        <div className="w-full h-full bg-gray-300 rounded-lg" />
+                        <div className=" w-full h-full bg-gray-300 rounded-lg" />
                     )}
+
                   </div>
 
                   <div className="text-center md:text-left">
