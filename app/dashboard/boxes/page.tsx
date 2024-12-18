@@ -44,12 +44,10 @@ const Page: React.FC = () => {
     return (
         <main className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-24 justify-between">
             {/* Kontener z siatką */}
-            <div
-                className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
                 {horses.map((horse, index) => (
                     <Link href={`/dashboard/boxes/Box${index + 1}`} key={index}>
-                        <div
-                            className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex flex-col items-center md:flex-row">
+                        <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex flex-col items-center md:flex-row">
                             <h2 className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                                 {index + 1}
                             </h2>
@@ -66,7 +64,7 @@ const Page: React.FC = () => {
                                 ) : (
                                     <div className="w-full h-full bg-gray-300 rounded-lg"/>
                                 )}
-                            </div>
+                             </div>
                             <div className="text-center md:text-left">
                                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">
                                     {horse.imie}
