@@ -1,95 +1,70 @@
+'use client';
+import Link from "next/link";
+import ProtectedSectionMenu from "@/ProtectedSectionMenu";
+import { useState } from "react";
 
-"use client";
+const Menu = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-import { useState } from 'react';
-import Link  from "next/link";
-
-const Dropdown: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
-        <div className="relative inline-block text-left">
-            <div>
+        <nav className="relative text-center font-bold bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 shadow-md sticky top-0 z-50">
+            <div className="flex justify-between text-center items-center p-4 md:hidden">
+                <div className="text-lg font-bold">Menu</div>
                 <button
-                    type="button"
-                    className="inline-flex justify-center w-full rounded-md border-2 border-gray-600 shadow-sm px-4 py-2 bg-gray-700 text-sm font-medium text-white hover:bg-gray-800 hover:bg-opacity-50 hover:border-gray-400 "
-                    id="options-menu"
-                    aria-expanded="true"
-                    aria-haspopup="true"
-                    onClick={toggleDropdown}
+                    onClick={toggleMenu}
+                    className="text-gray-800 dark:text-gray-100 focus:outline-none"
                 >
-                    Menu
-                    <svg
-                        className="-mr-1 ml-2 h-5 w-5 "
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
+                    {isMenuOpen ? "✖" : "☰"}
                 </button>
             </div>
 
-            {isOpen && (
-                <div
-                    className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gray-500 ring-1 ring-black ring-opacity-5 dark:bg-blue-900"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="options-menu"
-                >
-                    <div className="py-1 " role="none">
-                        <div
-                            className="block w-full text-center text-white px-4 py-2 text-sm  hover:bg-gray-600 dark:hover:bg-blue-500 dark:hover:bg-opacity-50 dark:hover:border-blue-950"
-                        >
-                            <Link
-                                href="/dashboard"
-                            >
-                                Stajnia
-                            </Link>
-                        </div>
-                        <div
-                            className="block w-full text-center text-white px-4 py-2 text-sm  hover:bg-gray-600 dark:hover:bg-blue-500 dark:hover:bg-opacity-50 dark:hover:border-blue-950"
-                        >
-                            <Link
-                                href="/"
-                            >
-                               Kadra
-                            </Link>
-                        </div>
-
-                        <div
-                            className="block w-full text-center text-white px-4 py-2 text-sm  hover:bg-gray-600 dark:hover:bg-blue-500 dark:hover:bg-opacity-50 dark:hover:border-blue-950"
-                        >
-                            <Link
-                                href="/"
-                            >
-                                Strona główna
-                            </Link>
-                        </div>
-                        <div
-                            className="block w-full text-center text-white px-4 py-2 text-sm  hover:bg-red-400 dark:hover:bg-red-500 dark:hover:bg-opacity-50 dark:hover:border-blue-950"
-                        >
-                            <Link
-                                href="/workers"
-                            >
-                                Panel logowanias
-                            </Link>
-                        </div>
-
+            <div
+                className={`absolute w-full bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 shadow-lg transform transition-transform duration-300 ${
+                    isMenuOpen ? "block" : "hidden"
+                } md:relative md:block`}
+            >
+                <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
+                    <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
+                        <Link href="/dashboard" className="hover:underline">Stajnia</Link>
+                        <Link href="/dashboard/boxes" className="hover:underline">Boksy</Link>
+                        <Link href="/dashboard/padoki" className="hover:underline">Padoki</Link>
+                        <Link href="/dashboard/trening" className="hover:underline">Treningi</Link>
+                        <Link href="/dashboard/harmonogram" className="hover:underline">Zarządzanie pracownikami</Link>
+                        <Link href="/zarzadzanie" className="hover:underline">Zarządzanie stajnią</Link>
+                        <Link href="/kowal" className="hover:underline">Wizyta kowala</Link>
+                        <Link href="/zarzadzanie_kontami" className="hover:underline">Panel administracyjny</Link>
+                        <Link href="/dashboard/notes" className="hover:underline">Wiadomości</Link>
+                        <Link href="/moj_profil" className="hover:underline">Mój profil</Link>
                     </div>
-                </div>
-            )}
-        </div>
+                </ProtectedSectionMenu>
+
+                <ProtectedSectionMenu requiredRole="pracownik">
+                    <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
+                        <Link href="/dashboard" className="hover:underline">Stajnia</Link>
+                        <Link href="/dashboard/boxes" className="hover:underline">Boksy</Link>
+                        <Link href="/dashboard/padoki" className="hover:underline">Padoki</Link>
+                        <Link href="/dashboard/trening" className="hover:underline">Treningi</Link>
+                        <Link href="/dashboard/zadania" className="hover:underline">Moje zadania</Link>
+                        <Link href="/dashboard/notes" className="hover:underline">Wiadomości</Link>
+                        <Link href="/moj_profil" className="hover:underline">Mój profil</Link>
+                    </div>
+                </ProtectedSectionMenu>
+
+                <ProtectedSectionMenu requiredRole="wlasciciel_koni">
+                    <div className="flex flex-col justify-center md:flex-row gap-4 p-2">
+                        <Link href="/wlasciciel_konia" className="hover:underline">Home</Link>
+                        <Link href="/wlasciciel_konia/moje_konie" className="hover:underline">Moje konie</Link>
+                        <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel" className="hover:underline">Zarządzaj końmi</Link>
+                        <Link href="/wlasciciel_konia/treningi" className="hover:underline">Treningi</Link>
+                        <Link href="/dashboard/notes" className="hover:underline">Wiadomości</Link>
+                        <Link href="/moj_profil" className="hover:underline">Mój profil</Link>
+                    </div>
+                </ProtectedSectionMenu>
+            </div>
+        </nav>
     );
 };
 
-export default Dropdown;
+export default Menu;
