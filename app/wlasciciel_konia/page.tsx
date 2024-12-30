@@ -9,20 +9,20 @@ import Szczepienie from "@/Szczepienie";
 
 import  { useEffect } from 'react';
 import { useUser } from '@/UserContext';  
+useEffect(() => {
+    // Sprawdzamy, czy strona była już odświeżona
+    const hasRefreshed = sessionStorage.getItem('hasRefreshed');
 
+    if (!hasRefreshed) {
+        // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
+        sessionStorage.setItem('hasRefreshed', 'true');
+        
+        // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
+        window.location.href = window.location.href;
+    }
+}, []);
 export default function page() {
-     useEffect(() => {
-            // Sprawdzamy, czy strona była już odświeżona
-            const hasRefreshed = sessionStorage.getItem('hasRefreshed');
-    
-            if (!hasRefreshed) {
-                // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
-                sessionStorage.setItem('hasRefreshed', 'true');
-                
-                // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
-                window.location.href = window.location.href;
-            }
-        }, []);
+     
     return (
         <main className=" items-center justify-between p-24">
 
