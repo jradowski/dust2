@@ -8,8 +8,15 @@ import styles from './Inbox.module.css'; // Stwórz plik CSS dla stylizacji
 
 const Inbox: React.FC = () => {
     const [messages, setMessages] = useState<any[]>([]);
+    const [filteredMessages, setFilteredMessages] = useState<any[]>([]);
     const [userId, setUserId] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isExpanded, setIsExpanded] = useState(false); // Do rozwinięcia wiadomości
+    const [filter, setFilter] = useState({
+        sender: '',
+        startDate: '',
+        endDate: ''
+    });
 
     useEffect(() => {
         const getCurrentUser = async () => {
@@ -66,23 +73,106 @@ const Inbox: React.FC = () => {
             });
 
             setMessages(messagesWithSenderInfo);
+            setFilteredMessages(messagesWithSenderInfo);
         };
 
         fetchMessages();
     }, [userId]);
 
+    useEffect(() => {
+        // Filtrowanie wiadomości
+        const filterMessages = () => {
+            let filtered = messages;
+
+            if (filter.sender) {
+                filtered = filtered.filter((msg) =>
+                    msg.sender_name.toLowerCase().includes(filter.sender.toLowerCase())
+                );
+            }
+
+            if (filter.startDate) {
+                filtered = filtered.filter((msg) => new Date(msg.created_at) >= new Date(filter.startDate));
+            }
+
+            if (filter.endDate) {
+                filtered = filtered.filter((msg) => new Date(msg.created_at) <= new Date(filter.endDate));
+            }
+
+            setFilteredMessages(filtered);
+        };
+
+        filterMessages();
+    }, [filter, messages]);
+
+    const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFilter((prev) => ({ ...prev, [name]: value }));
+    };
+
+    // Funkcja do resetowania filtrów
+    const resetFilters = () => {
+        setFilter({
+            sender: '',
+            startDate: '',
+            endDate: ''
+        });
+    };
+
     return (
         <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <div className={styles.container}>
                 {error && <p className={styles.error}>{error}</p>}
-                <div className={styles.messageList}>
-                    {messages.length > 0 ? (
-                        messages.map((message) => (
 
+                {/* Filtracja */}
+                <div className={styles.filterSection}>
+                    <label>
+                        Adresat:
+                        <input
+                            type="text"
+                            name="sender"
+                            value={filter.sender}
+                            onChange={handleFilterChange}
+                            className={styles.filterInput}
+                        />
+                    </label>
+                    <label>
+                        Data początkowa:
+                        <input
+                            type="date"
+                            name="startDate"
+                            value={filter.startDate}
+                            onChange={handleFilterChange}
+                            className={styles.filterInput}
+                        />
+                    </label>
+                    <label>
+                        Data końcowa:
+                        <input
+                            type="date"
+                            name="endDate"
+                            value={filter.endDate}
+                            onChange={handleFilterChange}
+                            className={styles.filterInput}
+                        />
+                    </label>
+                    {/* Przycisk resetowania filtrów */}
+                    <button
+                        onClick={resetFilters}
+                        className={styles.resetButton}
+                    >
+                        Resetuj filtry
+                    </button>
+                </div>
+
+                {/* Wyświetlanie wiadomości */}
+                <div className={styles.messageList}>
+                    {filteredMessages.length > 0 ? (
+                        <>
+                            {filteredMessages.slice(0, isExpanded ? filteredMessages.length : 3).map((message) => (
                                 <div key={message.id} className={styles.messageCard}>
                                     <div className={styles.senderInfo}>
                                         <Image
-                                            src="/avatar.png" // Zamień na właściwą ścieżkę do avatara użytkownika, jeśli istnieje
+                                            src="/avatar.png"
                                             alt="Avatar"
                                             width={50}
                                             height={50}
@@ -101,15 +191,23 @@ const Inbox: React.FC = () => {
                                         <p className={styles.messageContent}>{message.content}</p>
                                     </div>
                                 </div>
-
-                        ))
+                            ))}
+                            {!isExpanded && (
+                                <button
+                                    onClick={() => setIsExpanded(true)}
+                                    className={styles.expandButton}
+                                >
+                                    Rozwiń
+                                </button>
+                            )}
+                        </>
                     ) : (
                         <p className={styles.noMessages}>Brak wiadomości</p>
                     )}
                 </div>
             </div>
         </div>
-            );
-            };
+    );
+};
 
-            export default Inbox;
+export default Inbox;

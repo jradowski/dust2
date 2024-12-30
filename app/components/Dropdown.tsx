@@ -1,10 +1,19 @@
 'use client';
 import Link from "next/link";
 import ProtectedSectionMenu from "@/ProtectedSectionMenu";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useUser } from "@/UserContext"; // Importujemy hook, aby używać kontekstu
+
+
 
 const Menu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, loading } = useUser(); // Zbieramy dane użytkownika i stan ładowania z kontekstu
+
+    // Jeśli dane użytkownika jeszcze się ładowane, nie renderuj menu
+    if (loading) {
+      return null; // lub spinner/komunikat o ładowaniu
+    }
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 

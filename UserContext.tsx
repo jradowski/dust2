@@ -1,3 +1,5 @@
+
+'use client';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '@/supabaseClient2'; // Upewnij się, że masz poprawny import
 

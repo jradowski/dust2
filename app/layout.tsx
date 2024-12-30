@@ -5,7 +5,6 @@ import Link from "next/link";
 import { UserProvider } from "@/UserContext";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import Menu from "@/app/components/Dropdown";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

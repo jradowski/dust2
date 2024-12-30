@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,7 +7,22 @@ import SzczepienieWlasc from "@/SzczepienieWlasc";
 import Kowal from "@/Kowal";
 import Szczepienie from "@/Szczepienie";
 
+import  { useEffect } from 'react';
+import { useUser } from '@/UserContext';  
+
 export default function page() {
+     useEffect(() => {
+            // Sprawdzamy, czy strona była już odświeżona
+            const hasRefreshed = sessionStorage.getItem('hasRefreshed');
+    
+            if (!hasRefreshed) {
+                // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
+                sessionStorage.setItem('hasRefreshed', 'true');
+                
+                // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
+                window.location.href = window.location.href;
+            }
+        }, []);
     return (
         <main className=" items-center justify-between p-24">
 
@@ -54,7 +70,7 @@ export default function page() {
                              className="w-16 m-2 h-auto"/>
 
                         <h2 className="text-2xl font-semibold">
-                            Zarządzaj końmi{" "}
+                            Zarządzaj moimi końmi{" "}
                             <span
                                 className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;

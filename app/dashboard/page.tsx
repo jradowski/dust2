@@ -1,10 +1,24 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
+import { useUser } from '@/UserContext';  // Importujemy hooka z UserContext
 import Image from 'next/image';
 import Link from 'next/link';
 import Kowal from "@/Kowal";
 import Szczepienie from "@/Szczepienie";
 
 export default function Page() {
+    useEffect(() => {
+        // Sprawdzamy, czy strona była już odświeżona
+        const hasRefreshed = sessionStorage.getItem('hasRefreshed');
+
+        if (!hasRefreshed) {
+            // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
+            sessionStorage.setItem('hasRefreshed', 'true');
+            
+            // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
+            window.location.href = window.location.href;
+        }
+    }, []);
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 lg:p-24">
             {/* Główna sekcja z linkami */}
@@ -58,5 +72,7 @@ export default function Page() {
                 </div>
             </div>
         </main>
+
     );
+    
 }

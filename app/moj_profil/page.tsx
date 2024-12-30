@@ -98,7 +98,16 @@ const MyProfile = () => {
     if (!user) {
         return <div className="text-red-500">{error}</div>; // Wyświetlenie błędu, jeśli użytkownik nie jest zalogowany
     }
-
+    const positionMap: { [key: string]: string } = {
+        'wlasciciel_koni': 'Właściciel koni',
+        'wlasciciel_stajni': 'Właściciel stajni',
+        'luzak': 'Luzak',
+        'jezdziec': 'Jeździec',
+        'stajenny': 'Stajenny',
+    };
+    
+    const displayPosition = positionMap[profile.position] || profile.position;
+    
     return (
         <div className="grid grid-cols-1 place-items-center gap-10 p-4 text-center">
             <div className="text-center font-bold text-4xl p-2">
@@ -114,7 +123,7 @@ const MyProfile = () => {
                     <h2 className="font-semibold text-3xl">Twoje dane</h2>
                     <div className="text-xl p-2">
                         <p>Imię i nazwisko: {profile.first_name} {profile.last_name}</p>
-                        <p>Stanowisko: {profile.position || 'Nie podano'}</p>
+                        <p>Stanowisko: {displayPosition || 'Nie podano'}</p>
                         {/*<p>Status konta: {profile.status || 'Aktywne'}</p>*/}
                     </div>
                 </div>

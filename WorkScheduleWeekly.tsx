@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import 'reactjs-popup/dist/index.css'
-import supabase  from '@/supabaseClient.js'
+import supabase from '@/supabaseClient.js'
 import React, { useState, useEffect, useCallback, FormEvent } from 'react';
 import '@/Schedule.css';
 import '@/tabela.css'
@@ -34,8 +34,8 @@ const WorkScheduleWeekly: React.FC = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       const { data, error } = await supabase
-          .from('employees')
-          .select('*');
+        .from('employees')
+        .select('*');
 
       if (error) {
         console.error('Error fetching employees:', error);
@@ -53,15 +53,15 @@ const WorkScheduleWeekly: React.FC = () => {
 
     const fetchSchedule = async () => {
       const { data, error } = await supabase
-          .from('work_schedule')
-          .select(`
-            id,
-            employee_id,
-            date,
-            start_time,
-            end_time,
-            employees:employees(id, first_name, last_name, position)
-          `);
+        .from('work_schedule')
+        .select(`
+          id,
+          employee_id,
+          date,
+          start_time,
+          end_time,
+          employees:employees(id, first_name, last_name, position)
+        `);
 
       if (error) {
         console.error('Error fetching schedule:', error);
@@ -85,32 +85,36 @@ const WorkScheduleWeekly: React.FC = () => {
   const getRandomColor = (): string => {
     const letters = '0123456789ABCDEF';
     let color = '#';
-    
-    // Ensure the first character isn't '0'
     color += letters[Math.floor(Math.random() * 15) + 1]; // First character can't be "0"
-    
     for (let i = 1; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)]; // The other characters can be any
+      color += letters[Math.floor(Math.random() * 16)];
     }
-  
+
     return color;
   };
 
   const filteredEmployees = selectedPosition === 'stajenny'
-      ? employees
-      : employees.filter(emp => emp.position === selectedPosition);
+    ? employees
+    : employees.filter(emp => emp.position === selectedPosition);
+
+  const convertTo24HourFormat = (time: string): number => {
+    // Convert time to a number representing minutes from midnight for easier comparison
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
 
   const getEmployeeInSlot = (day: string, time: string): Employee | null => {
-    // Find a schedule entry that matches the day and time range
+    const targetTime = convertTo24HourFormat(time);
+    
     const entry = schedule.find(
-      (item) => item.date === day && item.start_time <= time && item.end_time > time
+      (item) => item.date === day && convertTo24HourFormat(item.start_time) <= targetTime && convertTo24HourFormat(item.end_time) > targetTime
     );
-  
+
     if (entry) {
       const employee = filteredEmployees.find((emp) => emp.id === entry.employee_id);
       return employee || null;
     }
-  
+
     return null;
   };
 
