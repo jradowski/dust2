@@ -18,7 +18,6 @@ useEffect(() => {
     }
 }, []);
 export default function Page() {
-    
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 lg:p-24">
             {/* Główna sekcja z linkami */}
