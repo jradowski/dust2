@@ -5,18 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Kowal from "@/Kowal";
 import Szczepienie from "@/Szczepienie";
-useEffect(() => {
-    // Sprawdzamy, czy strona była już odświeżona
-    const hasRefreshed = sessionStorage.getItem('hasRefreshed');
+// useEffect(() => {
+//     // Sprawdzamy, czy strona była już odświeżona
+//     const hasRefreshed = sessionStorage.getItem('hasRefreshed');
 
-    if (!hasRefreshed) {
-        // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
-        sessionStorage.setItem('hasRefreshed', 'true');
+//     if (!hasRefreshed) {
+//         // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
+//         sessionStorage.setItem('hasRefreshed', 'true');
         
-        // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
-        window.location.href = window.location.href;
-    }
-}, []);
+//         // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
+//         window.location.href = window.location.href;
+//     }
+// }, []);
 export default function Page() {
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 lg:p-24">
