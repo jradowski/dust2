@@ -1,3 +1,6 @@
+// do poprawy
+
+
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -93,7 +96,7 @@ const WorkScheduleWeekly: React.FC = () => {
     return color;
   };
 
-  const filteredEmployees = selectedPosition === 'stajenny'
+  const filteredEmployees = selectedPosition === ''
     ? employees
     : employees.filter(emp => emp.position === selectedPosition);
 

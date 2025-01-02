@@ -20,7 +20,19 @@ const EditableTable: React.FC = () => {
   const [records, setRecords] = useState<TreningData[]>([]);
   const [employees, setEmployees] = useState<any[]>([]);
   const [horses, setHorses] = useState<any[]>([]);
-  const [selectedHorseId, setSelectedHorseId] = useState<number | null>(null); // Nowy stan dla wybranego konia
+  const [selectedHorse, setSelectedHorse] = useState<number | null>(null); // Nowe pole do wyboru konia
+  const [newRecord, setNewRecord] = useState<TreningData>({
+    nr_konia: 0,
+    id_jezdzca: "",
+    luzak_id: "",
+    poniedzialek: "",
+    wtorek: "",
+    sroda: "",
+    czwartek: "",
+    piatek: "",
+    sobota: "",
+    niedziela: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,23 +74,38 @@ const EditableTable: React.FC = () => {
       )
     );
   };
+  
+  // Funkcja do dodania nowego konia do treningu
+  const handleAddNewHorse = async () => {
+    if (selectedHorse === null) {
+      alert("Proszę wybrać konia.");
+      return;
+    }
 
-  const handleDeleteHorse = async (nrKonia: number) => {
-    if (window.confirm("Czy na pewno chcesz usunąć tego konia z treningu?")) {
-      try {
-        const { error } = await supabase
-          .from("trening")
-          .delete()
-          .eq("nr_konia", nrKonia);
+    const newTrening = { ...newRecord, nr_konia: selectedHorse };
 
-        if (error) throw error;
-        alert("Koń został usunięty z treningu!");
-        // Po usunięciu konia z treningu, odświeżamy dane
-        setRecords(records.filter((record) => record.nr_konia !== nrKonia));
-      } catch (error) {
-        console.error("Błąd podczas usuwania konia:", error);
-        alert("Nie udało się usunąć konia.");
-      }
+    try {
+      const { error } = await supabase.from("trening").insert([newTrening]);
+
+      if (error) throw error;
+      alert("Nowy koń został dodany do treningu!");
+      // Po dodaniu nowego konia do treningu, resetujemy formularz
+      setNewRecord({
+        nr_konia: 0,
+        id_jezdzca: "",
+        luzak_id: "",
+        poniedzialek: "",
+        wtorek: "",
+        sroda: "",
+        czwartek: "",
+        piatek: "",
+        sobota: "",
+        niedziela: "",
+      });
+      setSelectedHorse(null);
+    } catch (error) {
+      console.error("Błąd podczas dodawania nowego konia:", error);
+      alert("Nie udało się dodać nowego konia.");
     }
   };
 
@@ -100,19 +127,15 @@ const EditableTable: React.FC = () => {
     }
   };
 
-  // Filtrowanie rekordów na podstawie wybranego konia
-  const filteredRecords = selectedHorseId
-    ? records.filter((record) => record.nr_konia === selectedHorseId)
-    : [];
-
   return (
     <div className="p-4">
       <div className="mb-4">
-        {/* Lista rozwijana do wyboru konia */}
+        <h2>Dodaj nowego konia do treningu</h2>
+        {/* Wybór konia */}
         <select
-          value={selectedHorseId ?? ""}
-          onChange={(e) => setSelectedHorseId(Number(e.target.value) || null)}
-          className="px-2 py-1 border rounded"
+          value={selectedHorse || ""}
+          onChange={(e) => setSelectedHorse(Number(e.target.value))}
+          className="w-full px-2 py-1 border rounded mb-2"
         >
           <option value="">Wybierz konia</option>
           {horses.map((horse) => (
@@ -121,42 +144,33 @@ const EditableTable: React.FC = () => {
             </option>
           ))}
         </select>
-      </div>
-
-      {/* Tabela jest widoczna tylko jeśli wybrano konia */}
-      {selectedHorseId && (
-        <table className="table-auto w-full border-collapse border border-gray-300">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
-              <th className="border border-gray-300 px-4 py-2">Jeździec</th>
-              <th className="border border-gray-300 px-4 py-2">Luzak</th>
-              <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
-              <th className="border border-gray-300 px-4 py-2">Wtorek</th>
-              <th className="border border-gray-300 px-4 py-2">Środa</th>
-              <th className="border border-gray-300 px-4 py-2">Czwartek</th>
-              <th className="border border-gray-300 px-4 py-2">Piątek</th>
-              <th className="border border-gray-300 px-4 py-2">Sobota</th>
-              <th className="border border-gray-300 px-4 py-2">Niedziela</th>
-              <th className="border border-gray-300 px-4 py-2">Akcja</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredRecords.map((record) => {
-              const horse = horses.find((horse) => horse.id === record.nr_konia);
-              return (
-                <tr key={record.nr_konia}>
+        {/* Formularz dla nowego konia */}
+        {selectedHorse && (
+          <div>
+            <table className="table-auto w-full border-collapse border border-gray-300">
+              <thead>
+                <tr>
+                  <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
+                  <th className="border border-gray-300 px-4 py-2">Jeździec</th>
+                  <th className="border border-gray-300 px-4 py-2">Luzak</th>
+                  <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
+                  <th className="border border-gray-300 px-4 py-2">Wtorek</th>
+                  <th className="border border-gray-300 px-4 py-2">Środa</th>
+                  <th className="border border-gray-300 px-4 py-2">Czwartek</th>
+                  <th className="border border-gray-300 px-4 py-2">Piątek</th>
+                  <th className="border border-gray-300 px-4 py-2">Sobota</th>
+                  <th className="border border-gray-300 px-4 py-2">Niedziela</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
                   {/* Imię Konia */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    {horse ? horse.imie : "Brak imienia"}
-                  </td>
+                  <td className="border border-gray-300 px-4 py-2">{horses.find(horse => horse.id === selectedHorse)?.imie}</td>
                   {/* Jeździec */}
                   <td className="border border-gray-300 px-4 py-2">
                     <select
-                      value={record.id_jezdzca}
-                      onChange={(e) =>
-                        handleChange(record.nr_konia, "id_jezdzca", e.target.value)
-                      }
+                      value={newRecord.id_jezdzca}
+                      onChange={(e) => setNewRecord({ ...newRecord, id_jezdzca: e.target.value })}
                       className="w-full px-2 py-1 border rounded"
                     >
                       <option value="">Wybierz jeźdźca</option>
@@ -170,10 +184,8 @@ const EditableTable: React.FC = () => {
                   {/* Luzak */}
                   <td className="border border-gray-300 px-4 py-2">
                     <select
-                      value={record.luzak_id}
-                      onChange={(e) =>
-                        handleChange(record.nr_konia, "luzak_id", e.target.value)
-                      }
+                      value={newRecord.luzak_id}
+                      onChange={(e) => setNewRecord({ ...newRecord, luzak_id: e.target.value })}
                       className="w-full px-2 py-1 border rounded"
                     >
                       <option value="">Wybierz luzaka</option>
@@ -190,35 +202,28 @@ const EditableTable: React.FC = () => {
                       <td key={day} className="border border-gray-300 px-4 py-2">
                         <input
                           type="text"
-                          value={record[day as keyof TreningData] || ""}
-                          onChange={(e) =>
-                            handleChange(record.nr_konia, day, e.target.value)
-                          }
+                          value={newRecord[day as keyof TreningData] || ""}
+                          onChange={(e) => setNewRecord({ ...newRecord, [day]: e.target.value })}
                           className="w-full px-2 py-1 border rounded"
                         />
                       </td>
                     )
                   )}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <button
-                      onClick={() => handleSave(record)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                      Zapisz
-                    </button>
-                    <button
-                      onClick={() => handleDeleteHorse(record.nr_konia)}
-                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2"
-                    >
-                      Usuń
-                    </button>
-                  </td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      )}
+              </tbody>
+            </table>
+            <br></br>
+            <button
+              onClick={handleAddNewHorse}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Dodaj konia do treningu
+            </button>
+          </div>
+        )}
+      </div>
+
+     
     </div>
   );
 };

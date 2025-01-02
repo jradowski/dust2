@@ -1,14 +1,8 @@
 "use client";
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import 'reactjs-popup/dist/index.css'
+import React, { useEffect, useState } from 'react'
 import supabase from '@/supabaseClient.js'
-import { useEffect, useState } from 'react'
-//import './tabela.css'; // Importowanie pliku CSS
 import '@/globals.css';
 import '@/tabela.css'
-
 
 type TreningData = {
   [key: string]: any; // General typing for columns
@@ -19,6 +13,7 @@ const TreningUserLuzak: React.FC = () => {
   const [data, setData] = useState<TreningData[]>([]);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null); // State for the user ID
+  const [horses, setHorses] = useState<any[]>([]); // State for horse data
 
   // Fetch logged-in user from Supabase
   const getCurrentUser = async () => {
@@ -34,6 +29,19 @@ const TreningUserLuzak: React.FC = () => {
     }
   };
 
+  // Fetch horse data from the database
+  const fetchHorses = async () => {
+    const { data, error } = await supabase
+      .from('horse')
+      .select('id, imie'); // Fetch the horse id and name
+
+    if (error) {
+      console.error('Error fetching horses:', error);
+    } else {
+      setHorses(data || []);
+    }
+  };
+
   // Fetch training data after the user ID is set
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +49,8 @@ const TreningUserLuzak: React.FC = () => {
 
       let { data, error } = await supabase
           .from('trening')
-          .select('imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
-          .eq('luzak_id', userId );
+          .select('poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, nr_konia')
+          .eq('luzak_id', userId);
 
       if (error) {
         console.error('Error fetching data:', error);
@@ -51,8 +59,8 @@ const TreningUserLuzak: React.FC = () => {
       }
 
       if (data && data.length > 0) {
-        // Get column names from the first row
-        setColumns(Object.keys(data[0]));
+        // Get column names from the first row, excluding 'nr_konia'
+        setColumns(Object.keys(data[0]).filter(column => column !== 'nr_konia'));
         setData(data);
       }
 
@@ -60,6 +68,7 @@ const TreningUserLuzak: React.FC = () => {
     };
 
     getCurrentUser(); // Call getCurrentUser before fetching data
+    fetchHorses(); // Fetch horse data
     fetchData(); // Fetch data only if userId is available
   }, [userId]); // Trigger the effect when userId changes
 
@@ -67,25 +76,36 @@ const TreningUserLuzak: React.FC = () => {
     return <div>Loading data...</div>;
   }
 
+  // Helper function to get horse name by ID
+  const getHorseName = (horseId: number) => {
+    const horse = horses.find((h) => h.id === horseId);
+    return horse ? horse.imie : 'Unknown Horse';
+  };
+
   return (
-      <table>
-        <thead>
+    <table className="table-auto w-full border-collapse border border-gray-300">
+      <thead>
         <tr>
+          <th className="border border-gray-300 px-4 py-2">Imię Konia</th> {/* First column is Horse Name */}
           {columns.map((column) => (
-              <th key={column} className="table-header">{column}</th>
+            <th key={column} className="border border-gray-300 px-4 py-2">{column}</th>
           ))}
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         {data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((column) => (
-                  <td key={column} className="table-cell">{row[column]}</td>
-              ))}
-            </tr>
+          <tr key={rowIndex} className="bg-white dark:bg-gray-800">
+            {/* Display Horse Name in the first column */}
+            <td className="border border-gray-300 px-4 py-2">
+              {getHorseName(row.nr_konia)} {/* Map nr_konia to horse name */}
+            </td>
+            {columns.map((column) => (
+              <td key={column} className="border border-gray-300 px-4 py-2">{row[column]}</td>
+            ))}
+          </tr>
         ))}
-        </tbody>
-      </table>
+      </tbody>
+    </table>
   );
 };
 

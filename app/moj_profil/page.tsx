@@ -16,7 +16,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         if (!user) {
-            setError('Nie jesteś zalogowany.');
+            setError('');
             return;
         }
 
@@ -37,17 +37,7 @@ const MyProfile = () => {
                 }
 
                 // Pobierz ostatnie logowanie z tabeli auth.users
-                const { data: authData, error: authError } = await supabase
-                    .from('auth.users')
-                    .select('last_sign_in_at')
-                    .eq('id', user.id)
-                    .single();
-
-                if (authError) {
-                    console.error("Błąd przy pobieraniu ostatniego logowania:", authError);
-                } else {
-                    setLastSignIn(authData?.last_sign_in_at || 'Brak informacji');
-                }
+                
             } catch (err) {
                 console.error("Błąd:", err);
             }

@@ -1,167 +1,248 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import supabase from '@/supabaseClient';
-import '@/tabela.css';
+import React, { useEffect, useState } from "react";
+import supabase from "@/supabaseClient.js";
 
+// Definicja typu dla danych z tabeli trening
 type TreningData = {
   nr_konia: number;
-  imie: string;
-  [key: string]: any;
+  id_jezdzca: string;
+  luzak_id: string;
+  poniedzialek: string;
+  wtorek: string;
+  sroda: string;
+  czwartek: string;
+  piatek: string;
+  sobota: string;
+  niedziela: string;
 };
 
 const EditableTable: React.FC = () => {
-  const [suggestions, setSuggestions] = useState<TreningData[]>([]);
-  const [value, setValue] = useState('');
-  const [selectedRecord, setSelectedRecord] = useState<TreningData | null>(null);
-  const [columns, setColumns] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [records, setRecords] = useState<TreningData[]>([]);
+  const [employees, setEmployees] = useState<any[]>([]);
+  const [horses, setHorses] = useState<any[]>([]);
+  const [selectedHorseId, setSelectedHorseId] = useState<number | null>(null); // Nowa zmienna do przechowywania wybranego konia
+  const [userId, setUserId] = useState<string | null>(null); // Zmienna do przechowywania id użytkownika
 
   useEffect(() => {
     const fetchUserId = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      const userId = session?.user?.id || null;  // Bezpieczne przypisanie
-  
-      setUserId(userId);  // Teraz mamy pewność, że przekazujemy tylko string lub null
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUserId(session?.user?.id || null);
     };
-  
+
     fetchUserId();
   }, []);
 
   useEffect(() => {
-    const fetchColumns = async () => {
+    const fetchData = async () => {
       try {
-        let { data, error } = await supabase.from('trening').select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
-        .limit(1);
-        if (error) throw error;
-        if (data && data.length > 0) setColumns(Object.keys(data[0]));
-        setLoading(false);
+        // Pobieranie danych z tabeli trening
+        const { data: treningData, error: treningError } = await supabase
+          .from("trening")
+          .select("*");
+        if (treningError) throw treningError;
+
+        // Pobieranie danych z tabeli employees
+        const { data: employeesData, error: employeesError } = await supabase
+          .from("employees")
+          .select("id, first_name, last_name");
+        if (employeesError) throw employeesError;
+
+        // Pobieranie danych z tabeli horses
+        const { data: horsesData, error: horsesError } = await supabase
+          .from("horse")
+          .select("id, imie, wlasc_id");
+        if (horsesError) throw horsesError;
+
+        // Filtrujemy konie należące do zalogowanego użytkownika
+        const filteredHorses = horsesData?.filter(
+          (horse) => horse.wlasc_id === userId
+        );
+        setHorses(filteredHorses || []);
+        setRecords(treningData || []);
+        setEmployees(employeesData || []);
       } catch (error) {
-        console.error('Error fetching columns:', error);
-        setLoading(false);
+        console.error("Błąd podczas pobierania danych:", error);
       }
     };
 
-    fetchColumns();
-  }, []);
-
-  const fetchSuggestions = async (value: string) => {
-    if (!userId) return; // Jeśli użytkownik nie jest zalogowany, zakończ funkcję
-
-    try {
-      const { data: horses, error: horsesError } = await supabase
-        .from('horse')
-        .select('id, imie')
-        .eq('wlasc_id', userId);
-
-      if (horsesError) throw horsesError;
-
-      const horseIds = horses.map((horse) => horse.id);
-
-      let { data: treningi, error: treningiError } = await supabase
-        .from('trening')
-        .select('nr_konia, imie, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, jezdziec, luzak')
-        .in('nr_konia', horseIds)
-        .ilike('imie', `%${value}%`);
-
-      if (treningiError) throw treningiError;
-
-      setSuggestions(treningi || []);
-    } catch (error) {
-      console.error('Error fetching suggestions:', error);
+    if (userId) {
+      fetchData();
     }
+  }, [userId]);
+
+  // Obsługa zmiany jeźdźca lub luzaka w tabeli
+  const handleChange = (id: number, column: string, value: string) => {
+    setRecords((prev) =>
+      prev.map((record) =>
+        record.nr_konia === id ? { ...record, [column]: value } : record
+      )
+    );
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setValue(value);
-    fetchSuggestions(value);
-  };
-
-  const handleSelect = (record: TreningData) => {
-    setSelectedRecord(record);
-    setValue(record.imie);
-    setSuggestions([]);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, column: string) => {
-    if (selectedRecord) {
-      setSelectedRecord({ ...selectedRecord, [column]: e.target.value });
-    }
-  };
-
-  const handleSave = async () => {
-    if (selectedRecord) {
+  const handleDeleteHorse = async (nrKonia: number) => {
+    if (window.confirm("Czy na pewno chcesz usunąć tego konia z treningu?")) {
       try {
-        const { nr_konia, ...updatedData } = selectedRecord;
-        let { error } = await supabase
-          .from('trening')
-          .update(updatedData)
-          .eq('nr_konia', nr_konia);
+        const { error } = await supabase
+          .from("trening")
+          .delete()
+          .eq("nr_konia", nrKonia);
 
         if (error) throw error;
-
-        alert('Record updated successfully!');
+        alert("Koń został usunięty z treningu!");
+        // Po usunięciu konia z treningu, odświeżamy dane
+        setRecords(records.filter((record) => record.nr_konia !== nrKonia));
       } catch (error) {
-        console.error('Error updating record:', error);
+        console.error("Błąd podczas usuwania konia:", error);
+        alert("Nie udało się usunąć konia.");
       }
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // Zapisanie zmian do bazy danych
+  const handleSave = async (record: TreningData) => {
+    try {
+      const { nr_konia, id_jezdzca, luzak_id, ...days } = record;
+
+      const { error } = await supabase
+        .from("trening")
+        .update({ id_jezdzca, luzak_id, ...days })
+        .eq("nr_konia", nr_konia);
+
+      if (error) throw error;
+      alert("Zapisano zmiany!");
+    } catch (error) {
+      console.error("Błąd podczas zapisywania danych:", error);
+      alert("Nie udało się zapisać zmian.");
+    }
+  };
+
+  const handleHorseSelection = (horseId: number) => {
+    setSelectedHorseId(horseId);
+  };
 
   return (
-    <div
-        className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
-
-      <input
-        className="custom-select"
-        type="text"
-        value={value}
-        onChange={handleChange}
-        placeholder="Type 'imie'"
-      />
-      {suggestions.length > 0 && (
-        <ul className="suggestions">
-          {suggestions.map((suggestion) => (
-            <li key={suggestion.nr_konia} onClick={() => handleSelect(suggestion)}>
-              {suggestion.imie}
-            </li>
+    <div className="p-4">
+      {/* Selekcja konia */}
+      <div className="mb-4">
+        <label htmlFor="horseSelect" className="block text-sm font-medium">
+          Wybierz konia
+        </label>
+        <select
+          id="horseSelect"
+          className="w-full px-4 py-2 border rounded"
+          onChange={(e) => handleHorseSelection(Number(e.target.value))}
+          value={selectedHorseId || ""}
+        >
+          <option value="">Wybierz konia</option>
+          {horses.map((horse) => (
+            <option key={horse.id} value={horse.id}>
+              {horse.imie}
+            </option>
           ))}
-        </ul>
-      )}
-      {selectedRecord && (
-        <div className="overflow-x-auto">
-          <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
-            <thead className="bg-blue-600">
-              <tr>
-                {columns.map((column) => (
-                  <th key={column}  className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">{column}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-white dark:bg-gray-800">
-                {columns.map((column) => (
-                  <td key={column}  className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
-                    <input
-                      type="text"
-                      value={selectedRecord[column]}
-                      onChange={(e) => handleInputChange(e, column)}
-                    />
-                  </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-          <button
-              className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
-              onClick={handleSave}>
-            Zapisz
-          </button>
-        </div>
+        </select>
+      </div>
+
+      {/* Tylko po wybraniu konia, tabela się pojawia */}
+      {selectedHorseId && (
+        <table className="table-auto w-full border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
+              <th className="border border-gray-300 px-4 py-2">Jeździec</th>
+              <th className="border border-gray-300 px-4 py-2">Luzak</th>
+              <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
+              <th className="border border-gray-300 px-4 py-2">Wtorek</th>
+              <th className="border border-gray-300 px-4 py-2">Środa</th>
+              <th className="border border-gray-300 px-4 py-2">Czwartek</th>
+              <th className="border border-gray-300 px-4 py-2">Piątek</th>
+              <th className="border border-gray-300 px-4 py-2">Sobota</th>
+              <th className="border border-gray-300 px-4 py-2">Niedziela</th>
+              <th className="border border-gray-300 px-4 py-2">Akcja</th>
+            </tr>
+          </thead>
+          <tbody>
+            {records
+              .filter((record) => record.nr_konia === selectedHorseId)
+              .map((record) => {
+                const horse = horses.find((horse) => horse.id === record.nr_konia);
+                return (
+                  <tr key={record.nr_konia}>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {horse ? horse.imie : "Brak imienia"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <select
+                        value={record.id_jezdzca}
+                        onChange={(e) =>
+                          handleChange(record.nr_konia, "id_jezdzca", e.target.value)
+                        }
+                        className="w-full px-2 py-1 border rounded"
+                      >
+                        <option value="">Wybierz jeźdźca</option>
+                        {employees.map((employee) => (
+                          <option key={employee.id} value={employee.id}>
+                            {employee.first_name} {employee.last_name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      <select
+                        value={record.luzak_id}
+                        onChange={(e) =>
+                          handleChange(record.nr_konia, "luzak_id", e.target.value)
+                        }
+                        className="w-full px-2 py-1 border rounded"
+                      >
+                        <option value="">Wybierz luzaka</option>
+                        {employees.map((employee) => (
+                          <option key={employee.id} value={employee.id}>
+                            {employee.first_name} {employee.last_name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    {[
+                      "poniedzialek",
+                      "wtorek",
+                      "sroda",
+                      "czwartek",
+                      "piatek",
+                      "sobota",
+                      "niedziela",
+                    ].map((day) => (
+                      <td key={day} className="border border-gray-300 px-4 py-2">
+                        <input
+                          type="text"
+                          value={record[day as keyof TreningData] || ""}
+                          onChange={(e) =>
+                            handleChange(record.nr_konia, day, e.target.value)
+                          }
+                          className="w-full px-2 py-1 border rounded"
+                        />
+                      </td>
+                    ))}
+                    <td className="border border-gray-300 px-4 py-2">
+                      <button
+                        onClick={() => handleSave(record)}
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      >
+                        Zapisz
+                      </button>
+                      <button
+                        onClick={() => handleDeleteHorse(record.nr_konia)}
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2"
+                      >
+                        Usuń
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
-import supabase from "@/supabaseClient.js";
+import supabase from "@/supabaseClient.js"; // Upewnij się, że importujesz swojego klienta Supabase
 
 export default function KowalVisits() {
   const [konie, setKonie] = useState<any[]>([]); // Lista koni
@@ -18,39 +18,69 @@ export default function KowalVisits() {
   const [kowalFilter, setKowalFilter] = useState<string>(""); // Filtr kowala (zmiana na string, nie null)
   const [dataOd, setDataOd] = useState<Date | null>(null); // Data od
   const [dataDo, setDataDo] = useState<Date | null>(null); // Data do
-  const [końFilter, setKońFilter] = useState<string>(""); // Filtr po imieniu konia
 
-  // Pobieranie danych o koniach i wizytach kowala
   const fetchData = async () => {
     setLoading(true);
-
+  
     try {
-      // Pobieranie danych o koniach
-      const { data, error } = await supabase.from("horse").select("*");
-      if (error) {
-        console.error("Błąd pobierania koni:", error);
+      // Pobieranie zalogowanego użytkownika
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+  
+      if (userError) {
+        console.error("Błąd pobierania użytkownika:", userError);
         setLoading(false);
         return;
-      } else {
-        setKonie(data);
       }
-
+  
+      if (!user) {
+        console.error("Brak zalogowanego użytkownika.");
+        setLoading(false);
+        return;
+      }
+  
+      // Pobieranie danych o koniach - tylko konie tego użytkownika
+      const { data: konieData, error: konieError } = await supabase
+        .from("horse")
+        .select("*")
+        .eq("wlasc_id", user.id); // Tylko konie tego użytkownika
+  
+      if (konieError) {
+        console.error("Błąd pobierania koni:", konieError);
+        setLoading(false);
+        return;
+      }
+  
+      setKonie(konieData);
+  
+      // Jeżeli użytkownik nie ma koni, nie wyświetlamy kartoteki wizyt związanych z końmi
+      if (konieData.length === 0) {
+        setKartotekaWizyt([]); // Ustawiamy pustą kartotekę wizyt, bo użytkownik nie ma żadnych koni
+        setFilteredKartoteka([]); // Filtrujemy pustą kartotekę wizyt
+        setLoading(false);
+        return;
+      }
+  
       // Pobieranie danych o wizytach kowala
       const { data: wizytyData, error: wizytyError } = await supabase
         .from("kowal_wizyty")
         .select("*");
-
+  
       if (wizytyError) {
         console.error("Błąd pobierania wizyt kowala:", wizytyError);
         setLoading(false);
         return;
       } else {
-        setKartotekaWizyt(wizytyData);
-        setFilteredKartoteka(wizytyData); // Początkowo wszystkie wizyty
+        // Filtrujemy tylko te wizyty, które dotyczą koni tego użytkownika
+        const filteredWizyty = wizytyData.filter((wizyta) =>
+          wizyta.konie.some((końId: number) => konieData.some((koń) => koń.id === końId))
+        );
+  
+        setKartotekaWizyt(filteredWizyty);
+        setFilteredKartoteka(filteredWizyty); // Początkowo wszystkie wizyty po filtracji
       }
-
+  
       setLoading(false); // Po zakończeniu pobierania danych ustawiamy loading na false
-
+  
     } catch (error) {
       console.error("Wystąpił błąd przy pobieraniu danych:", error);
       setLoading(false); // W razie błędu również zmieniamy loading na false
@@ -80,17 +110,7 @@ export default function KowalVisits() {
       );
     }
 
-    // Filtr po imieniu konia
-    if (końFilter) {
-      filteredData = filteredData.filter((wizyt) =>
-        wizyt.konie.some((końId: number) => {
-          const koń = konie.find((koń) => koń.id === końId);
-          return koń && koń.imie.toLowerCase().includes(końFilter.toLowerCase());
-        })
-      );
-    }
-
-    // Filtr po koniach użytkownika
+    // Filtr po koniu (tylko konie zalogowanego użytkownika)
     if (selectedKonie.length > 0) {
       filteredData = filteredData.filter((wizyt) =>
         wizyt.konie.some((końId: number) => selectedKonie.includes(końId))
@@ -98,7 +118,7 @@ export default function KowalVisits() {
     }
 
     setFilteredKartoteka(filteredData); // Zaktualizowanie filtrów
-  }, [kowalFilter, dataOd, dataDo, selectedKonie, kartotekaWizyt, końFilter, konie]);
+  }, [kowalFilter, dataOd, dataDo, selectedKonie, kartotekaWizyt]);
 
   // Zaznaczanie koni
   const toggleKonie = (końId: number) => {
@@ -155,37 +175,33 @@ export default function KowalVisits() {
     if (error) {
       alert("Wystąpił błąd podczas zapisywania wizyty.");
       console.error(error);
-      return;
-    }
+    } else {
+      alert("Wizyta kowala została zapisana.");
 
-    // Po zapisaniu wizyty, aktualizujemy dane o koniach
-    try {
-      for (const końId of selectedKonie) {
-        const { error: horseError } = await supabase
-          .from("horse")
-          .update({
-            kowal: dataWizyty, // Aktualizujemy kowala
-            nastepna_wizyta: nastepnaWizytaFormatted, // Aktualizujemy datę następnej wizyty
-          })
-          .eq("id", końId);
+      // Aktualizowanie koni
+      const { error: updateError } = await supabase
+        .from("horse")
+        .upsert(
+          selectedKonie.map((końId) => ({
+            id: końId,
+            kowal: dataWizyty,
+            nastepna_wizyta: nastepnaWizytaFormatted,
+          }))
+        );
 
-        if (horseError) {
-          console.error(`Błąd podczas aktualizowania konia o ID ${końId}:`, horseError);
-        }
+      if (updateError) {
+        alert("Wystąpił błąd przy aktualizacji danych koni.");
+        console.error(updateError);
       }
-      alert("Wizyta kowala została zapisana i dane koni zaktualizowane.");
-    } catch (error) {
-      alert("Wystąpił błąd podczas aktualizowania danych koni.");
-      console.error("Błąd aktualizacji danych koni:", error);
-    }
 
-    // Resetujemy formularz
-    setKowalImie("");
-    setKowalData(null);
-    setNastepnaWizyta(null);
-    setNotatka("");
-    setSelectedKonie([]);
-    fetchData();
+      setKowalImie("");
+      setKowalData(null);
+      setNastepnaWizyta(null);
+      setNotatka("");
+      setSelectedKonie([]);
+      // Odświeżenie wizyt
+      fetchData();
+    }
   };
 
   useEffect(() => {
@@ -278,83 +294,79 @@ export default function KowalVisits() {
       </div>
 
       {/* Kartoteka wizyt kowala z filtrami */}
-      <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg mt-6">
-        <h2 className="text-2xl text-center mb-6 font-semibold">
-          Kartoteka wizyt kowala
-        </h2>
-
-        {/* Formularz filtrów */}
-        <div className="mb-6">
-          <div className="flex flex-row gap-4">
-            {/* Filtr po kowalu */}
-            <input
-              type="text"
-              className="custom-input"
-              placeholder="Filtruj po kowalu"
-              value={kowalFilter}
-              onChange={(e) => setKowalFilter(e.target.value)}
-            />
-            {/* Filtr po imieniu konia */}
-            <input
-              type="text"
-              className="custom-input"
-              placeholder="Filtruj po imieniu konia"
-              value={końFilter}
-              onChange={(e) => setKońFilter(e.target.value)}
-            />
-            
-            {/* Filtr po dacie od */}
-            od:
-            <input
-              type="date"
-              className="custom-input"
-              value={dataOd ? format(dataOd, "yyyy-MM-dd") : ""}
-              onChange={(e) => setDataOd(new Date(e.target.value))}
-            />
-            {/* Filtr po dacie do */}
-            do:
-            <input
-              type="date"
-              className="custom-input"
-              value={dataDo ? format(dataDo, "yyyy-MM-dd") : ""}
-              onChange={(e) => setDataDo(new Date(e.target.value))}
-            />
-            
-          </div>
+      <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+        <div className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
+          <h1>Historia wizyt</h1>
         </div>
-
-        {/* Wyświetlanie wyników wizyt */}
-        <div>
-          {filteredKartoteka.map((wizyt) => (
-            <div key={wizyt.id} className="border-b-2 mb-4">
-              <div
-                className="flex justify-between cursor-pointer"
-                onClick={() => toggleDetails(wizyt.id)}
-              >
-                <div>
-                  <h2  className="font-bold">{wizyt.kowal}</h2>
-                  <p>{"Konie: "}{getImionaKoni(wizyt.konie)}</p>
-                  <p>
-                    Data: {" "}
-                    {format(new Date(wizyt.data_wizyty), "yyyy-MM-dd")} {" "} <br></br>
-                    Następny termin: {" "}
-                    {format(new Date(wizyt.nastepna_wizyta), "yyyy-MM-dd")}
-                  </p>
-                </div>
-                <button
-                  className="text-blue-600 hover:underline"
-                  onClick={() => toggleDetails(wizyt.id)}
-                >
-                  {expandedVisitId === wizyt.id ? "Ukryj szczegóły" : "Pokaż szczegóły"}
-                </button>
-              </div>
-              {expandedVisitId === wizyt.id && (
-                <div className="p-4">
-                  <p>Notatka: {wizyt.notatka}</p>
-                </div>
-              )}
+        <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          {/* Filtry */}
+          <div className="mb-6">
+            <div className="flex flex-row gap-4">
+              {/* Filtr po kowalu */}
+              <input
+                type="text"
+                className="custom-input"
+                placeholder="Filtruj po kowalu"
+                value={kowalFilter}
+                onChange={(e) => setKowalFilter(e.target.value)}
+              />
+              {/* Filtr po dacie od */}
+              <input
+                type="date"
+                className="custom-input"
+                value={dataOd ? format(dataOd, "yyyy-MM-dd") : ""}
+                onChange={(e) => setDataOd(new Date(e.target.value))}
+              />
+              {/* Filtr po dacie do */}
+              <input
+                type="date"
+                className="custom-input"
+                value={dataDo ? format(dataDo, "yyyy-MM-dd") : ""}
+                onChange={(e) => setDataDo(new Date(e.target.value))}
+              />
             </div>
-          ))}
+          </div>
+
+          {/* Lista wizyt kowala */}
+          <div className="space-y-4">
+            {filteredKartoteka.map((wizyta) => (
+              <div
+                key={wizyta.id}
+                className="border p-4 rounded-lg shadow-md bg-white dark:bg-gray-800 dark:text-white"
+              >
+                <div className="flex justify-between">
+                  <div>
+                    <strong>Kowal: </strong>{wizyta.kowal}
+                  </div>
+                  <div>
+                    <strong>Data wizyty: </strong>{format(new Date(wizyta.data_wizyty), "yyyy-MM-dd")}
+                  </div>
+                </div>
+
+                {/* Przycisk rozwinięcia szczegółów wizyty */}
+                <button
+                  onClick={() => toggleDetails(wizyta.id)}
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  {expandedVisitId === wizyta.id ? "Ukryj szczegóły" : "Pokaż szczegóły"}
+                </button>
+
+                {expandedVisitId === wizyta.id && (
+                  <div className="mt-4">
+                    <div>
+                      <strong>Konie: </strong>{getImionaKoni(wizyta.konie)}
+                    </div>
+                    <div>
+                      <strong>Notatka: </strong>{wizyta.notatka || "Brak notatek"}
+                    </div>
+                    <div>
+                      <strong>Nastepna wizyta: </strong>{format(new Date(wizyta.nastepna_wizyta), "yyyy-MM-dd")}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

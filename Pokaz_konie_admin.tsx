@@ -33,7 +33,7 @@ const AdminPanel: React.FC = () => {
       const { data: ownerData, error: ownerError } = await supabase
         .from('employees')
         .select('id, first_name, last_name')
-        .eq('uprawnienia', 'wlasciciel_koni');
+        .in('uprawnienia', ['wlasciciel_koni', 'wlasciciel_stajni']);
       if (ownerError) throw ownerError;
 
       setOwners(ownerData || []);

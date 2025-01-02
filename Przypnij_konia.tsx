@@ -33,7 +33,8 @@ const AssignHorses: React.FC = () => {
       const { data: horseData, error: horseError } = await supabase
         .from('horse')
         .select('id, imie, wlasc_id')
-        .is('wlasc_id', null);
+        // .is('wlasc_id', null)
+        ;
       if (horseError) throw horseError;
 
       setHorses(horseData || []);
@@ -47,7 +48,7 @@ const AssignHorses: React.FC = () => {
       const { data: ownerData, error: ownerError } = await supabase
         .from('employees')
         .select('id, first_name, last_name')
-        .eq('uprawnienia', 'wlasciciel_koni');
+        .in('uprawnienia', ['wlasciciel_koni', 'wlasciciel_stajni']);
       if (ownerError) throw ownerError;
 
       setOwners(ownerData || []);

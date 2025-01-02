@@ -67,6 +67,7 @@ const Menu = () => {
                         <Link href="/wlasciciel_konia/moje_konie" className="hover:underline">Moje konie</Link>
                         <Link href="/wlasciciel_konia/zarzadzaj_wlasciciel" className="hover:underline">Zarządzaj końmi</Link>
                         <Link href="/wlasciciel_konia/treningi" className="hover:underline">Treningi</Link>
+                        <Link href="/wlasciciel_konia/kowal_wlasc" className="hover:underline">Kowal</Link>
                         <Link href="/dashboard/notes" className="hover:underline">Wiadomości</Link>
                         <Link href="/moj_profil" className="hover:underline">Mój profil</Link>
                     </div>
