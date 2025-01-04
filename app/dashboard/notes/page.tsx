@@ -22,7 +22,7 @@ import Notepad from "@/NotePad";
 const Home = async () => {
 
     return (
-        <main className="grid grid-cols-1 gap-10 min-h-fit flex-col place-items-center justify-between p-4">
+        <main className="w-full grid grid-cols-1 gap-10 min-h-fit flex-col place-items-center justify-between xl:px-96 p-6">
 
 
             <div
@@ -38,7 +38,7 @@ const Home = async () => {
             </div>
 
             <div
-                className=" w-fit bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                className=" w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
 
                 <div>

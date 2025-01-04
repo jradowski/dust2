@@ -58,7 +58,7 @@ const UsunWiersz: React.FC = () => {
                 <div >
                     <label htmlFor="horse" className="my-2">Wybierz konia do usunięcia<br></br></label>
                     <select
-                        className="w-full px-4 py-2 border border-gray-300 text-black rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="custom-select w-full"
                         id="horse"
                         name="horse"
                         value={selectedHorseId || ''}

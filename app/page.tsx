@@ -112,7 +112,7 @@ export default function AutoScrollingGallery() {
                 </p>
 
                 <div className="grid place-items-center w-full">
-                    <Image src="/images/kodqr.png" alt={"kodqr"} width={150} height={150} className="rounded-xl shadow-lg"/>
+                    <Image src="/images/kodqr.png" alt={"kod qr"} width={150} height={150} className="rounded-xl shadow-lg"/>
                 </div>
 
             </div>

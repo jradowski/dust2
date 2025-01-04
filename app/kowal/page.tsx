@@ -197,8 +197,8 @@ export default function KowalVisits() {
   }
 
   return (
-    <div className="flex flex-col gap-10 items-center p-4">
-      <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+    <div className="flex flex-col gap-10 items-center p-6 xl:px-96">
+      <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
         <div className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
           <h1>Wizyta kowala</h1>
         </div>
@@ -207,7 +207,7 @@ export default function KowalVisits() {
           {/* Formularz z wyborem koni */}
           <div className="mb-4">
             <h2>Wybierz konie, które zostały podkute</h2>
-            <div className="grid grid-cols-1 gap-4 p-2 ">
+            <div className="w-full grid grid-cols-2 gap-4 p-2 ">
               {konie.map((koń) => (
                 <label key={koń.id} className="grid grid-cols-2 border p-2 rounded-md">
                   <span className="ml-2">{koń.imie}</span>
@@ -278,7 +278,7 @@ export default function KowalVisits() {
       </div>
 
       {/* Kartoteka wizyt kowala z filtrami */}
-      <div className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg mt-6">
+      <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg mt-6">
         <h2 className="text-2xl text-center mb-6 font-semibold">
           Kartoteka wizyt kowala
         </h2>

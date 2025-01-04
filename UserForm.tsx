@@ -123,28 +123,30 @@ const DodajKonia: React.FC = () => {
         <div>
           <label htmlFor="imie">Imię konia:</label>
           <input
-            type="text"
-            id="imie"
-            name="imie"
-            value={formData.imie || ""}
-            onChange={handleInputChange}
-            required
+              className="custom-input"
+              type="text"
+              id="imie"
+              name="imie"
+              value={formData.imie || ""}
+              onChange={handleInputChange}
+              required
           />
         </div>
 
         <div>
           <label htmlFor="wlasc_id">Właściciel konia:</label>
           <select
-            id="wlasc_id"
-            name="wlasc_id"
-            value={formData.wlasc_id || ""}
-            onChange={handleInputChange}
+              className="custom-select"
+              id="wlasc_id"
+              name="wlasc_id"
+              value={formData.wlasc_id || ""}
+              onChange={handleInputChange}
           >
             <option value="">Wybierz właściciela</option>
             {owners.map((owner) => (
-              <option key={owner.id} value={owner.id}>
-                {owner.first_name} {owner.last_name}
-              </option>
+                <option key={owner.id} value={owner.id}>
+                  {owner.first_name} {owner.last_name}
+                </option>
             ))}
           </select>
         </div>
@@ -152,10 +154,11 @@ const DodajKonia: React.FC = () => {
         <div>
           <label htmlFor="plec">Płeć:</label>
           <select
-            id="plec"
-            name="plec"
-            value={formData.plec || ""}
-            onChange={handleInputChange}
+              className="custom-select"
+              id="plec"
+              name="plec"
+              value={formData.plec || ""}
+              onChange={handleInputChange}
           >
             <option value="">Wybierz płeć</option>
             <option value="ogier">Ogier</option>
@@ -167,142 +170,157 @@ const DodajKonia: React.FC = () => {
         <div>
           <label htmlFor="data_urodzenia">Data urodzenia:</label>
           <input
-            type="date"
-            id="data_urodzenia"
-            name="data_urodzenia"
-            value={formData.data_urodzenia || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="date"
+              id="data_urodzenia"
+              name="data_urodzenia"
+              value={formData.data_urodzenia || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="nr_boksu">Nr boksu:</label>
           <input
-            type="number"
-            id="nr_boksu"
-            name="nr_boksu"
-            value={formData.nr_boksu || ""}
-            onChange={handleNumberChange}
+              className="custom-input"
+              type="number"
+              id="nr_boksu"
+              name="nr_boksu"
+              value={formData.nr_boksu || ""}
+              onChange={handleNumberChange}
           />
         </div>
 
         <div>
           <label htmlFor="nr_padoku">Nr padoku:</label>
           <input
-            type="number"
-            id="nr_padoku"
-            name="nr_padoku"
-            value={formData.nr_padoku || ""}
-            onChange={handleNumberChange}
+              className="custom-input"
+              type="number"
+              id="nr_padoku"
+              name="nr_padoku"
+              value={formData.nr_padoku || ""}
+              onChange={handleNumberChange}
           />
         </div>
 
-       
+
         <div>
           <label htmlFor="v">Imię ojca:</label>
           <input
-            type="text"
-            id="v"
-            name="v"
-            value={formData.v || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="text"
+              id="v"
+              name="v"
+              value={formData.v || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="m">Imię matki:</label>
           <input
-            type="text"
-            id="m"
-            name="m"
-            value={formData.m || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="text"
+              id="m"
+              name="m"
+              value={formData.m || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="mv">Imię ojca matki:</label>
           <input
-            type="text"
-            id="mv"
-            name="mv"
-            value={formData.mv || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="text"
+              id="mv"
+              name="mv"
+              value={formData.mv || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="kowal">Ostatnia wizyta kowala:</label>
           <input
-            type="date"
-            id="kowal"
-            name="kowal"
-            value={formData.kowal || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="date"
+              id="kowal"
+              name="kowal"
+              value={formData.kowal || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="nastepna_wizyta">Następna wizyta:</label>
           <input
-            type="date"
-            id="nastepna_wizyta"
-            name="nastepna_wizyta"
-            value={formData.nastepna_wizyta || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="date"
+              id="nastepna_wizyta"
+              name="nastepna_wizyta"
+              value={formData.nastepna_wizyta || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="szczepienie">Ostatnie szczepienie:</label>
           <input
-            type="date"
-            id="szczepienie"
-            name="szczepienie"
-            value={formData.szczepienie || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="date"
+              id="szczepienie"
+              name="szczepienie"
+              value={formData.szczepienie || ""}
+              onChange={handleInputChange}
           />
         </div>
 
         <div>
           <label htmlFor="ilosc_posilkow">Ilość posiłków:</label>
           <input
-            type="number"
-            id="ilosc_posilkow"
-            name="ilosc_posilkow"
-            value={formData.ilosc_posilkow || ""}
-            onChange={handleNumberChange}
+              className="custom-input"
+              type="number"
+              id="ilosc_posilkow"
+              name="ilosc_posilkow"
+              value={formData.ilosc_posilkow || ""}
+              onChange={handleNumberChange}
           />
         </div>
 
         <div>
           <label htmlFor="wielkosc_posilku">Wielkość posiłku:</label>
           <input
-            type="number"
-            id="wielkosc_posilku"
-            name="wielkosc_posilku"
-            value={formData.wielkosc_posilku || ""}
-            onChange={handleNumberChange}
+              className="custom-input"
+              type="number"
+              id="wielkosc_posilku"
+              name="wielkosc_posilku"
+              value={formData.wielkosc_posilku || ""}
+              onChange={handleNumberChange}
           />
         </div>
 
         <div>
           <label htmlFor="posilek">Skład posiłku:</label>
           <input
-            type="text"
-            id="posilek"
-            name="posilek"
-            value={formData.posilek || ""}
-            onChange={handleInputChange}
+              className="custom-input"
+              type="text"
+              id="posilek"
+              name="posilek"
+              value={formData.posilek || ""}
+              onChange={handleInputChange}
           />
         </div>
 
-        <div>
+        <div className="pb-5">
           <label htmlFor="imageUpload">Dodaj zdjęcie:</label>
-          <input type="file" id="imageUpload" accept="image/*" onChange={handleImageChange} />
+          <input type="file" id="imageUpload" accept="image/*" onChange={handleImageChange}/>
         </div>
 
-        <button type="submit">Dodaj konia</button>
+        <button type="submit"
+                className="px-6 py-2 text-xl w-fit drop-shadow-lg text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white dark:drop-shadow-lg">
+          Zapisz zmiany
+        </button>
       </form>
 
       {message && <p>{message}</p>}

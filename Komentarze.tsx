@@ -16,7 +16,7 @@ const Komentarze: React.FC = () => {
 
         const { error } = await supabase
             .from('komentarze')
-            .insert([{ nick: userId, content: messageContent, ocena: ocenaa }]);
+            .insert([{ nick: userId, content: messageContent}]);
 
         if (error) {
             console.error('Błąd podczas wysyłania wiadomości:', error);
