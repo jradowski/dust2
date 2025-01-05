@@ -134,6 +134,7 @@ const ModyfikujKonia: React.FC = () => {
       <div>
         <label htmlFor="horse">Wybierz konia do modyfikacji:</label>
         <select
+            className="custom-select"
           id="horse"
           name="horse"
           value={selectedHorseId || ''}
@@ -154,6 +155,7 @@ const ModyfikujKonia: React.FC = () => {
           <div>
             <label htmlFor="imie">Imię konia:</label>
             <input
+                className="custom-input"
               type="text"
               id="imie"
               name="imie"
@@ -186,6 +188,7 @@ const ModyfikujKonia: React.FC = () => {
           <div>
             <label htmlFor="nr_boksu">Nr boksu:</label>
             <input
+                className="custom-input"
               type="text"
               id="nr_boksu"
               name="nr_boksu"
@@ -198,6 +201,7 @@ const ModyfikujKonia: React.FC = () => {
           <div>
             <label htmlFor="nr_boksu">Nr padoku:</label>
             <input
+                className="custom-input"
               type="text"
               id="nr_padoku"
               name="nr_padoku"
@@ -330,13 +334,15 @@ const ModyfikujKonia: React.FC = () => {
           </div>
 
           {selectedHorseData.image_url && (
-            <div>
+            <div className="py-4">
               <p>Aktualne zdjęcie:</p>
               <img src={selectedHorseData.image_url} alt="Zdjęcie konia" width="200" />
             </div>
           )}
 
-          <button type="submit">Zapisz zmiany</button>
+          <button type="submit" className="px-6 py-2 text-xl w-fit drop-shadow-lg text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white dark:drop-shadow-lg">
+            Zapisz zmiany
+          </button>
         </form>
       )}
 

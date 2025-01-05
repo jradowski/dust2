@@ -55,23 +55,25 @@ export default function Page() {
 
             {/* Sekcja Przypominajka */}
             <div className="mt-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium w-full">
-                <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left bg-transparent p-5 rounded-tl-xl">
+                <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left bg-transparent  rounded-tl-xl">
                     <h2 className="text-xl sm:text-2xl font-semibold">Przypominajka</h2>
                     <Image src="/images/blink.png" alt="Reminder image" width={64} height={64} className="m-2 h-auto" />
                 </div>
 
-                <div>
-                    <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Kowal</h1>
-                    <Kowal />
-                </div>
-                <hr className="border-t-2 border-zinc-200 dark:border-gray-600 my-8" />
-                <div>
-                    <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Szczepienie</h1>
-                    <Szczepienie />
+                <div className="mt-10 bg-blue-300 drop-shadow-lg dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium w-full">
+                    <div>
+                        <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Kowal</h1>
+                        <Kowal/>
+                    </div>
+                    <hr className="border-t-2 border-zinc-200 dark:border-gray-600 my-8"/>
+                    <div>
+                        <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Szczepienie</h1>
+                        <Szczepienie/>
+                    </div>
                 </div>
             </div>
         </main>
 
     );
-    
+
 }

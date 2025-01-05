@@ -6,6 +6,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -30,6 +31,7 @@ const config: Config = {
         'gray-100': '#F7FAFC',
         'gray-600': '#718096',
         'gray-800': '#1A202C',
+        'rubin':'#FF001B',
 
 
       },

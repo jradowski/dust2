@@ -112,7 +112,7 @@ const EditableTable: React.FC = () => {
         <select
           value={selectedHorseId ?? ""}
           onChange={(e) => setSelectedHorseId(Number(e.target.value) || null)}
-          className="px-2 py-1 border rounded"
+          className="px-2 py-1 border rounded text-black"
         >
           <option value="">Wybierz konia</option>
           {horses.map((horse) => (
@@ -125,99 +125,101 @@ const EditableTable: React.FC = () => {
 
       {/* Tabela jest widoczna tylko jeśli wybrano konia */}
       {selectedHorseId && (
-        <table className="table-auto w-full border-collapse border border-gray-300">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
-              <th className="border border-gray-300 px-4 py-2">Jeździec</th>
-              <th className="border border-gray-300 px-4 py-2">Luzak</th>
-              <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
-              <th className="border border-gray-300 px-4 py-2">Wtorek</th>
-              <th className="border border-gray-300 px-4 py-2">Środa</th>
-              <th className="border border-gray-300 px-4 py-2">Czwartek</th>
-              <th className="border border-gray-300 px-4 py-2">Piątek</th>
-              <th className="border border-gray-300 px-4 py-2">Sobota</th>
-              <th className="border border-gray-300 px-4 py-2">Niedziela</th>
-              <th className="border border-gray-300 px-4 py-2">Akcja</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredRecords.map((record) => {
-              const horse = horses.find((horse) => horse.id === record.nr_konia);
-              return (
-                <tr key={record.nr_konia}>
-                  {/* Imię Konia */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    {horse ? horse.imie : "Brak imienia"}
-                  </td>
-                  {/* Jeździec */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <select
-                      value={record.id_jezdzca}
-                      onChange={(e) =>
-                        handleChange(record.nr_konia, "id_jezdzca", e.target.value)
-                      }
-                      className="w-full px-2 py-1 border rounded"
-                    >
-                      <option value="">Wybierz jeźdźca</option>
-                      {employees.map((employee) => (
-                        <option key={employee.id} value={employee.id}>
-                          {employee.first_name} {employee.last_name}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  {/* Luzak */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <select
-                      value={record.luzak_id}
-                      onChange={(e) =>
-                        handleChange(record.nr_konia, "luzak_id", e.target.value)
-                      }
-                      className="w-full px-2 py-1 border rounded"
-                    >
-                      <option value="">Wybierz luzaka</option>
-                      {employees.map((employee) => (
-                        <option key={employee.id} value={employee.id}>
-                          {employee.first_name} {employee.last_name}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  {/* Dni tygodnia */}
-                  {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
-                    (day) => (
-                      <td key={day} className="border border-gray-300 px-4 py-2">
-                        <input
-                          type="text"
-                          value={record[day as keyof TreningData] || ""}
-                          onChange={(e) =>
-                            handleChange(record.nr_konia, day, e.target.value)
-                          }
-                          className="w-full px-2 py-1 border rounded"
-                        />
+          <div className="overflow-x-auto">
+            <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+              <thead className="bg-blue-600">
+              <tr>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Imię Konia</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Jeździec</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Luzak</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Poniedziałek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Wtorek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Środa</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Czwartek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Piątek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Sobota</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Niedziela</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Akcja</th>
+              </tr>
+              </thead>
+              <tbody>
+              {filteredRecords.map((record) => {
+                const horse = horses.find((horse) => horse.id === record.nr_konia);
+                return (
+                    <tr key={record.nr_konia} className="bg-white dark:bg-gray-800">
+                      {/* Imię Konia */}
+                      <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                        {horse ? horse.imie : "Brak imienia"}
                       </td>
-                    )
-                  )}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <button
-                      onClick={() => handleSave(record)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                    >
-                      Zapisz
-                    </button>
-                    <button
-                      onClick={() => handleDeleteHorse(record.nr_konia)}
-                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2"
-                    >
-                      Usuń
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      {/* Jeździec */}
+                      <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                        <select
+                            value={record.id_jezdzca}
+                            onChange={(e) =>
+                                handleChange(record.nr_konia, "id_jezdzca", e.target.value)
+                            }
+                            className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                        >
+                          <option value="">Wybierz jeźdźca</option>
+                          {employees.map((employee) => (
+                              <option key={employee.id} value={employee.id}>
+                                {employee.first_name} {employee.last_name}
+                              </option>
+                          ))}
+                        </select>
+                      </td>
+                      {/* Luzak */}
+                      <td className="border border-gray-300 px-4 py-2">
+                        <select
+                            value={record.luzak_id}
+                            onChange={(e) =>
+                                handleChange(record.nr_konia, "luzak_id", e.target.value)
+                            }
+                            className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                        >
+                          <option value="">Wybierz luzaka</option>
+                          {employees.map((employee) => (
+                              <option key={employee.id} value={employee.id}>
+                                {employee.first_name} {employee.last_name}
+                              </option>
+                          ))}
+                        </select>
+                      </td>
+                      {/* Dni tygodnia */}
+                      {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
+                          (day) => (
+                              <td key={day} className="border border-gray-300 px-4 py-2">
+                                <input
+                                    type="text"
+                                    value={record[day as keyof TreningData] || ""}
+                                    onChange={(e) =>
+                                        handleChange(record.nr_konia, day, e.target.value)
+                                    }
+                                    className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                                />
+                              </td>
+                          )
+                      )}
+                      <td className=" grid grid-cols-1 gap-2 border border-gray-300 ">
+                        <button
+                            onClick={() => handleSave(record)}
+                            className="w-full bg-blue-500 p-2 rounded text-white"
+                        >
+                          Zapisz
+                        </button>
+                        <button
+                            onClick={() => handleDeleteHorse(record.nr_konia)}
+                            className="w-full bg-blue-500 p-2 rounded text-white"
+                        >
+                          Usuń
+                        </button>
+                      </td>
+                    </tr>
+                );
+              })}
+              </tbody>
+            </table>
+          </div>
       )}
     </div>
   );

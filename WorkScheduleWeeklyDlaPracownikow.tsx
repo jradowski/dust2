@@ -153,45 +153,46 @@ const WorkScheduleWeekly: React.FC = () => {
         
 
           {/* Conditionally render the table based on the state */}
-         
-            <table>
-              <thead>
-                <tr>
-                  <th>Godziny</th>
-                  {daysOfWeek.map((day, index) => (
-                    <th key={index}>{day}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {hours.map((hour, index) => (
-                  <tr key={index}>
-                    <td>{hour}</td>
-                    {daysOfWeek.map((day, dayIndex) => {
-                      const employee = getEmployeeInSlot(day, hour);
 
-                      return (
-                        <td
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+          <thead className="bg-blue-600 text-black dark:text-white">
+          <tr>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Godziny</th>
+            {daysOfWeek.map((day, index) => (
+                <th key={index}>{day}</th>
+            ))}
+          </tr>
+          </thead>
+          <tbody>
+          {hours.map((hour, index) => (
+              <tr key={index} className="bg-white dark:bg-gray-800 text-black dark:text-white">
+                <td>{hour}</td>
+                {daysOfWeek.map((day, dayIndex) => {
+                  const employee = getEmployeeInSlot(day, hour);
+
+                  return (
+                      <td
                           key={dayIndex}
-                          style={{ backgroundColor: employee ? colors[employee.id] : 'transparent' }}
-                        >
-                          {employee ? (
-                            <span style={{ fontSize: '11px' }}>
+                          style={{backgroundColor: employee ? colors[employee.id] : 'transparent'}}
+                      >
+                        {employee ? (
+                            <span style={{fontSize: '11px'}}>
                               {employee.first_name} {employee.last_name}
                             </span>
-                          ) : (
+                        ) : (
                             '-'
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          
-        
-      
+                        )}
+                      </td>
+                  );
+                })}
+              </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
+
+
     </div>
   );
 };

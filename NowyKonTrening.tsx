@@ -146,76 +146,77 @@ const EditableTable: React.FC = () => {
         </select>
         {/* Formularz dla nowego konia */}
         {selectedHorse && (
-          <div>
-            <table className="table-auto w-full border-collapse border border-gray-300">
-              <thead>
-                <tr>
-                  <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
-                  <th className="border border-gray-300 px-4 py-2">Jeździec</th>
-                  <th className="border border-gray-300 px-4 py-2">Luzak</th>
-                  <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
-                  <th className="border border-gray-300 px-4 py-2">Wtorek</th>
-                  <th className="border border-gray-300 px-4 py-2">Środa</th>
-                  <th className="border border-gray-300 px-4 py-2">Czwartek</th>
-                  <th className="border border-gray-300 px-4 py-2">Piątek</th>
-                  <th className="border border-gray-300 px-4 py-2">Sobota</th>
-                  <th className="border border-gray-300 px-4 py-2">Niedziela</th>
-                </tr>
+          <div className="overflow-x-auto">
+            <table
+                className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+              <thead className="bg-blue-600">
+              <tr>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Imię Konia</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Jeździec</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Luzak</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Poniedziałek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Wtorek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Środa</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Czwartek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Piątek</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Sobota</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Niedziela</th>
+              </tr>
               </thead>
               <tbody>
-                <tr>
-                  {/* Imię Konia */}
-                  <td className="border border-gray-300 px-4 py-2">{horses.find(horse => horse.id === selectedHorse)?.imie}</td>
-                  {/* Jeździec */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <select
+              <tr>
+                {/* Imię Konia */}
+                <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{horses.find(horse => horse.id === selectedHorse)?.imie}</td>
+                {/* Jeździec */}
+                <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                  <select
                       value={newRecord.id_jezdzca}
-                      onChange={(e) => setNewRecord({ ...newRecord, id_jezdzca: e.target.value })}
-                      className="w-full px-2 py-1 border rounded"
-                    >
-                      <option value="">Wybierz jeźdźca</option>
-                      {employees.map((employee) => (
+                      onChange={(e) => setNewRecord({...newRecord, id_jezdzca: e.target.value})}
+                      className="w-full px-2 py-1 border rounded text-black"
+                  >
+                    <option value="">Wybierz jeźdźca</option>
+                    {employees.map((employee) => (
                         <option key={employee.id} value={employee.id}>
                           {employee.first_name} {employee.last_name}
                         </option>
-                      ))}
-                    </select>
-                  </td>
-                  {/* Luzak */}
-                  <td className="border border-gray-300 px-4 py-2">
-                    <select
+                    ))}
+                  </select>
+                </td>
+                {/* Luzak */}
+                <td className="border border-gray-300 px-4 py-2 text-black">
+                  <select
                       value={newRecord.luzak_id}
-                      onChange={(e) => setNewRecord({ ...newRecord, luzak_id: e.target.value })}
+                      onChange={(e) => setNewRecord({...newRecord, luzak_id: e.target.value})}
                       className="w-full px-2 py-1 border rounded"
-                    >
-                      <option value="">Wybierz luzaka</option>
-                      {employees.map((employee) => (
+                  >
+                    <option value="">Wybierz luzaka</option>
+                    {employees.map((employee) => (
                         <option key={employee.id} value={employee.id}>
                           {employee.first_name} {employee.last_name}
                         </option>
-                      ))}
-                    </select>
-                  </td>
-                  {/* Dni tygodnia */}
-                  {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
+                    ))}
+                  </select>
+                </td>
+                {/* Dni tygodnia */}
+                {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
                     (day) => (
-                      <td key={day} className="border border-gray-300 px-4 py-2">
-                        <input
-                          type="text"
-                          value={newRecord[day as keyof TreningData] || ""}
-                          onChange={(e) => setNewRecord({ ...newRecord, [day]: e.target.value })}
-                          className="w-full px-2 py-1 border rounded"
-                        />
-                      </td>
+                        <td key={day} className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                          <input
+                              type="text"
+                              value={newRecord[day as keyof TreningData] || ""}
+                              onChange={(e) => setNewRecord({...newRecord, [day]: e.target.value})}
+                              className="w-full px-2 py-1 border rounded text-black"
+                          />
+                        </td>
                     )
-                  )}
-                </tr>
+                )}
+              </tr>
               </tbody>
             </table>
             <br></br>
             <button
-              onClick={handleAddNewHorse}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                onClick={handleAddNewHorse}
+                className="bg-blue-500 text-white px-4 py-2 rounded"
             >
               Dodaj konia do treningu
             </button>

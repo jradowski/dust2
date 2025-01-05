@@ -132,7 +132,7 @@ const Inbox: React.FC = () => {
                             name="sender"
                             value={filter.sender}
                             onChange={handleFilterChange}
-                            className={styles.filterInput}
+                            className="custom-input"
                         />
                     </label>
                     <label>
@@ -142,7 +142,7 @@ const Inbox: React.FC = () => {
                             name="startDate"
                             value={filter.startDate}
                             onChange={handleFilterChange}
-                            className={styles.filterInput}
+                            className="custom-input"
                         />
                     </label>
                     <label>
@@ -152,7 +152,7 @@ const Inbox: React.FC = () => {
                             name="endDate"
                             value={filter.endDate}
                             onChange={handleFilterChange}
-                            className={styles.filterInput}
+                            className="custom-input"
                         />
                     </label>
                     {/* Przycisk resetowania filtrów */}

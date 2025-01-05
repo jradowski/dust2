@@ -83,29 +83,32 @@ const TreningUserLuzak: React.FC = () => {
   };
 
   return (
-    <table className="table-auto w-full border-collapse border border-gray-300">
-      <thead>
-        <tr>
-          <th className="border border-gray-300 px-4 py-2">Imię Konia</th> {/* First column is Horse Name */}
-          {columns.map((column) => (
-            <th key={column} className="border border-gray-300 px-4 py-2">{column}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row, rowIndex) => (
-          <tr key={rowIndex} className="bg-white dark:bg-gray-800">
-            {/* Display Horse Name in the first column */}
-            <td className="border border-gray-300 px-4 py-2">
-              {getHorseName(row.nr_konia)} {/* Map nr_konia to horse name */}
-            </td>
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+          <thead className="bg-blue-600 text-black dark:text-white">
+          <tr>
+            <th  className="px-4 py-2 text-left border border-gray-300 text-black dark:text-white">Imię Konia</th>
+            {/* First column is Horse Name */}
             {columns.map((column) => (
-              <td key={column} className="border border-gray-300 px-4 py-2">{row[column]}</td>
+                <th key={column} className="border border-gray-300 px-4 py-2">{column}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+          </thead>
+          <tbody>
+          {data.map((row, rowIndex) => (
+              <tr key={rowIndex} className="bg-white dark:bg-gray-800">
+                {/* Display Horse Name in the first column */}
+                <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                  {getHorseName(row.nr_konia)} {/* Map nr_konia to horse name */}
+                </td>
+                {columns.map((column) => (
+                    <td key={column} className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">{row[column]}</td>
+                ))}
+              </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
   );
 };
 
