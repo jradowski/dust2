@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.45.4",
     "@types/react-router-dom": "^5.3.3",
     "date-fns": "^3.6.0",
+    "fabric": "^6.5.4",
     "react": "^18",
     "react-dom": "^18",
     "react-modal": "^3.16.1",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.7.3",
+    "@types/fabric": "^5.3.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
