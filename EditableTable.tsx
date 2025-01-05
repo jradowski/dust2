@@ -106,59 +106,42 @@ const EditableTable: React.FC = () => {
     : [];
 
   return (
-    <div className="p-4">
-      <div className="mb-4">
-        {/* Lista rozwijana do wyboru konia */}
-        <select
-          value={selectedHorseId ?? ""}
-          onChange={(e) => setSelectedHorseId(Number(e.target.value) || null)}
-          className="px-2 py-1 border rounded text-black"
-        >
-          <option value="">Wybierz konia</option>
-          {horses.map((horse) => (
-            <option key={horse.id} value={horse.id}>
-              {horse.imie}
-            </option>
-          ))}
-        </select>
-      </div>
+      <div className=" w-full">
+        <div className="mb-4">
+          {/* Lista rozwijana do wyboru konia */}
+          <select
+              value={selectedHorseId ?? ""}
+              onChange={(e) => setSelectedHorseId(Number(e.target.value) || null)}
+              className="px-2 py-1 border rounded text-black"
+          >
+            <option value="">Wybierz konia</option>
+            {horses.map((horse) => (
+                <option key={horse.id} value={horse.id}>
+                  {horse.imie}
+                </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Tabela jest widoczna tylko jeśli wybrano konia */}
-      {selectedHorseId && (
-          <div className="overflow-x-auto">
-            <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
-              <thead className="bg-blue-600">
-              <tr>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Imię Konia</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Jeździec</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Luzak</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Poniedziałek</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Wtorek</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Środa</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Czwartek</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Piątek</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Sobota</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Niedziela</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Akcja</th>
-              </tr>
-              </thead>
-              <tbody>
-              {filteredRecords.map((record) => {
-                const horse = horses.find((horse) => horse.id === record.nr_konia);
-                return (
-                    <tr key={record.nr_konia} className="bg-white dark:bg-gray-800">
-                      {/* Imię Konia */}
-                      <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
-                        {horse ? horse.imie : "Brak imienia"}
-                      </td>
-                      {/* Jeździec */}
-                      <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+        {selectedHorseId && (
+            <div className="overflow-x-auto">
+              <div className="grid grid-cols-1 md:grid-cols-auto gap-4">
+                {filteredRecords.map((record) => (
+                    <div
+                        key={record.nr_konia}
+                        className=" rounded-lg shadow-lg p-4 bg-transparent"
+                    >
+                      <div className="font-bold mb-2">
+                        Koń: {horses.find((h) => h.id === record.nr_konia)?.imie || "Brak imienia"}
+                      </div>
+                      <div className="mb-4">
+                        <label className="block mb-1 font-medium">Jeździec:</label>
                         <select
                             value={record.id_jezdzca}
                             onChange={(e) =>
                                 handleChange(record.nr_konia, "id_jezdzca", e.target.value)
                             }
-                            className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                            className="w-full px-2 py-1 border rounded bg-white text-black"
                         >
                           <option value="">Wybierz jeźdźca</option>
                           {employees.map((employee) => (
@@ -167,15 +150,15 @@ const EditableTable: React.FC = () => {
                               </option>
                           ))}
                         </select>
-                      </td>
-                      {/* Luzak */}
-                      <td className="border border-gray-300 px-4 py-2">
+                      </div>
+                      <div className="mb-4">
+                        <label className="block mb-1 font-medium">Luzak:</label>
                         <select
                             value={record.luzak_id}
                             onChange={(e) =>
                                 handleChange(record.nr_konia, "luzak_id", e.target.value)
                             }
-                            className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                            className="w-full px-2 py-1 border rounded bg-white text-black"
                         >
                           <option value="">Wybierz luzaka</option>
                           {employees.map((employee) => (
@@ -184,44 +167,45 @@ const EditableTable: React.FC = () => {
                               </option>
                           ))}
                         </select>
-                      </td>
-                      {/* Dni tygodnia */}
+                      </div>
                       {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
                           (day) => (
-                              <td key={day} className="border border-gray-300 px-4 py-2">
+                              <div key={day} className="mb-2">
+                                <label
+                                    className="block font-medium">{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
                                 <input
                                     type="text"
                                     value={record[day as keyof TreningData] || ""}
                                     onChange={(e) =>
                                         handleChange(record.nr_konia, day, e.target.value)
                                     }
-                                    className="w-full px-2 py-1 border rounded bg-gray-300 text-black"
+                                    className="w-full px-2 py-1 border rounded  bg-white  text-black"
                                 />
-                              </td>
+                              </div>
                           )
                       )}
-                      <td className=" grid grid-cols-1 gap-2 border border-gray-300 ">
+                      <div className="flex gap-2 mt-4">
                         <button
                             onClick={() => handleSave(record)}
-                            className="w-full bg-blue-500 p-2 rounded text-white"
+                            className="flex-grow bg-blue-500 p-2 rounded text-white"
                         >
                           Zapisz
                         </button>
                         <button
                             onClick={() => handleDeleteHorse(record.nr_konia)}
-                            className="w-full bg-blue-500 p-2 rounded text-white"
+                            className="flex-grow bg-blue-500 p-2 rounded text-white"
                         >
                           Usuń
                         </button>
-                      </td>
-                    </tr>
-                );
-              })}
-              </tbody>
-            </table>
-          </div>
-      )}
-    </div>
+                      </div>
+
+                    </div>
+                ))}
+              </div>
+            </div>
+        )}
+      </div>
+
   );
 };
 

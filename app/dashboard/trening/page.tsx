@@ -13,29 +13,29 @@ import EditableTable from '@/EditableTable';
 export default function page() {
 
     return (
-        <main className="flex p-4 flex-col gap-8 items-center text-black  dark:text-zinc-500  justify-between ">
+        <main className="flex flex-col items-center justify-between gap-10 p-4 sm:p-6 md:p-8 lg:p-24">
 
 
             <div
-                className="content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+                className="xl:w-3/5 content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
 
 
                 <h1 className="text-3xl dark:text-white text-center font-bold">Tygodniowy plan treningowy</h1>
-                <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
+                <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center justify-center    ">
                     <TreningTabela/>
                 </div>
 
             </div>
 
             <div
-                className="content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
+                className="xl:w-3/5 content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
 
-                <h1 className="text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
+                <h1 className="  text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
                 <div
-                    className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center">
+                    className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white text-center p-6 rounded-xl shadow-lg text-lg font-medium flex items-center justify-center">
                     <EditableTable/>
-
                 </div>
+
 
             </div>
 

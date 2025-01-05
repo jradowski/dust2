@@ -195,7 +195,7 @@ const Inbox: React.FC = () => {
                             {!isExpanded && (
                                 <button
                                     onClick={() => setIsExpanded(true)}
-                                    className={styles.expandButton}
+                                    className="w-full bg-blue-500 p-2 rounded text-white"
                                 >
                                     Rozwiń
                                 </button>
