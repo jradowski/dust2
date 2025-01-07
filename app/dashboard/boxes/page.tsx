@@ -24,7 +24,7 @@ const fetchDataForBox = async (boxNumber: number): Promise<Horse> => {
 
 const Page: React.FC = () => {
     const [horses, setHorses] = useState<Horse[]>([]); // Przechowujemy dane koni
-    const boxNumbers: number[] = [1, 2, 3, 4, 5]; // Numery boksów
+    const boxNumbers: number[] = [1, 2, 3, 4, 5,6,7,8,9,10]; // Numery boksów
 
     // Pobieranie danych w momencie załadowania komponentu
     useEffect(() => {

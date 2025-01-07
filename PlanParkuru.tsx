@@ -21,6 +21,7 @@ const PlanParkuru: React.FC = () => {
 
   const generatePlan = (canvas: any) => {
     // Ustawienie rozmiarów canvasu
+    
     canvas.setWidth(width * scale);
     canvas.setHeight(height * scale);
     canvas.clear();

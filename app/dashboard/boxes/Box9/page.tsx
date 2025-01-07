@@ -16,7 +16,7 @@ const Home = () => {
     const { data, error } = await supabase
       .from('horse')
       .select('*')
-      .eq('nr_boksu', 6)
+      .eq('nr_boksu', 9)
       .single();
 
     if (error) {
