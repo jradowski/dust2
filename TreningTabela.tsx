@@ -55,32 +55,32 @@ const ReadOnlyTable: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
+      <table className="min-w-full table-auto border-collapse border border-gray-500 dark:border-gray-700 rounded-xl">
         <thead className="bg-blue-600">
           <tr>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Imię Konia</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Poniedziałek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Wtorek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Środa</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Czwartek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Piątek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Sobota</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Niedziela</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Imię Konia</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Poniedziałek</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Wtorek</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Środa</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Czwartek</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Piątek</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Sobota</th>
+            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Niedziela</th>
           </tr>
         </thead>
         <tbody>
           {records.map((record) => {
             const horse = horses.find((horse) => horse.id === record.nr_konia);
             return (
-              <tr key={record.nr_konia} className="bg-white dark:bg-gray-800">
+              <tr key={record.nr_konia} className="bg-white border-collapse border border-gray-500 dark:border-gray-700 dark:bg-gray-800">
                 {/* Imię Konia */}
-                <td className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                <td className="px-4 py-2 text-gray-800 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-200 whitespace-normal break-words max-w-xs">
                   {horse ? horse.imie : "Brak imienia"}
                 </td>
                 {/* Dni tygodnia */}
                 {["poniedzialek", "wtorek", "sroda", "czwartek", "piatek", "sobota", "niedziela"].map(
                   (day) => (
-                    <td key={day} className="px-4 py-2 text-gray-800 dark:text-gray-200 whitespace-normal break-words max-w-xs">
+                    <td key={day} className="px-4 py-2 text-gray-800 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-200 whitespace-normal break-all">
                       {/* Wyświetlanie wartości bez możliwości edycji */}
                       <span className="w-full px-2 py-1">{record[day as keyof TreningData] || "-"}</span>
                     </td>

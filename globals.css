@@ -8,7 +8,7 @@
   }
 }
 html {
-  transition: background-color 300ms ease, color 300ms ease;
+  transition: background-color 3000ms ease, color 3000ms ease;
 }
 /* width */
 ::-webkit-scrollbar {

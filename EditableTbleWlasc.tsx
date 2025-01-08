@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import supabase from "@/supabaseClient.js";
 
-// Definicja typu dla danych z tabeli trening
 type TreningData = {
   nr_konia: number;
   id_jezdzca: string;
@@ -16,12 +15,12 @@ type TreningData = {
   niedziela: string;
 };
 
-const EditableTable: React.FC = () => {
+const EditableForm: React.FC = () => {
   const [records, setRecords] = useState<TreningData[]>([]);
   const [employees, setEmployees] = useState<any[]>([]);
   const [horses, setHorses] = useState<any[]>([]);
-  const [selectedHorseId, setSelectedHorseId] = useState<number | null>(null); // Nowa zmienna do przechowywania wybranego konia
-  const [userId, setUserId] = useState<string | null>(null); // Zmienna do przechowywania id użytkownika
+  const [selectedHorseId, setSelectedHorseId] = useState<number | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserId = async () => {
@@ -37,27 +36,16 @@ const EditableTable: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Pobieranie danych z tabeli trening
-        const { data: treningData, error: treningError } = await supabase
-          .from("trening")
-          .select("*");
-        if (treningError) throw treningError;
+        const { data: treningData } = await supabase.from("trening").select("*");
+        const { data: employeesData } = await supabase
+            .from("employees")
+            .select("id, first_name, last_name");
+        const { data: horsesData } = await supabase
+            .from("horse")
+            .select("id, imie, wlasc_id");
 
-        // Pobieranie danych z tabeli employees
-        const { data: employeesData, error: employeesError } = await supabase
-          .from("employees")
-          .select("id, first_name, last_name");
-        if (employeesError) throw employeesError;
-
-        // Pobieranie danych z tabeli horses
-        const { data: horsesData, error: horsesError } = await supabase
-          .from("horse")
-          .select("id, imie, wlasc_id");
-        if (horsesError) throw horsesError;
-
-        // Filtrujemy konie należące do zalogowanego użytkownika
         const filteredHorses = horsesData?.filter(
-          (horse) => horse.wlasc_id === userId
+            (horse) => horse.wlasc_id === userId
         );
         setHorses(filteredHorses || []);
         setRecords(treningData || []);
@@ -72,43 +60,26 @@ const EditableTable: React.FC = () => {
     }
   }, [userId]);
 
-  // Obsługa zmiany jeźdźca lub luzaka w tabeli
-  const handleChange = (id: number, column: string, value: string) => {
+  const handleInputChange = (
+      id: number,
+      field: string,
+      value: string
+  ) => {
     setRecords((prev) =>
-      prev.map((record) =>
-        record.nr_konia === id ? { ...record, [column]: value } : record
-      )
+        prev.map((record) =>
+            record.nr_konia === id ? { ...record, [field]: value } : record
+        )
     );
   };
 
-  const handleDeleteHorse = async (nrKonia: number) => {
-    if (window.confirm("Czy na pewno chcesz usunąć tego konia z treningu?")) {
-      try {
-        const { error } = await supabase
-          .from("trening")
-          .delete()
-          .eq("nr_konia", nrKonia);
-
-        if (error) throw error;
-        alert("Koń został usunięty z treningu!");
-        // Po usunięciu konia z treningu, odświeżamy dane
-        setRecords(records.filter((record) => record.nr_konia !== nrKonia));
-      } catch (error) {
-        console.error("Błąd podczas usuwania konia:", error);
-        alert("Nie udało się usunąć konia.");
-      }
-    }
-  };
-
-  // Zapisanie zmian do bazy danych
   const handleSave = async (record: TreningData) => {
     try {
       const { nr_konia, id_jezdzca, luzak_id, ...days } = record;
 
       const { error } = await supabase
-        .from("trening")
-        .update({ id_jezdzca, luzak_id, ...days })
-        .eq("nr_konia", nr_konia);
+          .from("trening")
+          .update({ id_jezdzca, luzak_id, ...days })
+          .eq("nr_konia", nr_konia);
 
       if (error) throw error;
       alert("Zapisano zmiany!");
@@ -118,136 +89,112 @@ const EditableTable: React.FC = () => {
     }
   };
 
-  const handleHorseSelection = (horseId: number) => {
-    setSelectedHorseId(horseId);
+  const handleHorseSelection = (value: string) => {
+    setSelectedHorseId(value ? Number(value) : null);
   };
 
   return (
-    <div className="p-4">
-      {/* Selekcja konia */}
-      <div className="mb-4">
-        <label htmlFor="horseSelect" className="block text-sm font-medium">
-          Wybierz konia
-        </label>
-        <select
-          id="horseSelect"
-          className="w-full px-4 py-2 border rounded"
-          onChange={(e) => handleHorseSelection(Number(e.target.value))}
-          value={selectedHorseId || ""}
-        >
-          <option value="">Wybierz konia</option>
-          {horses.map((horse) => (
-            <option key={horse.id} value={horse.id}>
-              {horse.imie}
-            </option>
-          ))}
-        </select>
-      </div>
+      <div className="w-full">
+        <div className="mb-4">
+          <select
+              id="horseSelect"
+              className="px-2 py-1 border rounded text-black"
+              onChange={(e) => handleHorseSelection(e.target.value)}
+              value={selectedHorseId || ""}
+          >
+            <option value="">Wybierz konia</option>
+            {horses.map((horse) => (
+                <option key={horse.id} value={horse.id}>
+                  {horse.imie}
+                </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Tylko po wybraniu konia, tabela się pojawia */}
-      {selectedHorseId && (
-          <div className="overflow-x-auto">
-            <table className="table-auto w-full border-collapse border border-gray-300">
-              <thead className="bg-blue-600">
-              <tr>
-                <th className="border border-gray-300 px-4 py-2">Imię Konia</th>
-                <th className="border border-gray-300 px-4 py-2">Jeździec</th>
-                <th className="border border-gray-300 px-4 py-2">Luzak</th>
-                <th className="border border-gray-300 px-4 py-2">Poniedziałek</th>
-                <th className="border border-gray-300 px-4 py-2">Wtorek</th>
-                <th className="border border-gray-300 px-4 py-2">Środa</th>
-                <th className="border border-gray-300 px-4 py-2">Czwartek</th>
-                <th className="border border-gray-300 px-4 py-2">Piątek</th>
-                <th className="border border-gray-300 px-4 py-2">Sobota</th>
-                <th className="border border-gray-300 px-4 py-2">Niedziela</th>
-                <th className="border border-gray-300 px-4 py-2">Akcja</th>
-              </tr>
-              </thead>
-              <tbody>
-              {records
-                  .filter((record) => record.nr_konia === selectedHorseId)
-                  .map((record) => {
-                    const horse = horses.find((horse) => horse.id === record.nr_konia);
-                    return (
-                        <tr key={record.nr_konia}>
-                          <td className="border border-gray-300 px-4 py-2">
-                            {horse ? horse.imie : "Brak imienia"}
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                                value={record.id_jezdzca}
-                                onChange={(e) =>
-                                    handleChange(record.nr_konia, "id_jezdzca", e.target.value)
-                                }
-                                className="w-full px-2 py-1 border rounded"
-                            >
-                              <option value="">Wybierz jeźdźca</option>
-                              {employees.map((employee) => (
-                                  <option key={employee.id} value={employee.id}>
-                                    {employee.first_name} {employee.last_name}
-                                  </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                                value={record.luzak_id}
-                                onChange={(e) =>
-                                    handleChange(record.nr_konia, "luzak_id", e.target.value)
-                                }
-                                className="w-full px-2 py-1 border rounded"
-                            >
-                              <option value="">Wybierz luzaka</option>
-                              {employees.map((employee) => (
-                                  <option key={employee.id} value={employee.id}>
-                                    {employee.first_name} {employee.last_name}
-                                  </option>
-                              ))}
-                            </select>
-                          </td>
-                          {[
-                            "poniedzialek",
-                            "wtorek",
-                            "sroda",
-                            "czwartek",
-                            "piatek",
-                            "sobota",
-                            "niedziela",
-                          ].map((day) => (
-                              <td key={day} className="border border-gray-300 px-4 py-2">
-                                <input
-                                    type="text"
-                                    value={record[day as keyof TreningData] || ""}
+        {selectedHorseId && (
+            <div>
+              {records.filter((record) => record.nr_konia === selectedHorseId).length === 0 ? (
+                  <div className="text-red-500 font-bold">Koń jest poza treningiem</div>
+              ) : (
+                  <form className="space-y-4">
+                    {records
+                        .filter((record) => record.nr_konia === selectedHorseId)
+                        .map((record) => (
+                            <div key={record.nr_konia} className="space-y-2">
+                              <div>
+                                <label className="block text-sm font-medium">Jeździec</label>
+                                <select
+                                    value={record.id_jezdzca}
                                     onChange={(e) =>
-                                        handleChange(record.nr_konia, day, e.target.value)
+                                        handleInputChange(record.nr_konia, "id_jezdzca", e.target.value)
                                     }
                                     className="w-full px-2 py-1 border rounded"
-                                />
-                              </td>
-                          ))}
-                          <td className="border border-gray-300 px-4 py-2 contain-content">
-                            <button
-                                onClick={() => handleSave(record)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded m-2 "
-                            >
-                              Zapisz
-                            </button>
-                            <button
-                                onClick={() => handleDeleteHorse(record.nr_konia)}
-                                className="bg-blue-500 text-white px-4 py-2 rounded  ml-2"
-                            >
-                              Usuń
-                            </button>
-                          </td>
-                        </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-          </div>
-      )}
-    </div>
+                                >
+                                  <option value="">Wybierz jeźdźca</option>
+                                  {employees.map((employee) => (
+                                      <option key={employee.id} value={employee.id}>
+                                        {employee.first_name} {employee.last_name}
+                                      </option>
+                                  ))}
+                                </select>
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium">Luzak</label>
+                                <select
+                                    value={record.luzak_id}
+                                    onChange={(e) =>
+                                        handleInputChange(record.nr_konia, "luzak_id", e.target.value)
+                                    }
+                                    className="w-full px-2 py-1 border rounded"
+                                >
+                                  <option value="">Wybierz luzaka</option>
+                                  {employees.map((employee) => (
+                                      <option key={employee.id} value={employee.id}>
+                                        {employee.first_name} {employee.last_name}
+                                      </option>
+                                  ))}
+                                </select>
+                              </div>
+                              {[
+                                "poniedzialek",
+                                "wtorek",
+                                "sroda",
+                                "czwartek",
+                                "piatek",
+                                "sobota",
+                                "niedziela",
+                              ].map((day) => (
+                                  <div key={day}>
+                                    <label className="block text-sm font-medium capitalize">
+                                      {day}
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={record[day as keyof TreningData] || ""}
+                                        onChange={(e) =>
+                                            handleInputChange(record.nr_konia, day, e.target.value)
+                                        }
+                                        className="w-full px-2 py-1 border rounded"
+                                    />
+                                  </div>
+                              ))}
+                              <div>
+                                <button
+                                    type="button"
+                                    onClick={() => handleSave(record)}
+                                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                                >
+                                  Zapisz
+                                </button>
+                              </div>
+                            </div>
+                        ))}
+                  </form>
+              )}
+            </div>
+        )}
+      </div>
   );
 };
 
-export default EditableTable;
+export default EditableForm;

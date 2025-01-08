@@ -97,7 +97,7 @@ export default function AutoScrollingGallery() {
                 className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 py-8 px-6 rounded-xl shadow-lg relative">
                 <div className=" text-center font-bold text-2xl mb-6">
                     <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
-                        Skontaktuj się z nami</h2>
+                        Podziel się z nami swoją opinią!</h2>
                     <Komentarze/>
                 </div>
             </div>
