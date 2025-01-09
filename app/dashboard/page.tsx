@@ -8,7 +8,7 @@ import Szczepienie from "@/Szczepienie";
 import { UserProvider } from '@/UserContext';
 import ProtectedSection from '@/ProtectedSection';
 import Odswiezanie from '@/Odswiezanie';
-
+import Dropdown from '@/app/components/Dropdown';
 export default function Page() {
     const { user, loading } = useUser(); // Pobieramy użytkownika i stan ładowania
     const [menuReady, setDropdownReady] = useState(false);
@@ -22,9 +22,10 @@ export default function Page() {
     useUser();
     // Jeśli dane użytkownika są jeszcze ładowane, możemy wyświetlić loader
     if (menuReady) {
-      
+        
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 lg:p-24">
+            
             {/* Główna sekcja z linkami */}
             <div className="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 text-center  lg:w-full lg:text-left">
                 <Link href="/dashboard/boxes">

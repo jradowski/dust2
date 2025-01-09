@@ -10,7 +10,7 @@ const ProtectedSection: React.FC<ProtectedSectionProps> = ({ requiredRole, child
   const { user, loading } = useUser();
 
   if (loading) {
-    return <div>Ładowanie...</div>;
+    return ;
   }
 
   if (user && user.uprawnienia === requiredRole) {

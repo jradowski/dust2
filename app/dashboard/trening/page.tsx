@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import TreningTabela from '@/TreningTabela';
 import EditableTable from '@/EditableTable';
 import { UserProvider } from '@/UserContext';
-import ProtectedSection from '@/ProtectedSection';
+import ProtectedSectionMenu from '@/ProtectedSectionMenu';
 
 export default function page() {
 
@@ -28,7 +28,7 @@ export default function page() {
 
             </div>
             <UserProvider>
-            <ProtectedSection requiredRole="wlasciciel_stajni">  
+            <ProtectedSectionMenu requiredRole="wlasciciel_stajni">  
             <div
                 className="xl:w-3/5 content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
                     
@@ -40,10 +40,10 @@ export default function page() {
 
             
             </div>
-            </ProtectedSection>
+            </ProtectedSectionMenu>
             </UserProvider>
             <UserProvider>
-            <ProtectedSection requiredRole="pracownik">  
+            <ProtectedSectionMenu requiredRole="pracownik">  
             <div
                 className="xl:w-3/5 content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
                     
@@ -55,7 +55,7 @@ export default function page() {
 
             
             </div>
-            </ProtectedSection>
+            </ProtectedSectionMenu>
             </UserProvider>
             <div
                 className="xl:w-3/5 content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">

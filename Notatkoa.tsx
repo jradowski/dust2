@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 //import './tabela.css'; // Importowanie pliku CSS
 import '@/globals.css';
 import { UserProvider } from '@/UserContext';
-import ProtectedSection from '@/ProtectedSection';
+import ProtectedSectionMenu from '@/ProtectedSectionMenu';
 
 // Definicja typu dla props
 interface NotatkaProps {
@@ -92,14 +92,14 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
             {isEditing ? (
                 // Przycisk "Zapisz" do zapisania notatki
                 <UserProvider>
-                <ProtectedSection requiredRole="wlasciciel_stajni">
+                <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
                 <button
                     onClick={handleSave}
                     className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
                 >
                     Zapisz
                 </button>
-                </ProtectedSection>
+                </ProtectedSectionMenu>
                 </UserProvider>
             ) : (
                 // Przycisk "Edytuj" do rozpoczęcia edycji
