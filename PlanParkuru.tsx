@@ -272,100 +272,125 @@ const PlanParkuru: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Plan Parkuru</h1>
-      <div>
-        <input
-          type="number"
-          value={width}
-          onChange={(e) => setWidth(Number(e.target.value))}
-          placeholder="Szerokość placu (m)"
-        />
-        <input
-          type="number"
-          value={height}
-          onChange={(e) => setHeight(Number(e.target.value))}
-          placeholder="Długość placu (m)"
-        />
-        <button onClick={() => generatePlan(canvas)}>Generuj plan</button>
-        <button onClick={saveAsJPG}>Zapisz plan w JPG</button>
-      </div>
-
-      <div>
-  <img
-    src="stacjonata.png"
-    alt="Stacjonata"
-    onClick={() => addObstacle('stacjonata')}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="oxer.png"
-    alt="Oxer"
-    onClick={() => addObstacle('oxer')}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="start.png"
-    alt="Start"
-    onClick={() => addObstacle('start')}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="meta.png"
-    onClick={() => addObstacle('finish')}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="/path/to/draw-path-icon.png"
-    alt="Rysuj trasę"
-    onClick={enableDrawPath}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="/path/to/end-draw-path-icon.png"
-    alt="Zakończ rysowanie"
-    onClick={endDrawPath}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-  <img
-    src="/path/to/add-text-field-icon.png"
-    alt="Dodaj pole tekstowe"
-    onClick={addTextField}
-    style={{ width: '50px', height: '50px', cursor: 'pointer', margin: '1px' }}
-  />
-</div>
-
-      <div>
-        <canvas id="planCanvas" width="800" height="600"></canvas>
-      </div>
-
-      <h2>Zapisane Plany</h2>
-      <ul>
-        {images.map((img) => (
-          <li key={img.name}>
-            <p>{img.name} - {new Date(img.createdAt).toLocaleString()}</p>
-            <img
-              src={img.url}
-              alt={img.name}
-              style={{ maxWidth: '200px', cursor: 'pointer' }}
-              onClick={() => downloadImage(img.url)}
-            />
-            <button onClick={() => deleteImageFromSupabase(img.path)}>Usuń</button>
-          </li>
-        ))}
-      </ul>
-
-      {/* Modal do edycji numeru przeszkody */}
-      {editingLabel && (
-        <div>
+      <div className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-blue-600">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300 text-center font-bold text-2xl mb-6">Plan
+          Parkuru</h1>
+        <div className="">
           <input
-            type="text"
-            defaultValue={(editingLabel as fabric.Textbox).text || ""}
-            onBlur={(e) => handleLabelEdit(e.target.value)}
+              type="number"
+              value={width}
+              onChange={(e) => setWidth(Number(e.target.value))}
+              placeholder="Szerokość placu (m)"
+              className="px-2 py-1 border rounded text-black"
+          />
+          <input
+              type="number"
+              value={height}
+              onChange={(e) => setHeight(Number(e.target.value))}
+              placeholder="Długość placu (m)"
+              className="px-2 py-1 border rounded text-black"
+          />
+          <button
+              className=" m-2 p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+              onClick={() => generatePlan(canvas)}>Generuj plan
+          </button>
+          <button
+              className=" p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+              onClick={saveAsJPG}>Zapisz plan w JPG
+          </button>
+        </div>
+        <div className="flex flex-row gap-4 m-2">
+          <img
+              className="drop-shadow-lg rounded border "
+              src="stacjonata.png"
+              alt="Stacjonata"
+              onClick={() => addObstacle('stacjonata')}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="oxer.png"
+              alt="Oxer"
+              onClick={() => addObstacle('oxer')}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="start.png"
+              alt="Start"
+              onClick={() => addObstacle('start')}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="meta.png"
+              onClick={() => addObstacle('finish')}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="/path/to/draw-path-icon.png"
+              alt="Rysuj trasę"
+              onClick={enableDrawPath}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="/path/to/end-draw-path-icon.png"
+              alt="Zakończ rysowanie"
+              onClick={endDrawPath}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+          />
+          <img
+              className="drop-shadow-lg rounded border"
+              src="/path/to/add-text-field-icon.png"
+              alt="Dodaj pole tekstowe"
+              onClick={addTextField}
+              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
           />
         </div>
-      )}
-    </div>
+
+        <div className="bg-white w-fit rounded-lg drop-shadow-lg my-6">
+          <canvas id="planCanvas" width="800" height="600"></canvas>
+        </div>
+
+        <div className="">
+          <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300 text-center font-bold text-2xl mb-6 ">
+            Zapisane plany
+          </h1>
+          <ul>
+            {images.map((img) => (
+                <li key={img.name} className="border border-gray-200 dark:border-gray-700 rounded m-2 p-4">
+                  <p>{img.name} - {new Date(img.createdAt).toLocaleString()}</p>
+                  <div className="bg-white w-fit rounded-lg drop-shadow-lg my-6">
+                    <img
+                        src={img.url}
+                        alt={img.name}
+                        style={{maxWidth: '200px', cursor: 'pointer'}}
+                        onClick={() => downloadImage(img.url)}
+                    />
+                  </div>
+                  <button
+                      className=" m-2 p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+                      onClick={() => deleteImageFromSupabase(img.path)}>Usuń
+                  </button>
+                </li>
+            ))}
+          </ul>
+
+          {/* Modal do edycji numeru przeszkody */}
+          {editingLabel && (
+              <div>
+                <input
+                    className=""
+                    type="text"
+                    defaultValue={(editingLabel as fabric.Textbox).text || ""}
+                    onBlur={(e) => handleLabelEdit(e.target.value)}
+                />
+              </div>
+          )}
+        </div>
+      </div>
   );
 };
 

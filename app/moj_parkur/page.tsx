@@ -18,7 +18,7 @@ export default function page() {
 
 
             <div
-                className=" text-center  w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
+                className=" flex items-center w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 m-6 rounded-xl shadow-lg">
 
                 
             <PlanParkuru />
