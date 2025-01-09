@@ -298,6 +298,11 @@ const PlanParkuru: React.FC = () => {
               className=" p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
               onClick={saveAsJPG}>Zapisz plan w JPG
           </button>
+          {/* <button
+              className=" p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+              onClick={}>Wyczyść
+          </button>*/}
+
         </div>
         <div className="flex flex-row gap-4 m-2">
           <img
@@ -328,22 +333,22 @@ const PlanParkuru: React.FC = () => {
               style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
           />
           <img
-              className="drop-shadow-lg rounded border"
-              src="/path/to/draw-path-icon.png"
+              className="drop-shadow-lg bg-white rounded border"
+              src="pencil.png"
               alt="Rysuj trasę"
               onClick={enableDrawPath}
               style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
           />
           <img
-              className="drop-shadow-lg rounded border"
-              src="/path/to/end-draw-path-icon.png"
+              className="drop-shadow-lg bg-white rounded border"
+              src="xpencil.png"
               alt="Zakończ rysowanie"
               onClick={endDrawPath}
               style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
           />
           <img
-              className="drop-shadow-lg rounded border"
-              src="/path/to/add-text-field-icon.png"
+              className="drop-shadow-lg bg-white rounded border"
+              src="text.png"
               alt="Dodaj pole tekstowe"
               onClick={addTextField}
               style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
