@@ -39,6 +39,21 @@ export default function page() {
 
             </div>
 
+            <div
+                className="xl:w-3/5 content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+
+                <h1 className="text-3xl dark:text-white text-center font-bold">Parkur</h1>
+                <div>
+                <Link href="/moj_parkur">
+                <button
+                    className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold text-center">
+                    Kliknij i zaprojektuj swój parkur lub skorzystaj z gotowych wzorców
+                </button>
+                </Link>
+                </div>
+
+            </div>
+
             {/* Uzupełnij kalendarz na kolejne 2 tygodnie:
         <div className="columns-2 font-mono border-b border-gray-300 bg-gradient-to-b from-zinc-200 px-5 py-4 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit rounded-3xl content-center m-20">
             <div>

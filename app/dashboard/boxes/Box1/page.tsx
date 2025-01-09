@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import 'reactjs-popup/dist/index.css';
@@ -25,7 +25,28 @@ const Home = () => {
       return;
     }
 
-    setData(data); // Ustawienie pobranych danych
+    // Pobieramy dane właściciela na podstawie wlasc_id
+    const { data: ownerData, error: ownerError } = await supabase
+      .from('employees')
+      .select('first_name, last_name')
+      .eq('id', data.wlasc_id)
+      .single();
+
+    if (ownerError) {
+      console.error('Error fetching owner data:', ownerError);
+      setLoading(false);
+      return;
+    }
+
+    // Łączenie danych konia z danymi właściciela
+    const ownerFullName = ownerData ? `${ownerData.first_name} ${ownerData.last_name}` : 'Brak danych';
+
+    // Aktualizacja stanu z danymi konia oraz właściciela
+    setData({
+      ...data,
+      wlasciciel: ownerFullName, // Dodanie pełnego imienia i nazwiska właściciela
+    });
+
     setLoading(false); // Zakończenie ładowania
   };
 
@@ -92,7 +113,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className=" w-full grid grid-cols-1 mb-10 md:grid-cols-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-4 sm:p-6 rounded-xl shadow-lg text-justify text-base md:text-lg font-medium">
+      <div className="w-full grid grid-cols-1 mb-10 md:grid-cols-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-4 sm:p-6 rounded-xl shadow-lg text-justify text-base md:text-lg font-medium">
         <div className="border-r-0 md:border-r-2 border-gray-600 pr-0 md:pr-5">
           <h1 className="text-xl md:text-2xl">Ostatnia wizyta kowala:</h1>
           <h2 className="text-opacity-50 text-lg md:text-xl">{data.kowal}</h2>
@@ -103,7 +124,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className=" w-full grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-4 sm:p-6 rounded-xl shadow-lg text-justify text-base md:text-lg font-medium">
+      <div className="w-full grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-4 sm:p-6 rounded-xl shadow-lg text-justify text-base md:text-lg font-medium">
         <div>
           <h1 className="text-lg md:text-xl font-bold">Plan treningowy:</h1>
           <h2 className="text-base md:text-lg">
