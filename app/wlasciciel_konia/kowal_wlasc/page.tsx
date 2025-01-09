@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import supabase from "@/supabaseClient.js"; // Upewnij się, że importujesz swojego klienta Supabase
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 
 export default function KowalVisits() {
   const [konie, setKonie] = useState<any[]>([]); // Lista koni
@@ -213,6 +215,11 @@ export default function KowalVisits() {
   }
 
   return (
+
+<UserProvider>
+<ProtectedSection requiredRole="wlasciciel_koni">
+
+
     <div className="flex flex-col gap-10 items-center p-6 xl:px-96">
       <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
         <div className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
@@ -370,5 +377,7 @@ export default function KowalVisits() {
         </div>
       </div>
     </div>
+</ProtectedSection>
+</UserProvider>
   );
 }

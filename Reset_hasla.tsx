@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import  supabase  from '@/supabaseClient';
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 
 const ResetPasswordInterface: React.FC = () => {
   const [selectedEmail, setSelectedEmail] = useState<string>('');
@@ -27,6 +29,8 @@ const ResetPasswordInterface: React.FC = () => {
   };
 
   return (
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_stajni">
       <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
         <div className="text-2xl">
@@ -51,6 +55,8 @@ const ResetPasswordInterface: React.FC = () => {
         </div>
         {message && <p>{message}</p>}
       </div>
+      </ProtectedSection>
+      </UserProvider>
   );
 };
 

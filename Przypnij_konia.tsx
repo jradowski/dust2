@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/supabaseClient2';
 import { useUser } from './UserContext';
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 interface Horse {
   id: number;
   imie: string;
@@ -82,6 +83,8 @@ const AssignHorses: React.FC = () => {
   };
 
   return (
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_stajni">
       <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="mb-4 text-2xl">
           <label className="block text-xl font-semibold mb-2">Wybierz konia:</label>
@@ -125,6 +128,8 @@ const AssignHorses: React.FC = () => {
         </div>
         {message && <div className="mt-4 text-lg text-center">{message}</div>}
       </div>
+      </ProtectedSection>
+      </UserProvider>
   );
 };
 

@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/supabaseClient2';
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 interface Employee {
   id: string;
   first_name: string;
@@ -49,6 +50,8 @@ const DeleteUser: React.FC = () => {
   };
 
   return (
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_stajni">
       <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
         <div className="mb-4 text-2xl">
@@ -78,6 +81,8 @@ const DeleteUser: React.FC = () => {
 
         {message && <div className="mt-4 text-lg text-center">{message}</div>}
       </div>
+        </ProtectedSection>
+        </UserProvider>
   );
 };
 

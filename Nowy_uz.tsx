@@ -4,7 +4,8 @@ import { supabase } from '@/supabaseClient2';
 import { useUser } from '@/UserContext';
 import '@/globals.css'
 import '@/admin_board.css'
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 
 const AdminPanel: React.FC = () => {
   const { user } = useUser();
@@ -69,6 +70,8 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_stajni">
       <div className="flex flex-col text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
 
@@ -141,6 +144,8 @@ const AdminPanel: React.FC = () => {
         </form>
         {message && <div className="mt-4 text-lg text-center">{message}</div>}
       </div>
+</ProtectedSection>
+</UserProvider>
   );
 };
 

@@ -1,23 +1,28 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from '@/UserContext';  // Importujemy hooka z UserContext
 import Image from 'next/image';
 import Link from 'next/link';
 import Kowal from "@/Kowal";
 import Szczepienie from "@/Szczepienie";
-// useEffect(() => {
-//     // Sprawdzamy, czy strona była już odświeżona
-//     const hasRefreshed = sessionStorage.getItem('hasRefreshed');
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
+import Odswiezanie from '@/Odswiezanie';
 
-//     if (!hasRefreshed) {
-//         // Jeśli strona nie była jeszcze odświeżona, to ustawiamy flagę i wykonujemy przekierowanie
-//         sessionStorage.setItem('hasRefreshed', 'true');
-        
-//         // Przekierowujemy użytkownika na tę samą stronę (wymusza to przeładowanie strony)
-//         window.location.href = window.location.href;
-//     }
-// }, []);
 export default function Page() {
+    const { user, loading } = useUser(); // Pobieramy użytkownika i stan ładowania
+    const [menuReady, setDropdownReady] = useState(false);
+
+    // useEffect czeka na załadowanie danych użytkownika
+    useEffect(() => {
+        if (!loading && user) {
+            setDropdownReady(true); // Ustawiamy, że menu jest gotowe
+        }
+    }, [loading, user]);
+    useUser();
+    // Jeśli dane użytkownika są jeszcze ładowane, możemy wyświetlić loader
+    if (menuReady) {
+      
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 lg:p-24">
             {/* Główna sekcja z linkami */}
@@ -63,17 +68,19 @@ export default function Page() {
                 <div className="mt-10 bg-blue-300 drop-shadow-lg dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium w-full">
                     <div>
                         <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Kowal</h1>
-                        <Kowal/>
+                        <Kowal />
                     </div>
-                    <hr className="border-t-2 border-zinc-200 dark:border-gray-600 my-8"/>
+                    <hr className="border-t-2 border-zinc-200 dark:border-gray-600 my-8" />
                     <div>
                         <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Szczepienie</h1>
-                        <Szczepienie/>
+                        <Szczepienie />
                     </div>
                 </div>
             </div>
         </main>
-
     );
-
+}
+else{
+    <Odswiezanie />;
+}
 }

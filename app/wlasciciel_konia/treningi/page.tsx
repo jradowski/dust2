@@ -9,13 +9,15 @@ import { useEffect, useState } from 'react';
 import TreningTabelaWlasc from '@/TreningTabelaWlasc';
 import EditableTableWlasc from '@/EditableTbleWlasc';
 import '@/boxtabela.css';
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 
 export default function page() {
 
     return (
         <main className="flex flex-col items-center gap-16 text-black  dark:text-zinc-500  justify-between ">
-
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_koni">
 
             <div
                 className=" text-center  w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
@@ -45,17 +47,17 @@ export default function page() {
             </div>
 
             <div
-                className="xl:w-3/5 content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+               className=" text-center w-10/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg">
 
-                <h1 className="text-3xl dark:text-white text-center font-bold">Parkur</h1>
-                
+                <h1  className="text-transparent  font-bold text-3xl p-4 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">Parkour</h1>
+                <div className="flex items-center justify-center  ">
                 <Link href="/moj_parkur">
                 <button
-                    className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold text-center">
-                    Kliknij i zaprojektuj swój parkur lub skorzystaj z gotowych wzorców
+                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white">
+                    Kliknij i zaprojektuj swój parkour lub skorzystaj z gotowych wzorców
                 </button>
                 </Link>
-                
+                </div>
 
             </div>
 
@@ -75,7 +77,8 @@ export default function page() {
         </div> */}
 
 
-
+</ProtectedSection>
+</UserProvider>
         </main>
 
 

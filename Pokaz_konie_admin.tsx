@@ -4,7 +4,8 @@ import { supabase } from '@/supabaseClient2';
 import { useUser } from '@/UserContext';
 import '@/admin_board.css';
 import '@/globals.css';
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 interface Horse {
   id: number;
   imie: string;
@@ -65,6 +66,8 @@ const AdminPanel: React.FC = () => {
   };
 
   return (
+  <UserProvider>
+  <ProtectedSection requiredRole="wlasciciel_stajni">
       <div className="flex flex-col text-center text-xl mt-6 p-10 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="space-y-4">
           {owners.map((owner) => (
@@ -101,6 +104,8 @@ const AdminPanel: React.FC = () => {
           ))}
         </div>
       </div>
+      </ProtectedSection>
+      </UserProvider>
   );
 };
 

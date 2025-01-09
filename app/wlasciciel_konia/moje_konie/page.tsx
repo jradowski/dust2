@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import supabase from '@/supabaseClient';
 import Image from "next/image";
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 // Definiowanie typu danych dla boksu
 interface Box {
   nr_boksu: number;
@@ -50,7 +51,10 @@ export default function Page() {
   if (boxes.length === 0) return <p>Brak boksów do wyświetlenia.</p>;
 
   return (
+
       <main className="flex flex-col p-4 sm:p-6 md:p-8 lg:p-24 justify-between">
+        <UserProvider>
+        <ProtectedSection requiredRole="wlasciciel_koni">
         <div
             className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-center lg:mb-0 lg:w-full lg:text-left">
           {boxes.map((box) => (
@@ -84,6 +88,8 @@ export default function Page() {
               </Link>
           ))}
         </div>
+</ProtectedSection>
+</UserProvider>
       </main>
   );
 }

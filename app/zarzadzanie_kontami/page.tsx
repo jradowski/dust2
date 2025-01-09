@@ -9,7 +9,8 @@ import Przypnij from "@/Przypnij_konia"
 import Usun from "@/Usun_user"
 import Reset from "@/Reset_hasla"
 import '@/globals.css'
-
+import { UserProvider } from '@/UserContext';
+import ProtectedSection from '@/ProtectedSection';
 
 export default function page() {
     return (
