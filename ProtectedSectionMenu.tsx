@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from './UserContext'; // Import kontekstu użytkownika
 
 interface ProtectedSectionProps {
@@ -8,12 +8,28 @@ interface ProtectedSectionProps {
 
 const ProtectedSection: React.FC<ProtectedSectionProps> = ({ requiredRole, children }) => {
   const { user, loading } = useUser();
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+
+  // Nasłuchujemy na zmianę stanu użytkownika i aktualizujemy stan uprawnień
+  useEffect(() => {
+    if (!loading) {
+      if (user && user.uprawnienia === requiredRole) {
+        setHasPermission(true);
+      } else {
+        setHasPermission(false);
+      }
+    }
+  }, [user, loading, requiredRole]); // Zmieniamy stan, kiedy zmienia się użytkownik lub role
 
   if (loading) {
-    return ;
+    return ; // Możesz dodać komponent ładowania
   }
 
-  if (user && user.uprawnienia === requiredRole) {
+  if (hasPermission === null) {
+    return null; // Zwracamy nic, dopóki nie wiemy, czy użytkownik ma uprawnienia
+  }
+
+  if (hasPermission) {
     return <>{children}</>;
   }
 

@@ -1,4 +1,3 @@
-
 'use client';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '@/supabaseClient2'; // Upewnij się, że masz poprawny import
@@ -21,6 +20,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    // Funkcja do pobierania użytkownika
     const fetchUser = async () => {
       const { data: { user: supabaseUser }, error: userError } = await supabase.auth.getUser();
 
@@ -54,8 +54,26 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(false);
     };
 
+    // Nasłuchujemy na zmiany autentykacji
+    const authListener = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        // Jeśli sesja istnieje, pobieramy dane użytkownika
+        fetchUser();
+      } else {
+        // Jeśli sesja została zakończona, resetujemy stan
+        setUser(null);
+        setLoading(false);
+      }
+    });
+
+    // Na początku pobieramy dane użytkownika
     fetchUser();
-  }, []);
+
+    // Cleanup listener przy odmontowywaniu komponentu
+    return () => {
+      authListener.data.subscription.unsubscribe(); // Zakończenie subskrypcji
+    };
+  }, []); // Uruchamiane raz na początek
 
   return (
     <UserContext.Provider value={{ user, loading }}>

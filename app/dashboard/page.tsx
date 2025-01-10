@@ -13,15 +13,15 @@ export default function Page() {
     const { user, loading } = useUser(); // Pobieramy użytkownika i stan ładowania
     const [menuReady, setDropdownReady] = useState(false);
 
-    // useEffect czeka na załadowanie danych użytkownika
-    useEffect(() => {
-        if (!loading && user) {
-            setDropdownReady(true); // Ustawiamy, że menu jest gotowe
-        }
-    }, [loading, user]);
-    useUser();
-    // Jeśli dane użytkownika są jeszcze ładowane, możemy wyświetlić loader
-    if (menuReady) {
+    // // useEffect czeka na załadowanie danych użytkownika
+    // useEffect(() => {
+    //     if (!loading && user) {
+    //         setDropdownReady(true); // Ustawiamy, że menu jest gotowe
+    //     }
+    // }, [loading, user]);
+    // useUser();
+    // // Jeśli dane użytkownika są jeszcze ładowane, możemy wyświetlić loader
+    // if (menuReady) {
         
     return (
         <main className="flex flex-col items-center justify-between p-4 sm:p-6 lg:p-24">
@@ -80,8 +80,8 @@ export default function Page() {
             </div>
         </main>
     );
-}
-else{
-    <Odswiezanie />;
-}
+// }
+// else{
+//     <Odswiezanie />;
+// }
 }
