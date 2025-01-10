@@ -73,12 +73,12 @@ const AdminPanel: React.FC = () => {
           {owners.map((owner) => (
               <div key={owner.id} className="border p-4 rounded-lg shadow">
                 <div className="flex items-center justify-between ">
-              <span className="font-semibold text-xl">
+              <span className="font-semibold text-xl text-left">
                 {owner.first_name} {owner.last_name}
               </span>
                   <button
                       onClick={() => toggleOwnerHorses(owner.id)}
-                      className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+                      className="float-right lg:px-6 sm:px-2 lg:py-2 sm:py-1  w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
                   >
                     {expandedOwners[owner.id] ? 'Ukryj konie' : 'Pokaż konie'}
                   </button>

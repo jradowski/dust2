@@ -18,35 +18,34 @@ export default function page() {
 
 
             <div
-                className="xl:w-3/5 content-center   grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+                className="xl:w-3/5 w-full content-center   grid grid-cols-1 gap-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
 
 
-                <h1 className="text-3xl dark:text-white text-center font-bold">Tygodniowy plan treningowy</h1>
-                <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium flex items-center justify-center    ">
+                <h1 className="text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">Tygodniowy plan treningowy</h1>
                     <TreningTabela/>
-                </div>
+
 
             </div>
             <UserProvider>
-            <ProtectedSectionMenu requiredRole="wlasciciel_stajni">  
+            <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
             <div
-                className="xl:w-3/5 content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
-                    
-                <h1 className="  text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
+                className="xl:w-3/5 w-full content-center   grid grid-cols-1 gap-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center ">
+
+                <h1 className=" text-transparent text-center font-bold text-2xl mb-6 bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">Zmień plan treningowy</h1>
                 <div
                     className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white text-center p-6 rounded-xl shadow-lg text-lg font-medium flex items-center justify-center">
                     <EditableTable/>
                 </div>
 
-            
+
             </div>
             </ProtectedSectionMenu>
             </UserProvider>
             <UserProvider>
-            <ProtectedSectionMenu requiredRole="pracownik">  
+            <ProtectedSectionMenu requiredRole="pracownik">
             <div
-                className="xl:w-3/5 content-center grid grid-cols-1 gap-10 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
-                    
+                className="xl:w-3/5 w-full content-center grid grid-cols-1 gap-2 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white p-6 rounded-xl shadow-lg text-justify text-lg font-medium items-center">
+
                 <h1 className="  text-3xl dark:text-white text-center font-bold">Zmień plan treningowy</h1>
                 <div
                     className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white text-center p-6 rounded-xl shadow-lg text-lg font-medium flex items-center justify-center">

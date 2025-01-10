@@ -24,12 +24,12 @@ export default function Page() {
     // if (menuReady) {
         
     return (
-        <main className="flex flex-col items-center justify-between p-4 sm:p-6 lg:p-24">
+        <main className="flex flex-col items-center justify-between p-4 sm:p-2 lg:p-24">
             
             {/* Główna sekcja z linkami */}
-            <div className="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 text-center  lg:w-full lg:text-left">
+            <div className="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 text-center lg:w-full lg:text-left">
                 <Link href="/dashboard/boxes">
-                    <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
+                    <div className="sm:w-full bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium ">
                         <Image src="/images/box.png" alt="Box image" width={64} height={64} className="m-2 h-auto" />
                         <h2 className="text-xl sm:text-2xl font-semibold">
                             Boksy

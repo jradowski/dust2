@@ -44,7 +44,7 @@ function Szczepienie() {
 
     return (
         <div className="italic">
-            <h1 className="font-bold">Termin szczepień na ten tydzień:</h1>
+            <h1 className="font-bold text-left sm:text-sm">Termin szczepień na ten tydzień:</h1>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <ul>

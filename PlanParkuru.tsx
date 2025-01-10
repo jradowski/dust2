@@ -272,10 +272,11 @@ const PlanParkuru: React.FC = () => {
   };
 
   return (
-      <div className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-blue-600">
+      <div
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-blue-600">
         <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300 text-center font-bold text-2xl mb-6">Plan
           Parkuru</h1>
-        <div className="">
+        <div className="flex flex-col sm:flex-row gap-4">
           <input
               type="number"
               value={width}
@@ -291,7 +292,7 @@ const PlanParkuru: React.FC = () => {
               className="px-2 py-1 border rounded text-black"
           />
           <button
-              className=" m-2 p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
+              className=" p-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
               onClick={() => generatePlan(canvas)}>Generuj plan
           </button>
           <button
@@ -304,55 +305,57 @@ const PlanParkuru: React.FC = () => {
           </button>*/}
 
         </div>
-        <div className="flex flex-row gap-4 m-2">
-          <img
-              className="drop-shadow-lg rounded border "
-              src="stacjonata.png"
-              alt="Stacjonata"
-              onClick={() => addObstacle('stacjonata')}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg rounded border"
-              src="oxer.png"
-              alt="Oxer"
-              onClick={() => addObstacle('oxer')}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg rounded border"
-              src="start.png"
-              alt="Start"
-              onClick={() => addObstacle('start')}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg rounded border"
-              src="meta.png"
-              onClick={() => addObstacle('finish')}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg bg-white rounded border"
-              src="pencil.png"
-              alt="Rysuj trasę"
-              onClick={enableDrawPath}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg bg-white rounded border"
-              src="xpencil.png"
-              alt="Zakończ rysowanie"
-              onClick={endDrawPath}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
-          <img
-              className="drop-shadow-lg bg-white rounded border"
-              src="text.png"
-              alt="Dodaj pole tekstowe"
-              onClick={addTextField}
-              style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
-          />
+        <div className="flex flex-col lg:flex-row lg:gap-4 p-2">
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 lg:flex lg:flex-row lg:gap-4 lg:items-start w-full">
+            <img
+                className="drop-shadow-lg rounded border "
+                src="stacjonata.png"
+                alt="Stacjonata"
+                onClick={() => addObstacle('stacjonata')}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg rounded border"
+                src="oxer.png"
+                alt="Oxer"
+                onClick={() => addObstacle('oxer')}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg rounded border"
+                src="start.png"
+                alt="Start"
+                onClick={() => addObstacle('start')}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg rounded border"
+                src="meta.png"
+                onClick={() => addObstacle('finish')}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg bg-white rounded border"
+                src="pencil.png"
+                alt="Rysuj trasę"
+                onClick={enableDrawPath}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg bg-white rounded border"
+                src="xpencil.png"
+                alt="Zakończ rysowanie"
+                onClick={endDrawPath}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+            <img
+                className="drop-shadow-lg bg-white rounded border"
+                src="text.png"
+                alt="Dodaj pole tekstowe"
+                onClick={addTextField}
+                style={{width: '50px', height: '50px', cursor: 'pointer', margin: '1px'}}
+            />
+          </div>
         </div>
 
         <div className="bg-white w-fit rounded-lg drop-shadow-lg my-6">
@@ -365,7 +368,7 @@ const PlanParkuru: React.FC = () => {
           </h1>
           <ul>
             {images.map((img) => (
-                <li key={img.name} className="border border-gray-200 dark:border-gray-700 rounded m-2 p-4">
+                <li key={img.name} className="border border-gray-200 dark:border-gray-700 rounded m-2 p-4 break-words">
                   <p>{img.name} - {new Date(img.createdAt).toLocaleString()}</p>
                   <div className="bg-white w-fit rounded-lg drop-shadow-lg my-6">
                     <img
