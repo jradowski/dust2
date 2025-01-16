@@ -139,7 +139,7 @@ const MyProfile = () => {
                     />
                     <button
                         onClick={handleEmailChange}
-                        className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
+                        className="px-6 py-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
                         Zmień email
                     </button>
                 </div>
@@ -164,7 +164,7 @@ const MyProfile = () => {
                     />
                     <button
                         onClick={handlePasswordChange}
-                        className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
+                        className="px-6 py-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2">
                         Zmień hasło
                     </button>
                 </div>
@@ -181,7 +181,7 @@ const MyProfile = () => {
                 </div>
                 <button
                     onClick={handleDeleteAccount}
-                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-red-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2 ">
+                    className="px-6 py-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-red-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2 ">
                     Usuń konto
                 </button>
             </div>

@@ -158,7 +158,7 @@ const Inbox: React.FC = () => {
                     {/* Przycisk resetowania filtrów */}
                     <button
                         onClick={resetFilters}
-                        className={styles.resetButton}
+                        className="px-6 py-2 mt-2 mb-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white"
                     >
                         Resetuj filtry
                     </button>

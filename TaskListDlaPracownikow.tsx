@@ -84,9 +84,9 @@ const TaskListDlaPracownikow: React.FC = () => {
         <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
           <thead className="bg-blue-600">
           <tr>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Tytuł</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Opis</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Termin</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Tytuł</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Opis</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Termin</th>
           </tr>
           </thead>
           <tbody>

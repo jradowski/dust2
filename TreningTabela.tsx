@@ -58,14 +58,14 @@ const ReadOnlyTable: React.FC = () => {
       <table className="min-w-full table-auto border-collapse border border-gray-500 dark:border-gray-700 rounded-xl">
         <thead className="bg-blue-600">
           <tr>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Imię Konia</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Poniedziałek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Wtorek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Środa</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Czwartek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Piątek</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Sobota</th>
-            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Niedziela</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Imię Konia</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Poniedziałek</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Wtorek</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Środa</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Czwartek</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Piątek</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Sobota</th>
+            <th className="px-4 py-2 text-left text-md font-semibold text-white border-collapse border border-gray-500 dark:border-gray-700 dark:text-gray-300">Niedziela</th>
           </tr>
         </thead>
         <tbody>

@@ -148,7 +148,7 @@ const WorkScheduleWeekly: React.FC = () => {
       </label>
     <br></br>
       {/* Button to toggle the visibility of the schedule table */}
-      <button onClick={() => setShowTable(true)} className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2">Pokaż</button>
+      <button onClick={() => setShowTable(true)} className="px-6 py-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2">Pokaż</button>
 
       {/* Conditionally render the table based on the state */}
       {showTable && (
@@ -156,9 +156,9 @@ const WorkScheduleWeekly: React.FC = () => {
             <table className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
               <thead className="bg-blue-600 text-black dark:text-white">
               <tr>
-                <th className="px-4 py-2 text-left text-xl font-semibold text-gray-700 dark:text-gray-300">Godziny</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Godziny</th>
                 {daysOfWeek.map((day, index) => (
-                    <th key={index}>{day}</th>
+                    <th key={index}  className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">{day}</th>
                 ))}
               </tr>
               </thead>

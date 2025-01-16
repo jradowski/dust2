@@ -190,7 +190,7 @@ const WorkSchedule: React.FC = () => {
         </select>
 
         <div>
-          <button className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2" onClick={handleSearch}>Szukaj</button>
+          <button className="px-6 py-2 w-fit text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mb-2 mt-2" onClick={handleSearch}>Szukaj</button>
           {/* Przycisk do wyszukiwania */}
         </div>
       </div>
@@ -201,12 +201,12 @@ const WorkSchedule: React.FC = () => {
                 className="min-w-full table-auto border-collapse border border-gray-200 dark:border-gray-700 rounded-xl">
               <thead className="bg-blue-600">
               <tr>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Data</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Godzina rozpoczęcia</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Godzina zakończenia</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Pracownik</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Stanowisko</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Akcje</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Data</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Godzina rozpoczęcia</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Godzina zakończenia</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Pracownik</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Stanowisko</th>
+                <th className="px-4 py-2 text-left text-md font-semibold text-white dark:text-gray-300">Akcje</th>
               </tr>
               </thead>
               <tbody>
