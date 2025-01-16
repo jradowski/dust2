@@ -80,7 +80,7 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
             {isEditing ? (
                 // Pole tekstowe do edycji
                 <textarea
-                    className="custom-textarea"
+                    className="rounded bg-white w-full border border-gray-400 drop-shadow-lg"
                     value={notatka}
                     onChange={(e) => setNotatka(e.target.value)} // Obsługa zmiany tekstu
                 />
@@ -95,7 +95,7 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
                 <ProtectedSectionMenu requiredRole="wlasciciel_stajni">
                 <button
                     onClick={handleSave}
-                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
+                    className="px-6 py-2 w-fit text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
                 >
                     Zapisz
                 </button>
@@ -106,7 +106,7 @@ const Notatka: React.FC<NotatkaProps> = ({ horseId }) => {
                 
                 <button
                     onClick={handleEdit}
-                    className="px-6 py-2 w-fit text-black bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
+                    className="px-6 py-2 w-fit text-white  bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-700 dark:text-white mt-2 mb-2"
                 >
                     Edytuj
                 </button>

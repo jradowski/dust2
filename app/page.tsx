@@ -71,7 +71,7 @@ export default function AutoScrollingGallery() {
                     ref={galleryRef}
                     className="flex gap-6 overflow-x-auto scroll-snap-x  "
                 >
-                    {["third", "zdj2", "3", "fifth", "zdj1", "second", "stable", "6", "2"].map(
+                    {["third",  "3", "zdj1", "second", "stable", "6", "2"].map(
                         (img, index) => (
                             <div
                                 key={index}
