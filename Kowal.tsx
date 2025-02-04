@@ -1,13 +1,9 @@
 "use client";
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import 'reactjs-popup/dist/index.css'
 import supabase from './supabaseClient.js'
 import { useEffect, useState } from 'react'
 import { addWeeks, isWithinInterval, isSameWeek } from 'date-fns';
-
-
 
 function Kowal() {
     const [records, setRecords] = useState<{ id: number; imie: string; }[]>([]);
@@ -17,7 +13,6 @@ function Kowal() {
     useEffect(() => {
         fetchRecords();
     }, []);
-
     // Funkcja pobierająca dane z Supabase
     const fetchRecords = async () => {
         try {
@@ -41,11 +36,9 @@ function Kowal() {
             setLoading(false);
         }
     };
-
     return (
         <div className="italic" >
             <h1 className="font-bold text-left sm:text-sm">Termin kowala w tym tygodniu:</h1>
-
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             <ul>
@@ -56,5 +49,4 @@ function Kowal() {
         </div>
     );
 }
-
 export default Kowal;

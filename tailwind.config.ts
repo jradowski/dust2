@@ -32,8 +32,6 @@ const config: Config = {
         'gray-600': '#718096',
         'gray-800': '#1A202C',
         'rubin':'#FF001B',
-
-
       },
     },
   },

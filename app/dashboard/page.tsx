@@ -66,7 +66,7 @@ export default function Page() {
                     <Image src="/images/blink.png" alt="Reminder image" width={64} height={64} className="m-2 h-auto" />
                 </div>
 
-                <div className="mt-10 bg-blue-300 drop-shadow-lg dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium w-full">
+                <div className="mt-11 bg-blue-300 drop-shadow-lg dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow-lg text-justify text-lg font-medium w-full">
                     <div>
                         <h1 className="font-bold text-center text-xl sm:text-2xl w-auto">Kowal</h1>
                         <Kowal />

@@ -19,32 +19,45 @@ export default function AutoScrollingGallery() {
     return (
         <main className="grid place-items-center gap-12 text-zinc-700 dark:text-white pt-8">
             {/* Hero section */}
-            <div className="text-center text-black py-12 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
+            <div
+                className="text-center text-black py-12 bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full">
                 <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4 p-2">
-                    Stable Assistant  </h1>
-                    <h2 className="lg:text-2xl sm:text-2xl font-bold mb-4 p-2">
+                    Stable Assistant </h1>
+                <h2 className="lg:text-2xl sm:text-2xl font-bold mb-4 p-2">
                     Zarządzanie Stajnią Jeszcze Nigdy Nie Było Tak Proste!<br></br>
                     Wszystko to możliwe bez wychodzenia z domu!
-                    </h2>
-               
+                </h2>
+
                 <p className="lg:text-lg sm:text-sm my-6">
                     Dołącz do użytkowników, którzy uprościli swoje codzienne zadania dzięki naszej aplikacji!
                 </p>
                 <Link href="/home">
-                <button
-                    className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold">
-                    Jesteś użytkownikiem? 
-                    Zaloguj się już teraz! 
-                </button>
+                    <button
+                        className="px-6 py-3 bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 font-semibold">
+                        Jesteś użytkownikiem?
+                        Zaloguj się już teraz!
+                    </button>
                 </Link>
             </div>
 
             {/* Benefits section */}
-            <div className="w-10/12 grid gap-8 lg:grid-cols-3">
+            <div className="w-10/12 grid gap-8 lg:grid-cols-3 ">
                 {[
-                    {icon: "/images/schedule.png", title: "Planowanie", text: "Miej pełną kontrolę nad opieką twoimi końmi."},
-                    {icon: "/images/tasks.png", title: "Zarządzanie", text: "Zarządzaj personelem, twórz harmonogramy i przydzielaj zadania pracownikom."},
-                    {icon: "/images/analytics.png", title: "Kontrola", text: "Monitoruj terminy weterynaryjne, plany treningowe koni i wiele więcej."},
+                    {
+                        icon: "/images/schedule.png",
+                        title: "Planowanie",
+                        text: "Miej pełną kontrolę nad opieką twoimi końmi."
+                    },
+                    {
+                        icon: "/images/tasks.png",
+                        title: "Zarządzanie",
+                        text: "Zarządzaj personelem, twórz harmonogramy i przydzielaj zadania pracownikom."
+                    },
+                    {
+                        icon: "/images/analytics.png",
+                        title: "Kontrola",
+                        text: "Monitoruj terminy weterynaryjne, plany treningowe koni i wiele więcej."
+                    },
                 ].map(({icon, title, text}, idx) => (
                     <div
                         key={idx}
@@ -58,12 +71,13 @@ export default function AutoScrollingGallery() {
             </div>
 
 
+
             {/* Gallery */}
             <div
                 className="w-11/12 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 py-8 px-6 rounded-xl shadow-lg relative">
                 <div className="text-center font-bold text-2xl mb-6">
                     <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 dark:from-blue-300 dark:to-blue-300">
-                       
+
                     </h1>
                 </div>
 
@@ -71,7 +85,7 @@ export default function AutoScrollingGallery() {
                     ref={galleryRef}
                     className="flex gap-6 overflow-x-auto scroll-snap-x  "
                 >
-                    {["third",  "3", "zdj1", "second", "stable", "6", "2"].map(
+                    {["third", "3", "zdj1", "second", "stable", "6", "2"].map(
                         (img, index) => (
                             <div
                                 key={index}
@@ -103,7 +117,8 @@ export default function AutoScrollingGallery() {
             </div>
 
 
-            <div className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full py-8 text-center">
+            <div
+                className="bg-blue-300 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900 dark:text-white w-full py-8 text-center">
                 <h1 className="lg:text-4xl sm:text-3xl font-bold  p-2">
                     Sprawdź też wersję mobilną!
                 </h1>
@@ -112,7 +127,8 @@ export default function AutoScrollingGallery() {
                 </p>
 
                 <div className="grid place-items-center w-full">
-                    <Image src="/images/kodqr.png" alt={"kod qr"} width={150} height={150} className="rounded-xl shadow-lg"/>
+                    <Image src="/images/kodqr.png" alt={"kod qr"} width={150} height={150}
+                           className="rounded-xl shadow-lg"/>
                 </div>
 
             </div>
